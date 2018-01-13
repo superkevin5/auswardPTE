@@ -11,8 +11,6 @@ import {
   MatSidenavModule
 } from '@angular/material';
 
-import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
-
 
 @NgModule({
   imports: [
@@ -20,24 +18,20 @@ import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatCheckboxModule,
     MatProgressBarModule,
-    MatSidenavModule,
     MatToolbarModule,
     MatCardModule,
     MatMenuModule,
-    MatProgressBarModule,
     MatSidenavModule
   ],
   exports: [
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
-    MatProgressBarModule,
     MatSidenavModule,
     MatToolbarModule,
     MatCardModule,
     MatMenuModule,
     MatProgressBarModule,
-    MatSidenavModule
   ]
 })
 export class MaterialModule {}
