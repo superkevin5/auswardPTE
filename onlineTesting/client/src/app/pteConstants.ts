@@ -1,0 +1,77 @@
+export const pteConstants = {
+  testCategory: {
+    Speaking: [
+      {
+        key: 'readAloud',
+        text: 'Read aloud',
+        path: ''
+      },
+      {
+        key: 'repeatSentence',
+        text: 'Repeat Sentence',
+        path: ''
+      },
+      {
+        key: 'describeImage',
+        text: 'Describe Image',
+        path: ''
+      },
+      {
+        key: 'retellLecture',
+        text: 'Retell Lecture',
+        path: ''
+      },
+      {
+        key: 'answerShortQuestion',
+        text: 'Answer Short Question',
+        path: ''
+      }
+    ],
+    Listening: [
+      {
+        key: 'summarizeSpokenText',
+        text: 'Summarize Spoken Text',
+        path: ''
+      },
+      {
+        key: 'writeFromDictation',
+        text: 'Write From Dictation',
+        path: ''
+      },
+      {
+        key: 'listeningFillIntheBlanks',
+        text: 'Listening Fill In the Blanks',
+        path: ''
+      },
+      {
+        key: 'highLightInCorrectWords',
+        text: 'High Light In Correct Words',
+        path: ''
+      }
+    ],
+    Reading: [
+      {
+        key: 'reorderParagraph',
+        text: 'Re-order Paragraphs',
+        path: ''
+      },
+      {
+        key: 'readingFillInTheBlanks',
+        text: 'Reading Fill In The Blanks',
+        path: ''
+      }
+    ],
+    Writing: [
+      {
+        key: 'summarizeWrittenText',
+        text: 'Summarize Written Text',
+        path: ''
+      },
+      {
+        key: 'writeEssay',
+        text: 'Write Essay',
+        path: ''
+      }
+    ]
+  }
+};

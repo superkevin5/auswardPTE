@@ -6,15 +6,23 @@
     </section>
     <hr>
 
-    <section>
-      <mat-accordion >
+    <section class="pteCategory">
+      <mat-accordion *ngFor="let key of keys; index as i; first as isFirst">
         <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            This is the expansion 1 title
+          <mat-expansion-panel-header class="nav-title">
+            <h3>{{key}}</h3>
           </mat-expansion-panel-header>
-          This the expansion 1 content
+
+          <div *ngFor="let testItem of testsCategory[key];index as y;" class="nav-item">
+            {{y+1}}: {{testItem.text}}
+          </div>
+
+
         </mat-expansion-panel>
       </mat-accordion>
+
+
+
     </section>
   </mat-sidenav>
 
