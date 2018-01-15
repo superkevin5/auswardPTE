@@ -10,6 +10,7 @@ import {pteConstants} from './pteConstants';
 export class AppComponent {
   mode = new FormControl('side');
   keys:any[]=  new Array();
+  testsCategory:any = new Array();
   constructor() {
     this.keys = Object.keys(pteConstants.testCategory);
     this.testsCategory = pteConstants.testCategory;
