@@ -5,11 +5,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { CommonModule } from '@angular/common';
+
 import { AppComponent } from './app.component';
+import { ColorPickerComponent } from './color-picker/color-picker.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,

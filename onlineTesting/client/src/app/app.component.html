@@ -1,39 +1,44 @@
-<mat-sidenav-container class="example-container" >
-  <mat-sidenav #sidenav [mode]="mode.value" opened="true" class="pte-sidebar">
-    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-    <section>
-    logo
-    </section>
-    <hr>
+<div [ngClass]="pte_theme" class="pte-app">
 
-    <section class="pteCategory">
-      <mat-accordion *ngFor="let key of keys; index as i; first as isFirst">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header class="nav-title">
-            <h3>{{key}}</h3>
-          </mat-expansion-panel-header>
+  <mat-toolbar class="mat-toolbar mat-toolbar-multiple-rows" color="primary">
+    <mat-toolbar-row>
+      <button (click)="sidenav.toggle()" mat-button="" title="Docs menu">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        menu
+        </mat-icon></span>
+      </button>
 
-          <div *ngFor="let testItem of testsCategory[key];index as y;" class="nav-item">
-            {{y+1}}: {{testItem.text}}
-          </div>
+      <app-color-picker themeColor="pte_theme">
 
+      </app-color-picker>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-        </mat-expansion-panel>
-      </mat-accordion>
+  <mat-sidenav-container >
+    <mat-sidenav #sidenav [mode]="mode.value" opened="true" class="pte-sidebar">
 
+      <section class="pteCategory">
+        <mat-accordion *ngFor="let key of keys; index as i; first as isFirst">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="nav-title">
+              <h3>{{key}}</h3>
+            </mat-expansion-panel-header>
 
+            <div *ngFor="let testItem of testsCategory[key];index as y;" class="nav-item">
+              {{y+1}}: {{testItem.text}}
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </section>
+    </mat-sidenav>
 
-    </section>
-  </mat-sidenav>
+    <mat-sidenav-content>
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+      dashboard
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
+</div>
 
-  <mat-sidenav-content>
-    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-    dashboard
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-<!-- Copyright 2017 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->

@@ -1,19 +1,29 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {pteConstants} from './pteConstants';
-/** @title Sidenav with configurable mode */
+import {OverlayContainer} from '@angular/cdk/overlay';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   mode = new FormControl('side');
-  keys:any[]=  new Array();
-  testsCategory:any = new Array();
-  constructor() {
+  keys: any[] = new Array();
+  testsCategory: any = new Array();
+  pte_theme = 'my-theme';
+
+  constructor(private overlayContainer: OverlayContainer) {
     this.keys = Object.keys(pteConstants.testCategory);
     this.testsCategory = pteConstants.testCategory;
+    this.overlayContainer = overlayContainer;
   }
+
+  ngOnInit(): void {
+    // this.overlayContainer.themeClass = this.pte_theme;
+  }
+
+
 }
 
