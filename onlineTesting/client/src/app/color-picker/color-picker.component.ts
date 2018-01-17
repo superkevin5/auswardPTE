@@ -1,4 +1,4 @@
-import { Component, OnInit,Input  } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-color-picker',
@@ -7,15 +7,20 @@ import { Component, OnInit,Input  } from '@angular/core';
 })
 export class ColorPickerComponent implements OnInit {
 
-  @Input('themeColor') theme: string;
+  @Input('themeColor') themeColor: string;
+
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() {
 
   }
 
   ngOnInit() {
-
-    console.log(this.theme);
-
+    console.log(this.themeColor);
   }
 
+  setTheme(theme:string) {
+    this.themeColor = theme;
+    this.notify.emit( this.themeColor);
+  }
 }

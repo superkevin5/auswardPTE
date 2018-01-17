@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   mode = new FormControl('side');
   keys: any[] = new Array();
   testsCategory: any = new Array();
-  pte_theme = 'my-theme';
+  themeColor = 'pte-theme1';
 
   constructor(private overlayContainer: OverlayContainer) {
     this.keys = Object.keys(pteConstants.testCategory);
@@ -24,6 +24,10 @@ export class AppComponent implements OnInit {
     // this.overlayContainer.themeClass = this.pte_theme;
   }
 
+  onThemeNotify(message:string):void {
+    console.log('notified',message);
+    this.themeColor = message;
+  }
 
 }
 

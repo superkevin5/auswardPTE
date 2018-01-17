@@ -14,13 +14,12 @@
 @import './app/theme/theme1';
 @import './app/theme/theme2';
 
-
-.my-theme {
-  @include angular-material-theme($my-theme);
+.pte-theme1 {
+  @include angular-material-theme($pte-theme1);
 }
 
-.my-second-theme {
-  @include angular-material-theme($my-second-theme);
+.pte-theme2 {
+  @include angular-material-theme($pte-theme2);
 }
 
 

@@ -1,4 +1,4 @@
-<div [ngClass]="pte_theme" class="pte-app">
+<div [ngClass]="themeColor" class="pte-app">
 
   <mat-toolbar class="mat-toolbar mat-toolbar-multiple-rows" color="primary">
     <mat-toolbar-row>
@@ -9,9 +9,7 @@
         menu
         </mat-icon></span>
       </button>
-
-      <app-color-picker themeColor="pte_theme">
-
+      <app-color-picker [themeColor]="themeColor"  (notify)='onThemeNotify($event)'>
       </app-color-picker>
     </mat-toolbar-row>
   </mat-toolbar>
