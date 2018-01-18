@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ColorPickerComponent } from './color-picker/color-picker.component';
     ColorPickerComponent
   ],
   imports: [
+    routing,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

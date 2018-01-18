@@ -35,6 +35,12 @@
     <mat-sidenav-content>
       <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
       dashboard
+      <button routerLink="questions">questions</button>
+      <button routerLink="questions/read-aloud">read aloud</button>
+      <button routerLink="questions/high-light-incorrect-words">highLight</button>
+
+
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
