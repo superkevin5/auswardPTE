@@ -14,7 +14,7 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <mat-sidenav-container >
+  <mat-sidenav-container>
     <mat-sidenav #sidenav [mode]="mode.value" opened="true" class="pte-sidebar">
 
       <section class="pteCategory">
@@ -24,7 +24,7 @@
               <h3>{{key}}</h3>
             </mat-expansion-panel-header>
 
-            <div *ngFor="let testItem of testsCategory[key];index as y;" class="nav-item">
+            <div *ngFor="let testItem of testsCategory[key];index as y;" class="nav-item" (click)='routing(testItem.path)'>
               {{y+1}}: {{testItem.text}}
             </div>
           </mat-expansion-panel>
@@ -33,13 +33,6 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-      dashboard
-      <button routerLink="questions">questions</button>
-      <button routerLink="questions/read-aloud">read aloud</button>
-      <button routerLink="questions/high-light-incorrect-words">highLight</button>
-
-
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

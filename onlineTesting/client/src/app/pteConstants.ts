@@ -4,7 +4,7 @@ export const pteConstants = {
       {
         key: 'readAloud',
         text: 'Read aloud',
-        path: ''
+        path: 'questions/read-aloud'
       },
       {
         key: 'repeatSentence',
@@ -46,7 +46,7 @@ export const pteConstants = {
       {
         key: 'highLightInCorrectWords',
         text: 'High Light In Correct Words',
-        path: ''
+        path: 'questions/high-light-incorrect-words'
       }
     ],
     Reading: [

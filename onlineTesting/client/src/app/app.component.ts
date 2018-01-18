@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {pteConstants} from './pteConstants';
 import {OverlayContainer} from '@angular/cdk/overlay';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +14,12 @@ export class AppComponent implements OnInit {
   keys: any[] = new Array();
   testsCategory: any = new Array();
   themeColor = 'pte-theme1';
-
-  constructor(private overlayContainer: OverlayContainer) {
+  _router;
+  constructor(private overlayContainer: OverlayContainer,private _router: Router) {
     this.keys = Object.keys(pteConstants.testCategory);
     this.testsCategory = pteConstants.testCategory;
     this.overlayContainer = overlayContainer;
+    this._router = _router;
   }
 
   ngOnInit(): void {
@@ -25,8 +27,11 @@ export class AppComponent implements OnInit {
   }
 
   onThemeNotify(message:string):void {
-    console.log('notified',message);
     this.themeColor = message;
+  }
+
+  routing(path:string):void {
+    this._router.navigate([path]);
   }
 
 }

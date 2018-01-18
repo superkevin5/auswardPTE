@@ -10,6 +10,15 @@
       justify-content:space-between;
     }
   }
+
+  mat-sidenav-container {
+    mat-sidenav-content {
+      padding-top: 70px;
+      padding-left:10px;
+      padding-right:10px;
+    }
+  }
+
   mat-sidenav-container .pte-sidebar {
     position: fixed;
     top: 64px;
@@ -19,6 +28,7 @@
     min-width: 260px;
     box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
     height: calc(100vh - 64px);
+
     .pteCategory {
       .mat-expansion-panel-body {
         transition: visibility 275ms, opacity 275ms, max-height .28s;

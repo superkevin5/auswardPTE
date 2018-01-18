@@ -6,8 +6,8 @@ import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLigh
 
 const routes: Routes = [
   { path: '', redirectTo: 'read-aloud', pathMatch: 'full'  },
-  { path: 'read-aloud', component: ReadAloudComponent },
-  { path: 'high-light-incorrect-words', component: HighLightIncorrectWordsComponent }
+  { path: 'read-aloud', name:'read-aloud',component: ReadAloudComponent },
+  { path: 'high-light-incorrect-words',name:'highlight', component: HighLightIncorrectWordsComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

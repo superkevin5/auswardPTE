@@ -16,7 +16,6 @@ export class ColorPickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.themeColor);
   }
 
   setTheme(theme:string) {
