@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   keys: any[] = new Array();
   testsCategory: any = new Array();
   themeColor = 'pte-theme1';
-  _router;
   constructor(private overlayContainer: OverlayContainer,private _router: Router) {
     this.keys = Object.keys(pteConstants.testCategory);
     this.testsCategory = pteConstants.testCategory;
