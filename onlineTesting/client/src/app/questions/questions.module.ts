@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { routing } from './questions.routing';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
+import { PteHttpService } from './pte-http.service';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLigh
     routing,
     CommonModule
   ],
+  providers:[PteHttpService],
   declarations: [
     ReadAloudComponent,
     HighLightIncorrectWordsComponent

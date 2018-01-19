@@ -1,4 +1,5 @@
 export const pteConstants = {
+  apiRoot:'http://localhost:8080/',
   testCategory: {
     Speaking: [
       {
