@@ -1,0 +1,18 @@
+<button aria-haspopup="true" class="mat-icon-button" mat-icon-button="" mattooltip="Select a theme!"
+        tabindex="-1" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" [matMenuTriggerFor]="menu"><span
+  class="mat-button-wrapper">
+        <mat-icon class="mat-icon material-icons" role="img" aria-hidden="true">format_color_fill</mat-icon>
+        </span>
+</button>
+
+<mat-menu  #menu="matMenu">
+  <button mat-menu-item (click)="setTheme('pte-theme1')">
+    <div class="pte-theme-sample1">
+    </div>
+  </button>
+  <button mat-menu-item (click)="setTheme('pte-theme2')">
+    <div class="pte-theme-sample2">
+    </div>
+  </button>
+</mat-menu>
+
