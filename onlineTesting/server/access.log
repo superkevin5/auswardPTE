@@ -1,0 +1,5 @@
+::1 - - [22/Jan/2018:00:57:30 +0000] "GET /pteausward/getAllReadAloud HTTP/1.1" 200 4 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+::1 - - [22/Jan/2018:00:57:31 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:9001/pteausward/getAllReadAloud" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+::1 - - [22/Jan/2018:00:58:04 +0000] "GET /pteausward/getAllReadAloud HTTP/1.1" 200 79 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+::1 - - [22/Jan/2018:00:58:54 +0000] "GET /pteausward/getAllReadAloud HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+::1 - - [22/Jan/2018:01:00:30 +0000] "GET /pteausward/getAllReadAloud HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
