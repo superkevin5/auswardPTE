@@ -16,6 +16,7 @@
     "cookie-parser": "*",
     "express": "*",
     "express-mysql-session": "^1.2.0",
+    "express-rate-limit": "^2.11.0",
     "express-session": "*",
     "express-validator": "*",
     "formidable": "^1.1.1",

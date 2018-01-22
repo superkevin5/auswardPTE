@@ -5,6 +5,7 @@ var log4js = require("log4js");
 var fs = require('fs');
 var util = require('util');
 var cookieParser = require('cookie-parser');
+var RateLimit = require('express-rate-limit');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
@@ -34,6 +35,14 @@ var logStdout = process.stdout;
 var connection = mysqlDB.getConnection(pteContants.dbOptions2); // or mysql.createPool(options);
 var sessionStore = new MySQLStore({}/* session store options */, connection);
 
+var limiter = new RateLimit({
+    windowMs: 15*60*1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    delayMs: 0, // disable delaying - full speed until the max limit is reached,
+    message:'too many requests, you are blocked!!'
+});
+
+
 app.use(session({
     secret: 'test session',
     resave: true,
@@ -62,6 +71,9 @@ app.use(function(req, res, next) {
 app.use(flash());
 
 // app.use('/dish', express.static('dish'));
+
+//  rate limite apply to all requests
+app.use(limiter);
 
 // Validator
 app.use(expressValidator({
