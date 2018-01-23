@@ -1,4 +1,4 @@
-var mysqlDB = require('../utility/db');
+// var mysqlDB = require('../utility/db');
 
 var readAloud = function (id, description, recordingDuration, audioPath) {
     this.id = id;
@@ -8,7 +8,7 @@ var readAloud = function (id, description, recordingDuration, audioPath) {
 };
 
 readAloud.select= function (criteria, range, callback) {
-    mysqlDB.selectRecord('readAloud', criteria, range, callback);
+    // mysqlDB.selectRecord('readAloud', criteria, range, callback);
 };
 
 module.exports = readAloud;

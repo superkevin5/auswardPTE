@@ -8,21 +8,18 @@ var cookieParser = require('cookie-parser');
 var RateLimit = require('express-rate-limit');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var MySQLStore = require('express-mysql-session')(session);
 var expressValidator = require('express-validator');
-var mysqlDB = require('./utility/db');
 var pteausward = log4js.getLogger('pteausward');
 var passport = require('passport');
 var flash = require('connect-flash');
 var pteContants = require('./utility/constant.js');
+var orm = require("orm");
 // Route Files
 var routes = require('./routes/index');
-// var restaurants = require('./routes/restaurant');
-// var address = require('./routes/address');
-// var dishes = require('./routes/dish');
 
 //init app
 var app = express();
+
 
 // Logger
 log4js.loadAppender('file');
@@ -30,10 +27,6 @@ log4js.addAppender(log4js.appenders.file(path.join(__dirname, 'access.log')), 'p
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 app.use(morgan('combined', {stream: accessLogStream}));
 var logStdout = process.stdout;
-//
-//Session
-var connection = mysqlDB.getConnection(pteContants.dbOptions2); // or mysql.createPool(options);
-var sessionStore = new MySQLStore({}/* session store options */, connection);
 
 var limiter = new RateLimit({
     windowMs: 15*60*1000, // 15 minutes
@@ -42,13 +35,6 @@ var limiter = new RateLimit({
     message:'too many requests, you are blocked!!'
 });
 
-
-app.use(session({
-    secret: 'test session',
-    resave: true,
-    store: sessionStore,
-    saveUninitialized: true
-}));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -116,24 +102,24 @@ app.use(function(err, req, res, next) {
 });
 
 
+app.use(orm.express("mysql://root:a@localhost/pteausward", {
+    define: function (db, models,next) {
+
+        models.readAloud = db.define("readAloud", {
+            id      : Number,
+            description   : String,
+            audioPath       : String,
+            recordingDuration      : Number
+        });
+        next();
+    }
+}));
+
+
 // Routes
 app.use('/', routes);
-// app.use('/genres', genres);
-// app.use('/restaurants', restaurants);
-// app.use('/address', address);
-// app.use('/dishes', dishes);
 
 app.set('port', (process.env.PORT || 3002));
 
-// Connect to MySQL on start
-mysqlDB.getConnectionFromPool().then(function(connection){
-    var config = connection.config;
-    console.log('Test database \'' + config.database + '\' connected on port \'' + config.port + '\' as user \'' + config.user + '\'');
-    connection.release();
-    console.log('connection released');
-}).catch(function(error){
-    console.log('connection failed due to ' + error);
-    gugulogger.error('unable to connect to mysql due to ' + error);
-});
 
 module.exports = app;
