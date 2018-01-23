@@ -7,7 +7,7 @@
 **/*.iml
 # dependencies
 **/node_modules/
-**/*.log
+
 # IDEs and editors
 /.idea
 .project
@@ -41,6 +41,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-access.log
+*.log
+
 **/.idea/
 auswardPTE.iml

@@ -5,12 +5,20 @@ var readAloud = require('../model/readAloud');
 var pteConstants = require('../utility/constant.js');
 
 exports.getAllReadAloud = function(req, res) {
-    readAloud.select({}, null, function (hasError, data) {
-        if (hasError) {
-            res.status(pteConstants.InternalServerError).json(data);
-            return;
-        }
-        res.status(pteConstants.ok).json(data);
+    // readAloud.select({}, null, function (hasError, data) {
+    //
+    // });
+
+    // if (hasError) {
+    //     res.status(pteConstants.InternalServerError).json(data);
+    //     return;
+    // }
+
+    req.models.readAloud.find({description:'testing'},function(error,data){
+
+        console.log(data);
+        res.status(200).json(data);
     });
+
 };
 
