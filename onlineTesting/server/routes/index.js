@@ -3,11 +3,9 @@ var router = express.Router();
 
 var readAloud_controller = require('../controller/readAloudController');
 
-// Home Page
 router.get('/', function(req, res, next) {
 	res.send('Hello testing');
 });
-
 
 router.get('/pteausward/getAllReadAloud', readAloud_controller.getAllReadAloud);
 

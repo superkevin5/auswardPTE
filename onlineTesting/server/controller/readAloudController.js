@@ -14,7 +14,7 @@ exports.getAllReadAloud = function(req, res) {
     //     return;
     // }
 
-    req.models.readAloud.find({description:'testing'},function(error,data){
+    req.models.readAloud.find({id:1},function(error,data){
 
         console.log(data);
         res.status(200).json(data);

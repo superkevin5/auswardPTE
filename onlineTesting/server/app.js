@@ -16,7 +16,7 @@ var pteContants = require('./utility/constant.js');
 var orm = require("orm");
 // Route Files
 var routes = require('./routes/index');
-
+var readAloud = require('./model/readAloud');
 //init app
 var app = express();
 
@@ -29,10 +29,10 @@ app.use(morgan('combined', {stream: accessLogStream}));
 var logStdout = process.stdout;
 
 var limiter = new RateLimit({
-    windowMs: 15*60*1000, // 15 minutes
+    windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // limit each IP to 100 requests per windowMs
     delayMs: 0, // disable delaying - full speed until the max limit is reached,
-    message:'too many requests, you are blocked!!'
+    message: 'too many requests, you are blocked!!'
 });
 
 
@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Credentials", "true");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -83,7 +83,7 @@ app.use(expressValidator({
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -93,7 +93,7 @@ if (app.get('env') === 'development') {
 }
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.json({
         message: err.message,
@@ -102,15 +102,12 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.use(orm.express("mysql://root:a@localhost/pteausward", {
-    define: function (db, models,next) {
-
-        models.readAloud = db.define("readAloud", {
-            id      : Number,
-            description   : String,
-            audioPath       : String,
-            recordingDuration      : Number
-        });
+app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.dbOptions.password + "@" + pteContants.dbOptions.host + "/" + pteContants.dbOptions.database, {
+    define: function (db, models, next) {
+        db.settings.set('instance.identityCache', true);
+        db.settings.set('connection.pool', true);
+        db.settings.set('connection.reconnect', true);
+        models.readAloud = readAloud(db);
         next();
     }
 }));
