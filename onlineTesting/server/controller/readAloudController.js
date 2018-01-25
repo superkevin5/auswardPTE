@@ -10,13 +10,14 @@ exports.getAllReadAloud = function(req, res) {
     // });
 
     // if (hasError) {
-    //     res.status(pteConstants.InternalServerError).json(data);
-    //     return;
+    //
     // }
 
-    req.models.readAloud.find({id:1},function(error,data){
+    req.models.readAloud.all(function(error,data){
 
-        console.log(data);
+        if(error){
+            res.status(pteConstants.InternalServerError);
+        }
         res.status(200).json(data);
     });
 

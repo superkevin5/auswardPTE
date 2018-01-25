@@ -108,6 +108,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         db.settings.set('connection.pool', true);
         db.settings.set('connection.reconnect', true);
         models.readAloud = readAloud(db);
+        console.log('db connected');
         next();
     }
 }));
