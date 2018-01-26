@@ -1,4 +1,3 @@
-
 <section class="readAloud-container">
   <h4 class="title">Speaking items - Read aloud</h4>
 
@@ -6,7 +5,8 @@
 
     <h4>
       Question {{currentIndex+1}} :
-      Look at the text below. In {{readAlouds[currentIndex]?.recordingDuration}} seconds, you must read this text aloud as naturally and clearly as possible. You have {{readAlouds[currentIndex]?.recordingDuration}} seconds
+      Look at the text below. In {{readAlouds[currentIndex]?.recordingDuration}} seconds, you must read this text aloud
+      as naturally and clearly as possible. You have {{readAlouds[currentIndex]?.recordingDuration}} seconds
       to read aloud.
     </h4>
 
@@ -16,32 +16,46 @@
 
     <div class="question-footer">
 
-      <button (click)="previous()" mat-button="" title="Docs menu">
+      <mat-button-toggle-group>
+        <button (click)="previous()" mat-button="" title="Previous">
       <span class="mat-button-wrapper">
         <mat-icon
           class="mat-icon" aria-hidden="true">
-        menu
+        navigate_before
         </mat-icon></span>
-      </button>
+          Pre
+        </button>
 
-      <button (click)="next()" mat-button="" title="Docs menu">
+        <button (click)="next()" mat-button="" title="Next">
       <span class="mat-button-wrapper">
+          Next
         <mat-icon
           class="mat-icon" aria-hidden="true">
-        menu
+        navigate_next
         </mat-icon></span>
-      </button>
 
-      <button mat-button (click)="goto(gotoNumber)">Go</button>
+        </button>
+      </mat-button-toggle-group>
 
-      <mat-form-field class="example-full-width">
-        <input matInput  placeholder="Jump to a page" [(ngModel)]="gotoNumber">
-      </mat-form-field>
+
+      <div>
+        <button mat-button (click)="goto(gotoNumber)">Go</button>
+
+        <mat-form-field class="example-full-width">
+          <input matInput [formControl]="pageFormControl"
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$">
+          <mat-error *ngIf="pageFormControl.errors?.pattern">
+            <strong>Should be a number</strong>
+          </mat-error>
+        </mat-form-field>
+        <span>Question {{currentIndex+1}} of  {{readAlouds.length}}</span>
+
+      </div>
+
+
     </div>
 
   </div>
-
-
 
 
 </section>

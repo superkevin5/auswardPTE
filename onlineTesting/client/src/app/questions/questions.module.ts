@@ -7,8 +7,7 @@ import { PteHttpService } from './pte-http.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
-import {NgxPaginationModule} from 'ngx-pagination';
-
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   imports: [
@@ -18,7 +17,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    FlexLayoutModule
   ],
   providers:[PteHttpService],
   declarations: [

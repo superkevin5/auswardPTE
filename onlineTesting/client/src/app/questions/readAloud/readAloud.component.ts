@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PteHttpService} from '../pte-http.service';
-
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 @Component({
   selector: 'read-aloud',
@@ -8,18 +8,22 @@ import {PteHttpService} from '../pte-http.service';
   styleUrls: ['readAloud.component.scss'],
 })
 export class ReadAloudComponent implements OnInit {
-  readAlouds:any = new Array();
-  currentIndex:number=0;
+  readAlouds: any = new Array();
+  currentIndex: number = 0;
+
+  pageFormControl = new FormControl();
+
+
   constructor(private  httpService: PteHttpService) {
 
   }
 
-  goto(pageNumber){
-    this.currentIndex = pageNumber-1;
+  goto(pageNumber) {
+    this.currentIndex = pageNumber - 1;
   }
 
   next() {
-    if (this.currentIndex < this.readAlouds.length)
+    if (this.currentIndex < this.readAlouds.length-1)
       this.currentIndex++;
   }
 
@@ -33,12 +37,6 @@ export class ReadAloudComponent implements OnInit {
     this.httpService.getAllReadAloud().subscribe(
       data => {
         this.readAlouds = data.body;
-        this.readAlouds =  this.readAlouds.concat( this.readAlouds);
-        this.readAlouds =  this.readAlouds.concat( this.readAlouds);
-        this.readAlouds =  this.readAlouds.concat( this.readAlouds);
-        this.readAlouds =  this.readAlouds.concat( this.readAlouds);
-        this.readAlouds =  this.readAlouds.concat( this.readAlouds);
-        console.log(this.readAlouds);
         if (this.readAlouds.length > 0) {
           this.currentIndex = 0;
         }
