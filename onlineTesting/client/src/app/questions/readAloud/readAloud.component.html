@@ -1,1 +1,47 @@
-ReadAloud
+
+<section class="readAloud-container">
+  <h4 class="title">Speaking items - Read aloud</h4>
+
+  <div class="question-continer">
+
+    <h4>
+      Question {{currentIndex+1}} :
+      Look at the text below. In {{readAlouds[currentIndex]?.recordingDuration}} seconds, you must read this text aloud as naturally and clearly as possible. You have {{readAlouds[currentIndex]?.recordingDuration}} seconds
+      to read aloud.
+    </h4>
+
+    <div class="question-body">
+      <mat-card>{{readAlouds[currentIndex]?.description}}</mat-card>
+    </div>
+
+    <div class="question-footer">
+
+      <button (click)="previous()" mat-button="" title="Docs menu">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        menu
+        </mat-icon></span>
+      </button>
+
+      <button (click)="next()" mat-button="" title="Docs menu">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        menu
+        </mat-icon></span>
+      </button>
+
+      <button mat-button (click)="goto(gotoNumber)">Go</button>
+
+      <mat-form-field class="example-full-width">
+        <input matInput  placeholder="Jump to a page" [(ngModel)]="gotoNumber">
+      </mat-form-field>
+    </div>
+
+  </div>
+
+
+
+
+</section>

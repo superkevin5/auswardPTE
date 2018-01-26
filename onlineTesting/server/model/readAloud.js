@@ -6,4 +6,4 @@ module.exports = function(db){
         audioPath       : String,
         recordingDuration      : Number
     });
-}
+};

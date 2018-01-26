@@ -1,4 +1,6 @@
 .pte-app {
+  height: 100%;
+  min-height: 100%;
   mat-toolbar.mat-toolbar {
     position: fixed;
     top: 0;
@@ -12,10 +14,19 @@
   }
 
   mat-sidenav-container {
+    height: 100%;
+    min-height: 100%;
+    width:100%;
     mat-sidenav-content {
-      padding-top: 70px;
-      padding-left:10px;
-      padding-right:10px;
+      height:100%;
+      footer {
+        position: absolute;
+        bottom:1%;
+      }
+    }
+    .mat-footer {
+      width:100%;
+      text-align:center;
     }
   }
 
@@ -67,4 +78,8 @@
       }
     }
   }
+
+
+
 }
+

@@ -1,0 +1,24 @@
+.readAloud-container {
+  padding-top: 70px;
+  .title {
+    padding: 10px;
+  }
+  .question-continer {
+    padding-left: 10px;
+    padding-top: 10px;
+    h4 {
+      text-align: center;
+      font-style: italic;
+    }
+    .question-body {
+      padding:40px;
+      line-height: 300%;
+    }
+
+    .question-footer{
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-end;
+    }
+  }
+}

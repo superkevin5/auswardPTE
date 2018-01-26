@@ -56,7 +56,7 @@ app.use(function (req, res, next) {
 //flash
 app.use(flash());
 
-// app.use('/dish', express.static('dish'));
+
 
 //  rate limite apply to all requests
 app.use(limiter);
@@ -104,7 +104,7 @@ app.use(function (err, req, res, next) {
 
 app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.dbOptions.password + "@" + pteContants.dbOptions.host + "/" + pteContants.dbOptions.database, {
     define: function (db, models, next) {
-        db.settings.set('instance.identityCache', true);
+        db.settings.set('instance.identityCache', false);
         db.settings.set('connection.pool', true);
         db.settings.set('connection.reconnect', true);
         models.readAloud = readAloud(db);
@@ -116,6 +116,9 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
 
 // Routes
 app.use('/', routes);
+
+//serve static file
+app.use('/public', express.static('public'));
 
 app.set('port', (process.env.PORT || 3002));
 
