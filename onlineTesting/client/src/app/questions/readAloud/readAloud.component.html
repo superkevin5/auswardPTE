@@ -38,24 +38,20 @@
       </mat-button-toggle-group>
 
 
-      <div>
+      <div  fxHide.xs fxHide.sm>
         <button mat-button (click)="goto(gotoNumber)">Go</button>
-
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <input matInput [formControl]="pageFormControl"
-                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$">
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
           <mat-error *ngIf="pageFormControl.errors?.pattern">
             <strong>Should be a number</strong>
           </mat-error>
+          <mat-error *ngIf="pageFormControl.errors?.required">
+            <strong>Number required</strong>
+          </mat-error>
         </mat-form-field>
         <span>Question {{currentIndex+1}} of  {{readAlouds.length}}</span>
-
       </div>
-
-
     </div>
-
   </div>
-
-
 </section>
