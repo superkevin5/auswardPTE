@@ -12,6 +12,7 @@
 
     <div class="question-body">
       <mat-card>{{readAlouds[currentIndex]?.description}}</mat-card>
+      <button mat-button mat-fab color="primary" (click)="play(readAlouds[currentIndex])">Sample</button>
     </div>
 
     <div class="question-footer">

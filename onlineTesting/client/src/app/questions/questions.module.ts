@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout'
+import { PlayerService } from './shared/player.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     HttpClientModule,
     FlexLayoutModule
   ],
-  providers:[PteHttpService],
+  providers:[PteHttpService,PlayerService],
   declarations: [
     ReadAloudComponent,
     HighLightIncorrectWordsComponent

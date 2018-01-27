@@ -1,5 +1,8 @@
 export const pteConstants = {
   apiRoot:'http://localhost:9001/pteausward',
+  audioPathMap:{
+    readAloud:'http://localhost:9001/public/readAloud/'
+  },
   testCategory: {
     Speaking: [
       {
