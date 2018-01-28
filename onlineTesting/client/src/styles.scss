@@ -3,9 +3,14 @@
   margin: 0;
   padding: 0;
 }
-html,body {
-  height:100%;
-  margin:0;
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.pte-center {
+  text-align: center;
 }
 
 @import '../node_modules/material-design-icons-iconfont/dist/material-design-icons.css';
@@ -18,7 +23,6 @@ html,body {
 // have to load a single css file for Angular Material in your app.
 // **Be sure that you only ever include this mixin once!**
 @include mat-core();
-
 
 @import './app/theme/theme1';
 @import './app/theme/theme2';

@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { PlayerService } from './shared/player.service';
+import { RecorderService } from './shared/recorder.service';
+import { RecorderComponent } from './shared/recorder.component';
 
 @NgModule({
   imports: [
@@ -20,9 +22,10 @@ import { PlayerService } from './shared/player.service';
     HttpClientModule,
     FlexLayoutModule
   ],
-  providers:[PteHttpService,PlayerService],
+  providers:[PteHttpService,PlayerService,RecorderService],
   declarations: [
     ReadAloudComponent,
+    RecorderComponent,
     HighLightIncorrectWordsComponent
   ]
 })

@@ -7,13 +7,14 @@
   }
   .question-continer {
     padding-top: 10px;
-    h4 {
+    .question-title {
       text-align: center;
       font-style: italic;
     }
     .question-body {
       padding: 40px;
       line-height: 300%;
+
     }
 
     .question-footer {
@@ -24,8 +25,7 @@
       display: inline-flex;
       justify-content: space-around;
       align-items: flex-end;
-      position: absolute;
-      bottom: 10%;
+
     }
   }
 }

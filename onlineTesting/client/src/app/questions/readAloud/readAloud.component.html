@@ -1,24 +1,30 @@
 <section class="readAloud-container">
   <h4 class="title">Speaking items - Read aloud</h4>
 
-  <div class="question-continer">
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
 
-    <h4>
-      Question {{currentIndex+1}} :
+    <h4 class="question-title">
+      <span>Question {{currentIndex+1}} :
       Look at the text below. In {{readAlouds[currentIndex]?.recordingDuration}} seconds, you must read this text aloud
       as naturally and clearly as possible. You have {{readAlouds[currentIndex]?.recordingDuration}} seconds
       to read aloud.
+        </span>
     </h4>
 
     <div class="question-body">
       <mat-card>{{readAlouds[currentIndex]?.description}}</mat-card>
       <button mat-button mat-fab color="primary" (click)="play(readAlouds[currentIndex])">Sample</button>
+      <button mat-button mat-fab color="primary" (click)="record()">record</button>
+      <button mat-button mat-fab color="primary" (click)="playRecord()">play record</button>
+      <button mat-button mat-fab color="primary" (click)="stopRecord()">stop record</button>
+      <pte-recorder  [preparationCount]="readAlouds[currentIndex]?.recordingDuration"
+                    [action]="readAlouds[currentIndex]?._action" *ngIf="readAlouds[currentIndex]?.recordingDuration"></pte-recorder>
     </div>
 
     <div class="question-footer">
 
       <mat-button-toggle-group>
-        <button (click)="previous()" mat-button="" title="Previous">
+        <button (click)="previous();" mat-button="" title="Previous">
       <span class="mat-button-wrapper">
         <mat-icon
           class="mat-icon" aria-hidden="true">
@@ -27,20 +33,18 @@
           Pre
         </button>
 
-        <button (click)="next()" mat-button="" title="Next">
+        <button (click)="next();" mat-button="" title="Next">
       <span class="mat-button-wrapper">
           Next
         <mat-icon
           class="mat-icon" aria-hidden="true">
         navigate_next
         </mat-icon></span>
-
         </button>
       </mat-button-toggle-group>
 
-
-      <div  fxHide.xs fxHide.sm>
-        <button mat-button (click)="goto(gotoNumber)">Go</button>
+      <div fxHide.xs fxHide.sm>
+        <button mat-button (click)="goto(gotoNumber);child.init();">Go</button>
         <mat-form-field>
           <input matInput [formControl]="pageFormControl"
                  placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
