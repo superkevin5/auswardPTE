@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { routing } from './app.routing';
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { routing } from './app.routing';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    CommonModule
+    CommonModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

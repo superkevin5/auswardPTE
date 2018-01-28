@@ -12,20 +12,26 @@ export class RecorderService {
   public isRecording: boolean = false;
   private chunks: any = [];
   private mediaRecorder: any;
+  private audio = new Audio();
 
   constructor() {
 
   }
 
   public playRecord() {
-    const audio = new Audio();
-    const blob = new Blob(this.chunks, { 'type': 'audio/ogg; codecs=opus' });
-    this.chunks.length = 0;
-    audio.src = window.URL.createObjectURL(blob);
-    audio.load();
-    audio.play();
-  }
+    if (this.isRecording) {
+      this.mediaRecorder.stop();
+    }
+    if (this.audio && this.audio.duration > 0) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+    }
 
+    const blob = new Blob(this.chunks, {'type': 'audio/ogg; codecs=opus'});
+    this.audio.src = window.URL.createObjectURL(blob);
+    this.audio.load();
+    this.audio.play();
+  }
 
   public record() {
     this.isRecording = true;
@@ -39,11 +45,12 @@ export class RecorderService {
 
       this.mediaRecorder.ondataavailable = e => {
         console.log('collecting data');
+        this.chunks.length = 0;
         this.chunks.push(e.data)
       };
       this.mediaRecorder.start();
     };
-    navigator.getUserMedia({ audio: true }, onSuccess, e => console.log(e));
+    navigator.getUserMedia({audio: true}, onSuccess, e => console.log(e));
   }
 
   public stop() {

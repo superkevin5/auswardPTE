@@ -28,7 +28,6 @@ export class ReadAloudComponent implements OnInit {
     this.player.play();
   }
 
-
   record(){
     this.recorder.record();
   }

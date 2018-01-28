@@ -11,12 +11,8 @@
         </span>
     </h4>
 
-    <div class="question-body">
+    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
       <mat-card>{{readAlouds[currentIndex]?.description}}</mat-card>
-      <button mat-button mat-fab color="primary" (click)="play(readAlouds[currentIndex])">Sample</button>
-      <button mat-button mat-fab color="primary" (click)="record()">record</button>
-      <button mat-button mat-fab color="primary" (click)="playRecord()">play record</button>
-      <button mat-button mat-fab color="primary" (click)="stopRecord()">stop record</button>
       <pte-recorder  [preparationCount]="readAlouds[currentIndex]?.recordingDuration"
                     [action]="readAlouds[currentIndex]?._action" *ngIf="readAlouds[currentIndex]?.recordingDuration"></pte-recorder>
     </div>

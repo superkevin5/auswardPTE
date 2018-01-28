@@ -11,9 +11,9 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class RecorderComponent implements OnInit,ngOnDestroy {
 
-  currentStatus: string = '';
-  preparationTimer: Subscription = new Subscription();
-  recordingTimer: Subscription = new Subscription();
+  currentStatus: Object = {};
+  preparationTimer: any = '';
+  recordingTimer: any = '';
   @Input() preparationCount: number = 0;
   @Input() action: string = 'preparation';
 
@@ -21,6 +21,41 @@ export class RecorderComponent implements OnInit,ngOnDestroy {
 
   }
 
+  answer(readAloudItem) {
+    this.player.play();
+  }
+
+  playRecord(): void {
+    this.clear();
+    this.currentStatus = {text: "Completed", id: 2};
+    this.recorder.playRecord();
+  }
+
+  finishRecord(): void {
+    this.clear();
+    this.currentStatus = {text: "Completed", id: 2};
+    this.recorder.stop();
+  }
+
+  skipPreparation(): void {
+    this.player.playBeep();
+    this.cancelPreparationTimer();
+    this.cancelRecordomgTimer();
+    let start = this.preparationCount;
+    let recordingTimerObs = Observable.timer(1000, 1000)
+      .map(tick => start - tick)
+      .take(start + 1);
+
+    this.recordingTimer = recordingTimerObs.subscribe(tick => {
+      this.currentStatus = {text: "Recording...  " + "00:" + tick, id: 1};
+    }, error=> {
+
+    }, ()=> {
+      this.currentStatus = {text: "Completed", id: 2};
+    });
+    this.recorder.record();
+
+  }
 
   cancelPreparationTimer(): void {
     if (this.preparationTimer) {
@@ -35,7 +70,7 @@ export class RecorderComponent implements OnInit,ngOnDestroy {
   }
 
   clear(): void {
-    this.currentStatus = '';
+    this.currentStatus = {};
     this.cancelPreparationTimer();
     this.cancelRecordomgTimer();
   }
@@ -56,18 +91,18 @@ export class RecorderComponent implements OnInit,ngOnDestroy {
 
       this.preparationTimer = preparationTimerObs.subscribe(tick => {
         console.log(tick);
-        this.currentStatus = "Beginning in " + tick + " seconds";
+        this.currentStatus = {text: "Beginning in " + tick + " seconds", id: 0};
       }, error=> {
 
       }, ()=> {
         this.recorder.record();
 
         this.recordingTimer = recordingTimerObs.subscribe(tick => {
-          this.currentStatus = "Recording...  " + "00:" + tick;
+          this.currentStatus = {text: "Recording...  " + "00:" + tick, id: 1};
         }, error=> {
 
         }, ()=> {
-          this.currentStatus = "Completed";
+          this.currentStatus = {text: "Completed", id: 2};
         });
 
       });
