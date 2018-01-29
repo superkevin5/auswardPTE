@@ -17,5 +17,10 @@ export class PteHttpService {
     return this.http.get(apiURL,{ observe: 'response' });
   }
 
+  getAllReadAloud(){
+    let apiURL = `${this.apiRoot}/getAllReadAloud`;
+    return this.http.get(apiURL,{ observe: 'response' });
+  }
+
 
 }

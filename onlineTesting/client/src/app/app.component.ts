@@ -3,7 +3,6 @@ import {FormControl} from '@angular/forms';
 import {pteConstants} from './pteConstants';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

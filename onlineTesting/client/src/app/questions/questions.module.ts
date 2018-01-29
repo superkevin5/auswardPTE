@@ -4,16 +4,28 @@ import { routing } from './questions.routing';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
 import { PteHttpService } from './pte-http.service';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from '../material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout'
+import { PlayerService } from './shared/player.service';
+import { RecorderService } from './shared/recorder.service';
+import { RecorderComponent } from './shared/recorder.component';
 
 @NgModule({
   imports: [
     routing,
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FlexLayoutModule
   ],
-  providers:[PteHttpService],
+  providers:[PteHttpService,PlayerService,RecorderService],
   declarations: [
     ReadAloudComponent,
+    RecorderComponent,
     HighLightIncorrectWordsComponent
   ]
 })

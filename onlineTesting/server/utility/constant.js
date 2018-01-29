@@ -17,28 +17,12 @@ module.exports = Object.freeze({
     dbOptions: {
         connectionLimit : 100, //important
         host     : 'localhost',
+        port:'3306',
+        databaseType:'mysql',
         user     : 'root',
         password : 'a',
         database : 'pteausward',
         debug    :  false
-    },
-    dbOptions2: {
-        host: 'localhost',// Host name for database connection.
-        port: 3306,// Port number for database connection.
-        user: 'root',// Database user.
-        password: 'a',// Password for the above database user.
-        database: 'pteausward',// Database name.
-        checkExpirationInterval: 900000,// How frequently expired sessions will be cleared; milliseconds.
-        expiration: 86400000,// The maximum age of a valid session; milliseconds.
-        createDatabaseTable: true,// Whether or not to create the sessions database table, if one does not already exist.
-        connectionLimit: 10,// Number of connections when creating a connection pool
-        schema: {
-            tableName: 'sessions',
-            columnNames: {
-                session_id: 'session_id',
-                expires: 'expires',
-                data: 'data'
-            }
-        }
-}
+    }
 });
+
