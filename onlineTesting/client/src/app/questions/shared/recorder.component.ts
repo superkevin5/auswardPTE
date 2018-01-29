@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ngOnDestroy} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {PlayerService} from './player.service';
 import {RecorderService} from './recorder.service';
 import {Observable} from 'rxjs';
@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: 'recorder.component.html',
   styleUrls: ['recorder.component.scss'],
 })
-export class RecorderComponent implements OnInit,ngOnDestroy {
+export class RecorderComponent implements OnInit,OnDestroy {
 
   currentStatus: Object = {};
   preparationTimer: any = '';
@@ -38,7 +38,6 @@ export class RecorderComponent implements OnInit,ngOnDestroy {
   }
 
   skipPreparation(): void {
-    this.player.playBeep();
     this.cancelPreparationTimer();
     this.cancelRecordomgTimer();
     let start = this.preparationCount;
@@ -46,15 +45,19 @@ export class RecorderComponent implements OnInit,ngOnDestroy {
       .map(tick => start - tick)
       .take(start + 1);
 
-    this.recordingTimer = recordingTimerObs.subscribe(tick => {
-      this.currentStatus = {text: "Recording...  " + "00:" + tick, id: 1};
-    }, error=> {
 
-    }, ()=> {
-      this.currentStatus = {text: "Completed", id: 2};
-    });
-    this.recorder.record();
+    this.player.playBeep();
 
+    setTimeout(a => {
+      this.recordingTimer = recordingTimerObs.subscribe(tick => {
+        this.currentStatus = {text: "Recording...  " + "00:" + tick, id: 1};
+      }, error => {
+
+      }, () => {
+        this.currentStatus = {text: "Completed", id: 2};
+      });
+      this.recorder.record();
+    }, 800);
   }
 
   cancelPreparationTimer(): void {
@@ -75,8 +78,13 @@ export class RecorderComponent implements OnInit,ngOnDestroy {
     this.cancelRecordomgTimer();
   }
 
+  retry() {
+    this.init();
+  }
+
   init(): void {
     this.clear();
+    this.recorder.stopCurrentRecordPlay();
     if (this.preparationCount != 0) {
       let start = this.preparationCount;
 
@@ -92,19 +100,22 @@ export class RecorderComponent implements OnInit,ngOnDestroy {
       this.preparationTimer = preparationTimerObs.subscribe(tick => {
         console.log(tick);
         this.currentStatus = {text: "Beginning in " + tick + " seconds", id: 0};
-      }, error=> {
+      }, error => {
 
-      }, ()=> {
-        this.recorder.record();
+      }, () => {
+        this.player.playBeep();
 
-        this.recordingTimer = recordingTimerObs.subscribe(tick => {
-          this.currentStatus = {text: "Recording...  " + "00:" + tick, id: 1};
-        }, error=> {
+        setTimeout(a => {
+          this.recorder.record();
 
-        }, ()=> {
-          this.currentStatus = {text: "Completed", id: 2};
-        });
+          this.recordingTimer = recordingTimerObs.subscribe(tick => {
+            this.currentStatus = {text: "Recording...  " + "00:" + tick, id: 1};
+          }, error => {
 
+          }, () => {
+            this.currentStatus = {text: "Completed", id: 2};
+          });
+        }, 800);
       });
     }
   }

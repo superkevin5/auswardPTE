@@ -8,8 +8,7 @@ import {RecorderComponent} from '../shared/recorder.component';
 @Component({
   selector: 'read-aloud',
   templateUrl: 'readAloud.component.html',
-  styleUrls: ['readAloud.component.scss'],
-  directives:[RecorderComponent]
+  styleUrls: ['readAloud.component.scss']
 })
 export class ReadAloudComponent implements OnInit {
   readAlouds: any = new Array();
@@ -39,6 +38,12 @@ export class ReadAloudComponent implements OnInit {
   }
 
   goto(pageNumber) {
+
+    if(!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber>this.readAlouds.length){
+      console.log('invalid');
+      return;
+    }
+
     this.currentIndex = pageNumber - 1;
     if (this.currentIndex < this.readAlouds.length) {
       this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPath);

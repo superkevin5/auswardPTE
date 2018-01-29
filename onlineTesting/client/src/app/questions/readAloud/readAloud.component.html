@@ -40,7 +40,7 @@
       </mat-button-toggle-group>
 
       <div fxHide.xs fxHide.sm>
-        <button mat-button (click)="goto(gotoNumber);child.init();">Go</button>
+        <button mat-button (click)="goto(gotoNumber);">Go</button>
         <mat-form-field>
           <input matInput [formControl]="pageFormControl"
                  placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>

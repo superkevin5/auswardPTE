@@ -2,10 +2,10 @@
  * Created by Luming on 1/28/2018.
  */
 import {Injectable} from '@angular/core';
-import {Howl} from 'howler';
-import {pteConstants} from '../../pteConstants';
 declare const navigator: any;
 declare const MediaRecorder: any;
+import {PlayerService} from './player.service';
+
 
 @Injectable()
 export class RecorderService {
@@ -14,7 +14,15 @@ export class RecorderService {
   private mediaRecorder: any;
   private audio = new Audio();
 
-  constructor() {
+  constructor(private player: PlayerService,) {
+
+  }
+
+  public stopCurrentRecordPlay(){
+    if (this.audio && this.audio.duration > 0) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+    }
 
   }
 
@@ -22,10 +30,7 @@ export class RecorderService {
     if (this.isRecording) {
       this.mediaRecorder.stop();
     }
-    if (this.audio && this.audio.duration > 0) {
-      this.audio.pause();
-      this.audio.currentTime = 0;
-    }
+    this.stopCurrentRecordPlay();
 
     const blob = new Blob(this.chunks, {'type': 'audio/ogg; codecs=opus'});
     this.audio.src = window.URL.createObjectURL(blob);
