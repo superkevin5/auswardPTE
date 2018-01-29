@@ -17,6 +17,7 @@ var orm = require("orm");
 // Route Files
 var routes = require('./routes/index');
 var readAloud = require('./model/readAloud');
+var readFillBlank = require('./model/readFillBlank');
 //init app
 var app = express();
 
@@ -108,6 +109,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         db.settings.set('connection.pool', true);
         db.settings.set('connection.reconnect', true);
         models.readAloud = readAloud(db);
+        models.readFillBlank = readFillBlank(db);
         console.log('db connected');
         next();
     }
