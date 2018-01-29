@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {pteConstants} from '../pteConstants';
-import {Observable} from 'rxjs';
 
 @Injectable()
 export class PteHttpService {
@@ -22,5 +21,14 @@ export class PteHttpService {
     return this.http.get(apiURL,{ observe: 'response' });
   }
 
+  getAllReadFillInTheBlanksIds(){
+    let apiURL = `${this.apiRoot}/getAllReadingFillBlankIds`;
+    return this.http.get(apiURL,{ observe: 'response' });
+  }
+
+  getReadFillInTheBlanksById(id){
+    let apiURL = `${this.apiRoot}/getReadingFillById/${id}`;
+    return this.http.get(apiURL,{ observe: 'response' });
+  }
 
 }

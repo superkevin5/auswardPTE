@@ -1,0 +1,58 @@
+<section class="readFillInTheBlank-container">
+  <h4 class="title">Reading items - Fill in the blanks</h4>
+
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
+
+    <h4 class="question-title">
+      <!--<span>Question {{currentIndex+1}} :-->
+      <!--Look at the text below. In {{readAlouds[currentIndex]?.recordingDuration}} seconds, you must read this text aloud-->
+      <!--as naturally and clearly as possible. You have {{readAlouds[currentIndex]?.recordingDuration}} seconds-->
+      <!--to read aloud.-->
+        <!--</span>-->
+    </h4>
+
+    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+      <!--<mat-card>{{readAlouds[currentIndex]?.description}}</mat-card>-->
+      <!--<pte-recorder  [preparationCount]="readAlouds[currentIndex]?.recordingDuration"-->
+                    <!--[action]="readAlouds[currentIndex]?._action" *ngIf="readAlouds[currentIndex]?.recordingDuration"></pte-recorder>-->
+    </div>
+
+    <div class="question-footer">
+
+      <!--<mat-button-toggle-group>-->
+            <!--<button (click)="previous();" mat-button="" title="Previous">-->
+      <!--<span class="mat-button-wrapper">-->
+        <!--<mat-icon-->
+          <!--class="mat-icon" aria-hidden="true">-->
+        <!--navigate_before-->
+        <!--</mat-icon></span>-->
+              <!--Pre-->
+            <!--</button>-->
+
+            <!--<button (click)="next();" mat-button="" title="Next">-->
+      <!--<span class="mat-button-wrapper">-->
+          <!--Next-->
+        <!--<mat-icon-->
+          <!--class="mat-icon" aria-hidden="true">-->
+        <!--navigate_next-->
+        <!--</mat-icon></span>-->
+            <!--</button>-->
+          <!--</mat-button-toggle-group>-->
+
+            <!--<div fxHide.xs fxHide.sm>-->
+              <!--<button mat-button (click)="goto(gotoNumber);">Go</button>-->
+              <!--<mat-form-field>-->
+                <!--<input matInput [formControl]="pageFormControl"-->
+                       <!--placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>-->
+                <!--<mat-error *ngIf="pageFormControl.errors?.pattern">-->
+                  <!--<strong>Should be a number</strong>-->
+          <!--</mat-error>-->
+          <!--<mat-error *ngIf="pageFormControl.errors?.required">-->
+            <!--<strong>Number required</strong>-->
+          <!--</mat-error>-->
+        <!--</mat-form-field>-->
+        <!--<span>Question {{currentIndex+1}} of  {{readAlouds.length}}</span>-->
+      <!--</div>-->
+    </div>
+  </div>
+</section>
