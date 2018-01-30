@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PteHttpService} from '../pte-http.service';
 import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'read-fill-in-the-blank',
@@ -8,9 +9,12 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['readFillInBlank.component.scss']
 })
 export class ReadFillInBlankComponent implements OnInit {
+
+  allReadFillInTheBlankIds: any = new Array();
+
   pageFormControl = new FormControl();
 
-  constructor() {
+  constructor(private httpService: PteHttpService) {
 
 
   }
@@ -47,6 +51,27 @@ export class ReadFillInBlankComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.httpService.getAllReadFillInTheBlanksIds().flatMap((data)=>{
+
+        if(data.body){
+          this.allReadFillInTheBlankIds = data.body;
+          return  this.httpService.getReadFillInTheBlanksById( this.allReadFillInTheBlankIds[0]);
+        }
+        else {
+          return Observable.create((observer) => {
+            observer.next(1);
+            observer.complete();
+          });
+        }
+      })
+      .subscribe(
+      data => {
+
+        console.log(data);
+
+      }
+    );
+
 
   }
 }

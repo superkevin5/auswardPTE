@@ -26,7 +26,7 @@ export class PteHttpService {
     return this.http.get(apiURL,{ observe: 'response' });
   }
 
-  getReadFillInTheBlanksById(id){
+  getReadFillInTheBlanksById(id:number){
     let apiURL = `${this.apiRoot}/getReadingFillById/${id}`;
     return this.http.get(apiURL,{ observe: 'response' });
   }
