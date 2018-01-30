@@ -29,13 +29,18 @@ export class RecorderService {
   public playRecord() {
     if (this.isRecording) {
       this.mediaRecorder.stop();
+      this.isRecording = false;
     }
-    this.stopCurrentRecordPlay();
-
-    const blob = new Blob(this.chunks, {'type': 'audio/ogg; codecs=opus'});
-    this.audio.src = window.URL.createObjectURL(blob);
-    this.audio.load();
-    this.audio.play();
+    if (this.audio && !this.audio.paused && this.audio.currentTime > 0) {
+      this.audio.pause();
+    } else if (this.audio.paused && this.audio.currentTime > 0 && !this.audio.ended) {
+      this.audio.play();
+    } else {
+      const blob = new Blob(this.chunks, {'type': 'audio/ogg; codecs=opus'});
+      this.audio.src = window.URL.createObjectURL(blob);
+      this.audio.load();
+      this.audio.play();
+    }
   }
 
   public record() {

@@ -42,9 +42,10 @@ export class PlayerService implements OnInit{
 
   play() {
     if (this.sound && this.sound.playing()) {
-      this.sound.stop();
+      this.sound.pause();
+    } else{
+      this.sound.play();
     }
-    this.sound.play();
   }
 
   pause() {
