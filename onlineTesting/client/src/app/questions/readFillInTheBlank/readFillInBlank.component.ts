@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,AfterContentInit} from '@angular/core';
 import {PteHttpService} from '../pte-http.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/mergeMap';
   templateUrl: 'readFillInBlank.component.html',
   styleUrls: ['readFillInBlank.component.scss']
 })
-export class ReadFillInBlankComponent implements OnInit {
+export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
 
   allReadFillInTheBlankIds: any = new Array();
 
@@ -76,8 +76,7 @@ export class ReadFillInBlankComponent implements OnInit {
         });
     }
   }
-
-  ngOnInit(): void {
+  ngAfterContentInit(): void {
     this.isLoading = true;
     this.httpService.getAllReadFillInTheBlanksIds().flatMap((data)=> {
 
@@ -94,6 +93,8 @@ export class ReadFillInBlankComponent implements OnInit {
         data => {
           this.selectedFillInTheBlank = data.body;
           this.selectedFillInTheBlank._descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
+
+          this.slect = '<button>d</button>'
         },
         error=> {
 
@@ -102,6 +103,11 @@ export class ReadFillInBlankComponent implements OnInit {
           this.isLoading = false;
         }
       );
+
+  }
+
+  ngOnInit(): void {
+
   }
 }
 

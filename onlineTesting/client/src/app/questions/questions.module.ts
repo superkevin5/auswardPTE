@@ -12,6 +12,7 @@ import { RecorderService } from './shared/recorder.service';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { RecorderComponent } from './shared/recorder.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
+import { CreateSelectPipe } from './pipe/create-select.pipe';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.c
     ReadAloudComponent,
     RecorderComponent,
     ReadFillInBlankComponent,
-    HighLightIncorrectWordsComponent
+    HighLightIncorrectWordsComponent,
+    CreateSelectPipe
   ]
 })
 export class QuestionsModule { }
