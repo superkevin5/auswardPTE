@@ -5,21 +5,34 @@
 
     <h4 class="question-title">
       <span>Question {{currentIndex+1}} :
-       In the text below some words are missing. Drag words from the box below to the appropriate place in the text. To undo an
-        answer choice, drag the word back to the box below the text.
+       In the text below some words are missing. Select words from the box below.
         </span>
     </h4>
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
-      <mat-card><span *ngFor="let word of selectedFillInTheBlank._descriptionInArrayMode; let index = index">
+      <mat-card><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index" >
 
-        {{word}}
+        <span *ngIf="word?.text=='#404';else w"  [ngClass]="{'selectBox': word?.text=='#404'}">
+          &nbsp;
+         <mat-form-field>
+        <mat-select placeholder="Choose answer"  name="option">
+          <mat-option *ngFor="let option of selectedFillInTheBlank?._options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+           &nbsp;
+           <strong [hidden]="!isAnswer" class="readFillInTheBlanksAnswer">{{word?.answer}}</strong>
+        </span>
 
+
+
+        <ng-template #w>{{word?.text}}</ng-template>
       </span></mat-card>
-
-      <mat-select>d</mat-select>
-      <span [innerHTML]="slect"></span>
-
+      <div>
+      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+      </div>
     </div>
 
     <div class="question-footer">

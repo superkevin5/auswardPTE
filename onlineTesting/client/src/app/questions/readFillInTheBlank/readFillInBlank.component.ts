@@ -1,8 +1,10 @@
-import {Component, OnInit,AfterContentInit} from '@angular/core';
+import {Component, OnInit, AfterContentInit} from '@angular/core';
 import {PteHttpService} from '../pte-http.service';
+import {CommonService} from '../common/common.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
+import * as _ from "lodash";
 
 @Component({
   selector: 'read-fill-in-the-blank',
@@ -16,15 +18,16 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
   selectedFillInTheBlank: any = {};
   currentIndex: number = 0;
   isLoading: boolean = false;
+  isAnswer: boolean = false;
   pageFormControl = new FormControl();
 
-  constructor(private httpService: PteHttpService) {
+  constructor(private httpService: PteHttpService,private commonService:CommonService) {
 
 
   }
 
   goto(pageNumber) {
-
+    this.toggleAnswer(false);
     if (!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber > this.allReadFillInTheBlankIds.length) {
       console.log('invalid');
       return;
@@ -34,8 +37,7 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
       this.isLoading = true;
       this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[pageNumber - 1]).subscribe(
         data => {
-          this.selectedFillInTheBlank = data.body;
-          this.selectedFillInTheBlank._descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
+          this.processQuestions(data.body);
           this.currentIndex = pageNumber - 1;
         }, error=> {
 
@@ -46,12 +48,12 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
   }
 
   next() {
+    this.toggleAnswer(false);
     if (this.currentIndex < this.allReadFillInTheBlankIds.length - 1) {
       this.isLoading = true;
       this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[this.currentIndex + 1]).subscribe(
         data => {
-          this.selectedFillInTheBlank = data.body;
-          this.selectedFillInTheBlank._descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
+          this.processQuestions(data.body);
           this.currentIndex++;
         }, error=> {
 
@@ -62,12 +64,12 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
   }
 
   previous() {
+    this.toggleAnswer(false);
     if (this.currentIndex > 0) {
       this.isLoading = true;
       this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[this.currentIndex - 1]).subscribe(
         data => {
-          this.selectedFillInTheBlank = data.body;
-          this.selectedFillInTheBlank._descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
+          this.processQuestions(data.body);
           this.currentIndex--;
         }, error=> {
 
@@ -76,6 +78,36 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
         });
     }
   }
+
+  toggleAnswer(a: boolean): void {
+    this.isAnswer = a;
+  }
+
+  shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+  processQuestions(question): void {
+
+    this.selectedFillInTheBlank = question;
+    let descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
+    this.selectedFillInTheBlank._descriptionInArrayMode = [];
+    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().replace(/\$/g, '').split('|');
+    this.selectedFillInTheBlank._options =_.cloneDeep(this.commonService.shuffleArray(this.selectedFillInTheBlank._answer));
+    let answer = _.cloneDeep(this.selectedFillInTheBlank._answer);
+    for (let word of descriptionInArrayMode) {
+
+      if (word.trim().toLowerCase() == '#404') {
+        let thisAnswer = answer.shift();
+        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, answer: thisAnswer});
+      } else {
+        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word});
+      }
+    }
+  }
+
   ngAfterContentInit(): void {
     this.isLoading = true;
     this.httpService.getAllReadFillInTheBlanksIds().flatMap((data)=> {
@@ -86,15 +118,12 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
         return this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[0]);
       }
       else {
-        return Observable.of({body:'1'});
+        return Observable.of({body: '1'});
       }
     })
       .subscribe(
         data => {
-          this.selectedFillInTheBlank = data.body;
-          this.selectedFillInTheBlank._descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
-
-          this.slect = '<button>d</button>'
+          this.processQuestions(data.body);
         },
         error=> {
 
