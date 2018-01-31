@@ -62,7 +62,7 @@ export const pteConstants = {
       {
         key: 'readingFillInTheBlanks',
         text: 'Reading Fill In The Blanks',
-        path: ''
+        path: 'questions/read-fill-in-the-blank'
       }
     ],
     Writing: [

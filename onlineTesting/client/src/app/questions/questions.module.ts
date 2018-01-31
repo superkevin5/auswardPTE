@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { routing } from './questions.routing';
-import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
 import { PteHttpService } from './pte-http.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -10,7 +9,11 @@ import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { PlayerService } from './shared/player.service';
 import { RecorderService } from './shared/recorder.service';
+import {CommonService} from './common/common.service';
+import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { RecorderComponent } from './shared/recorder.component';
+import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
+import { CreateSelectPipe } from './pipe/create-select.pipe';
 
 @NgModule({
   imports: [
@@ -22,11 +25,13 @@ import { RecorderComponent } from './shared/recorder.component';
     HttpClientModule,
     FlexLayoutModule
   ],
-  providers:[PteHttpService,PlayerService,RecorderService],
+  providers:[PteHttpService,PlayerService,RecorderService,CommonService],
   declarations: [
     ReadAloudComponent,
     RecorderComponent,
-    HighLightIncorrectWordsComponent
+    ReadFillInBlankComponent,
+    HighLightIncorrectWordsComponent,
+    CreateSelectPipe
   ]
 })
 export class QuestionsModule { }

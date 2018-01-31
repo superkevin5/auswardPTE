@@ -25,3 +25,41 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+## Speaking Read aloud doc -> db format mapping: use excel or word
+
+e.g,
+
+1: Description
+
+  1.mp3
+  
+  recordDuration:35
+
+
+2: Description
+
+   2.mp3
+   
+   recordDuration:35
+   
+   
+## Reading fill in the blank -> db format mapping: use excel or word
+
+The inevitable consequences  #404 
+rampant corruption, an absence of globally 
+competitive Chinese companies,  #404 
+waste of resources, rampant environmental  #404 
+and soaring inequality. Above all, the monopoly 
+over power of an ideologically bankrupt communist 
+party is  #404 with the pluralism of opinion, security of 
+property and vibrant competition on which a dynamic economy 
+depends. As a result, Chinese development remains parasitic on 
+know-how and institutions developed elsewhere.
+
+1: options: $a,s,c,d|a,b,c,d|a,b,c,d|a,b,c,d$
+
+2: answer $a|d|d|d|d$ 
+
