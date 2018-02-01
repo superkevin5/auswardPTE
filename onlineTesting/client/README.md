@@ -59,7 +59,5 @@ property and vibrant competition on which a dynamic economy
 depends. As a result, Chinese development remains parasitic on 
 know-how and institutions developed elsewhere.
 
-1: options: $a,s,c,d|a,b,c,d|a,b,c,d|a,b,c,d$
-
-2: answer $a|d|d|d|d$ 
+see excel readFillInTheBlank
 

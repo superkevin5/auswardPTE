@@ -5,6 +5,9 @@ var readAloud_controller = require('../controller/readAloudController');
 
 var readFillBlank_controller = require('../controller/readFillBlankController');
 
+var readReorderParagraph_controller = require('../controller/readReorderParagraphController');
+
+
 router.get('/', function(req, res, next) {
 	res.send('Hello testing');
 });
@@ -16,5 +19,9 @@ router.get('/pteausward/getAllReadingFillBlankIds', readFillBlank_controller.get
 
 
 router.get('/pteausward/getReadingFillById/:id', readFillBlank_controller.getReadingFillBlankById);
+
+
+router.get('/pteausward/getAllReadReorderParagraphIds', readReorderParagraph_controller.getAllReadReorderParagraphIds);
+
 
 module.exports = router;
