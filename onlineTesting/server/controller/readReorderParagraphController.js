@@ -22,24 +22,24 @@ exports.getAllReadReorderParagraphIds = function (req, res) {
 
 };
 
-exports.getReadingFillBlankById = function (req, res) {
+exports.getReadReorderParagraphById = function (req, res) {
 
-
-    req.models.readReorderParagraph.get(req.params.id,function (error, data) {
+    req.models.readReorderParagraph.get(req.params.id, function (error, data) {
 
         if (error) {
             res.status(pteConstants.InternalServerError);
         }
+        var response = {};
+        response.questionTitle = data;
 
+        req.models.readReorderParagraphQuestions.find({questionfk: req.params.id}, function (err, result) {
 
-        req.models.readReorderParagraph.find({questionfk:req.params.id},function(err,result){
-
-
-            
-            res.status(200).json(data);
+            if (err) {
+                res.status(pteConstants.InternalServerError);
+            }
+            response.question = result;
+            res.status(200).json(response);
         });
-
-
 
     });
 
