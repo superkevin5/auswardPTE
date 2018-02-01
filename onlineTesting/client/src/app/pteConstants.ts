@@ -57,7 +57,7 @@ export const pteConstants = {
       {
         key: 'reorderParagraph',
         text: 'Re-order Paragraphs',
-        path: ''
+        path: 'questions/read-reorder-paragraph'
       },
       {
         key: 'readingFillInTheBlanks',

@@ -11,24 +11,31 @@ export class PteHttpService {
     this.apiRoot = pteConstants.apiRoot;
   }
 
-  search(term: string) {
-    let apiURL = `${this.apiRoot}?term=${term}&media=music&limit=20`;
-    return this.http.get(apiURL,{ observe: 'response' });
-  }
-
-  getAllReadAloud(){
+  getAllReadAloud() {
     let apiURL = `${this.apiRoot}/getAllReadAloud`;
-    return this.http.get(apiURL,{ observe: 'response' });
+    return this.http.get(apiURL, {observe: 'response'});
   }
 
-  getAllReadFillInTheBlanksIds():Observable<any>{
+  getAllReadFillInTheBlanksIds(): Observable<any> {
     let apiURL = `${this.apiRoot}/getAllReadingFillBlankIds`;
-    return this.http.get(apiURL,{ observe: 'response' });
+    return this.http.get(apiURL, {observe: 'response'});
   }
 
-  getReadFillInTheBlanksById(id:number):Observable<any>{
+  getReadFillInTheBlanksById(id: number): Observable<any> {
     let apiURL = `${this.apiRoot}/getReadingFillById/${id}`;
-    return this.http.get(apiURL,{ observe: 'response' });
+    return this.http.get(apiURL, {observe: 'response'});
   }
+
+
+  getAllReadReorderParagraphIds(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllReadReorderParagraphIds`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getReadReorderParagraphById(id: number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getReadReorderParagraphById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
 
 }

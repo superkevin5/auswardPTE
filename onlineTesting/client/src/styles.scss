@@ -17,6 +17,7 @@ html, body {
   max-width: 80% !important;
 }
 
+@import '../node_modules/dragula/dist/dragula.min.css';
 
 @import '../node_modules/material-design-icons-iconfont/dist/material-design-icons.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
