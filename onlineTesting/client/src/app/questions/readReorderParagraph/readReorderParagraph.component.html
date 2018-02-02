@@ -26,6 +26,7 @@
 
         <div fxFlex="50%" class="answer-panel" fxFlex="50%" droppable [dropScope]="'swap-target-2'" [dragOverClass]="'drag-target-border'"
              [dragHintClass]="'drag-hint'" (onDrop)="onList2Drop($event)">
+          Your answer:
           <ul>
             <li class="effect8" draggable
                 *ngFor="let question of selectedReadReorderParagraph?._userAnswer; let index = index" [dragScope]="'swap-target-1'" [dragClass]="'drag-over'" [dragData]="question" >
@@ -35,30 +36,12 @@
         </div>
 
       </mat-card>
+      <div class="pte-center answerButton">
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+        <span *ngIf="isAnswer">&nbsp;&nbsp;&nbsp;{{selectedReadReorderParagraph?._answer}}</span>
+      </div>
 
-
-      <!--<mat-card><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index" >-->
-
-      <!--<span *ngIf="word?.text=='#404';else w"  [ngClass]="{'selectBox': word?.text=='#404'}">-->
-      <!--&nbsp;-->
-      <!--<mat-form-field>-->
-      <!--<mat-select placeholder="Choose answer"  name="option">-->
-      <!--<mat-option *ngFor="let option of selectedFillInTheBlank?._options" [value]="option">-->
-      <!--{{option}}-->
-      <!--</mat-option>-->
-      <!--</mat-select>-->
-      <!--</mat-form-field>-->
-      <!--&nbsp;-->
-      <!--<strong [hidden]="!isAnswer" class="readFillInTheBlanksAnswer">{{word?.answer}}</strong>-->
-      <!--</span>-->
-
-
-      <!--<ng-template #w>{{word?.text}}</ng-template>-->
-      <!--</span></mat-card>-->
-      <!--<div>-->
-      <!--<button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>-->
-      <!--<button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>-->
-      <!--</div>-->
     </div>
 
     <div class="question-footer">

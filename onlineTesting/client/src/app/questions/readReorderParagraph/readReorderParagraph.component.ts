@@ -108,8 +108,7 @@ export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
   processQuestions(question): void {
     this.selectedReadReorderParagraph = question;
     this.selectedReadReorderParagraph._userAnswer = [];
-    this.selectedReadReorderParagraph._answer = this.selectedReadReorderParagraph.questionTitle.answer.trim().replace(/\$/g, '').split('|');
-    console.log(this.selectedReadReorderParagraph);
+    this.selectedReadReorderParagraph._answer = this.selectedReadReorderParagraph.questionTitle.answer.trim().replace(/\$/g, '').split('|').join(" ");
   }
 
   ngAfterContentInit(): void {
