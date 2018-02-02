@@ -32,7 +32,7 @@
 npm-debug.log
 testem.log
 /typings
-
+access.log
 # e2e
 /e2e/*.js
 /e2e/*.map
@@ -45,3 +45,5 @@ Thumbs.db
 
 **/.idea/
 auswardPTE.iml
+onlineTesting/server/uploads/
+wordpress/
