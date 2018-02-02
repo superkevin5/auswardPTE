@@ -1,4 +1,4 @@
-<section class="readFillInTheBlank-container">
+<section class="readReorderParagraph-container">
   <h4 class="title">Reading items - Re-order paragraphs</h4>
 
   <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
@@ -10,26 +10,50 @@
         </span>
     </h4>
 
-    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="question-body">
+      <mat-card fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px"
+                fxLayoutAlign="space-between stretch">
+        <div class="question-panel" fxFlex="50%" droppable [dropScope]="'swap-target-1'"
+             [dragOverClass]="'drag-target-border'"
+             [dragHintClass]="'drag-hint'" (onDrop)="onList1Drop($event)">
+          <ul>
+            <li draggable class="effect8" [dragScope]="'swap-target-2'" [dragClass]="'drag-over'" [dragData]="question"
+                *ngFor="let question of selectedReadReorderParagraph?.question; let index = index">
+              {{question.id}}. {{question.description}}
+            </li>
+          </ul>
+        </div>
+
+        <div fxFlex="50%" class="answer-panel" fxFlex="50%" droppable [dropScope]="'swap-target-2'" [dragOverClass]="'drag-target-border'"
+             [dragHintClass]="'drag-hint'" (onDrop)="onList2Drop($event)">
+          <ul>
+            <li class="effect8" draggable
+                *ngFor="let question of selectedReadReorderParagraph?._userAnswer; let index = index" [dragScope]="'swap-target-1'" [dragClass]="'drag-over'" [dragData]="question" >
+              {{question.id}}. {{question.description}}
+            </li>
+          </ul>
+        </div>
+
+      </mat-card>
+
 
       <!--<mat-card><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index" >-->
 
-        <!--<span *ngIf="word?.text=='#404';else w"  [ngClass]="{'selectBox': word?.text=='#404'}">-->
-          <!--&nbsp;-->
-         <!--<mat-form-field>-->
-        <!--<mat-select placeholder="Choose answer"  name="option">-->
-          <!--<mat-option *ngFor="let option of selectedFillInTheBlank?._options" [value]="option">-->
-            <!--{{option}}-->
-          <!--</mat-option>-->
-        <!--</mat-select>-->
-        <!--</mat-form-field>-->
-           <!--&nbsp;-->
-           <!--<strong [hidden]="!isAnswer" class="readFillInTheBlanksAnswer">{{word?.answer}}</strong>-->
-        <!--</span>-->
+      <!--<span *ngIf="word?.text=='#404';else w"  [ngClass]="{'selectBox': word?.text=='#404'}">-->
+      <!--&nbsp;-->
+      <!--<mat-form-field>-->
+      <!--<mat-select placeholder="Choose answer"  name="option">-->
+      <!--<mat-option *ngFor="let option of selectedFillInTheBlank?._options" [value]="option">-->
+      <!--{{option}}-->
+      <!--</mat-option>-->
+      <!--</mat-select>-->
+      <!--</mat-form-field>-->
+      <!--&nbsp;-->
+      <!--<strong [hidden]="!isAnswer" class="readFillInTheBlanksAnswer">{{word?.answer}}</strong>-->
+      <!--</span>-->
 
 
-
-        <!--<ng-template #w>{{word?.text}}</ng-template>-->
+      <!--<ng-template #w>{{word?.text}}</ng-template>-->
       <!--</span></mat-card>-->
       <!--<div>-->
       <!--<button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>-->

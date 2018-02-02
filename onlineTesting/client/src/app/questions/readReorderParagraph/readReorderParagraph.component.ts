@@ -4,6 +4,7 @@ import {CommonService} from '../common/common.service';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
+import {DropEvent} from 'ng-drag-drop';
 import * as _ from "lodash";
 
 @Component({
@@ -15,15 +16,34 @@ export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
 
   allReadReorderParagraphIds: any = new Array();
 
-  selectedReadReorderParagraph: any = {};
+  selectedReadReorderParagraph: any = {_userAnswer: [],question:[]};
   currentIndex: number = 0;
   isLoading: boolean = false;
   isAnswer: boolean = false;
   pageFormControl = new FormControl();
 
-  constructor(private httpService: PteHttpService,private commonService:CommonService) {
+  constructor(private httpService: PteHttpService, private commonService: CommonService) {
 
 
+  }
+
+  onList1Drop(e: DropEvent) {
+    this.selectedReadReorderParagraph.question.push(e.dragData);
+    this.removeItem(e.dragData, this.selectedReadReorderParagraph._userAnswer);
+  }
+
+  onList2Drop(e: DropEvent) {
+    this.selectedReadReorderParagraph._userAnswer.push(e.dragData);
+    this.removeItem(e.dragData,  this.selectedReadReorderParagraph.question);
+  }
+
+  removeItem(item: any, list: Array<any>) {
+    
+    let index = list.map(function (e) {
+      return e.id
+    }).indexOf(item.id);
+
+    list.splice(index, 1);
   }
 
   goto(pageNumber) {
@@ -39,9 +59,9 @@ export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
         data => {
           this.processQuestions(data.body);
           this.currentIndex = pageNumber - 1;
-        }, error=> {
+        }, error => {
 
-        }, ()=> {
+        }, () => {
           this.isLoading = false;
         });
     }
@@ -55,9 +75,9 @@ export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
         data => {
           this.processQuestions(data.body);
           this.currentIndex++;
-        }, error=> {
+        }, error => {
 
-        }, ()=> {
+        }, () => {
           this.isLoading = false;
         });
     }
@@ -71,9 +91,9 @@ export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
         data => {
           this.processQuestions(data.body);
           this.currentIndex--;
-        }, error=> {
+        }, error => {
 
-        }, ()=> {
+        }, () => {
           this.isLoading = false;
         });
     }
@@ -85,12 +105,14 @@ export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
 
   processQuestions(question): void {
     this.selectedReadReorderParagraph = question;
+    this.selectedReadReorderParagraph._userAnswer = [];
     this.selectedReadReorderParagraph._answer = this.selectedReadReorderParagraph.questionTitle.answer.trim().replace(/\$/g, '').split('|');
+    console.log(this.selectedReadReorderParagraph);
   }
 
   ngAfterContentInit(): void {
     this.isLoading = true;
-    this.httpService.getAllReadReorderParagraphIds().flatMap((data)=> {
+    this.httpService.getAllReadReorderParagraphIds().flatMap((data) => {
 
       if (data.body && data.body.length > 0) {
         this.allReadReorderParagraphIds = data.body;
@@ -105,10 +127,10 @@ export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
         data => {
           this.processQuestions(data.body);
         },
-        error=> {
+        error => {
 
         },
-        ()=> {
+        () => {
           this.isLoading = false;
         }
       );

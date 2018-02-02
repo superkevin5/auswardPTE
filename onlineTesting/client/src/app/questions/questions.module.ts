@@ -15,6 +15,7 @@ import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorde
 import { RecorderComponent } from './shared/recorder.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
+import { NgDragDropModule } from 'ng-drag-drop';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { CreateSelectPipe } from './pipe/create-select.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     FlexLayoutModule,
+    NgDragDropModule.forRoot()
   ],
   providers:[PteHttpService,PlayerService,RecorderService,CommonService],
   declarations: [
