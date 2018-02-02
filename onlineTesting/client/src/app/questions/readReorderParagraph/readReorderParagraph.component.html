@@ -13,7 +13,7 @@
     <div class="question-body">
       <mat-card fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px"
                 fxLayoutAlign="space-between stretch">
-        <div class="question-panel" fxFlex="50%" droppable [dropScope]="'swap-target-1'"
+        <div class="question-panel" fxFlex="48%" droppable [dropScope]="'swap-target-1'"
              [dragOverClass]="'drag-target-border'"
              [dragHintClass]="'drag-hint'" (onDrop)="onList1Drop($event)">
           <ul>
@@ -24,7 +24,7 @@
           </ul>
         </div>
 
-        <div fxFlex="50%" class="answer-panel" fxFlex="50%" droppable [dropScope]="'swap-target-2'" [dragOverClass]="'drag-target-border'"
+        <div fxFlex="48%"  fxHide.xs class="answer-panel" droppable [dropScope]="'swap-target-2'" [dragOverClass]="'drag-target-border'"
              [dragHintClass]="'drag-hint'" (onDrop)="onList2Drop($event)">
           Your answer:
           <ul>
@@ -37,6 +37,11 @@
 
       </mat-card>
       <div class="pte-center answerButton">
+        <div fxHide.gt-xs>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Enter your answer">
+          </mat-form-field>
+        </div>
         <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
         <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
         <span *ngIf="isAnswer">&nbsp;&nbsp;&nbsp;{{selectedReadReorderParagraph?._answer}}</span>

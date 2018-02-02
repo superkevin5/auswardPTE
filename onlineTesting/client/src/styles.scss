@@ -13,13 +13,23 @@ html, body {
   text-align: center;
 }
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .mat-card {
-    max-width: 80% !important;
+    max-width: 90% !important;
   }
-
 }
 
+@supports (-ms-accelerator:true) {
+  .mat-card {
+    max-width: 90% !important;
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  .mat-card {
+    max-width: 90% !important;
+  }
+}
 
 @import '../node_modules/ng-drag-drop/style.css';
 

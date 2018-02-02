@@ -36,7 +36,7 @@ export class RecorderService {
     } else if (this.audio.paused && this.audio.currentTime > 0 && !this.audio.ended) {
       this.audio.play();
     } else {
-      const blob = new Blob(this.chunks, {'type': 'audio/ogg; codecs=opus'});
+      const blob = new Blob(this.chunks, {'type': 'audio/wav; codecs=opus'});
       this.audio.src = window.URL.createObjectURL(blob);
       this.audio.load();
       this.audio.play();
