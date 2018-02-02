@@ -11,7 +11,7 @@
  Target Server Version : 50721
  File Encoding         : 65001
 
- Date: 01/02/2018 17:55:56
+ Date: 02/02/2018 14:37:48
 */
 
 SET NAMES utf8mb4;
@@ -80,29 +80,22 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `readreorderparagraphquestions`;
 CREATE TABLE `readreorderparagraphquestions` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
   `description` varchar(500) COLLATE utf8_bin DEFAULT NULL,
   `questionfk` int(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `questionID` (`questionfk`),
-  CONSTRAINT `questionID` FOREIGN KEY (`questionfk`) REFERENCES `readreorderparagraph` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id` int(20) NOT NULL,
+  PRIMARY KEY (`questionfk`,`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of readreorderparagraphquestions
 -- ----------------------------
 BEGIN;
-INSERT INTO `readreorderparagraphquestions` VALUES (1, 'Liberal is conservative in a moderate Midwestern kind of way which is changing fast due to big National Beef Packing plant which relies on Hispanic migrants and thus four-fifths of the children in Liberal\'s public school system are hispanic', 1);
-INSERT INTO `readreorderparagraphquestions` VALUES (2, 'Liberal\'s mayor, Joe Denoyer, who was raised in A democratic family near Chicago and moved to Liberal in search of work', 1);
-INSERT INTO `readreorderparagraphquestions` VALUES (3, 'This should make the town receptive to Democrats, but Mr Trump easily won the country of which it forms part', 1);
-INSERT INTO `readreorderparagraphquestions` VALUES (4, 'Mr Denoyer voted for Mr Trump by being impressed by his promise, though he thinks it unlikely that the present will keep his promises.', 1);
-INSERT INTO `readreorderparagraphquestions` VALUES (5, 'The town of Liberal is said to have been named for an early settler famous among travellers for being free with drinking water.', 1);
-INSERT INTO `readreorderparagraphquestions` VALUES (6, '6', 2);
-INSERT INTO `readreorderparagraphquestions` VALUES (7, '7', 2);
-INSERT INTO `readreorderparagraphquestions` VALUES (8, '8', 2);
-INSERT INTO `readreorderparagraphquestions` VALUES (9, '9', 2);
-INSERT INTO `readreorderparagraphquestions` VALUES (10, '10', 2);
-INSERT INTO `readreorderparagraphquestions` VALUES (11, '11', 2);
+INSERT INTO `readreorderparagraphquestions` VALUES ('Liberal is conservative in a moderate Midwestern kind of way which is changing fast due to big National Beef Packing plant which relies on Hispanic migrants and thus four-fifths of the children in Liberal\'s public school system are hispanic', 1, 1);
+INSERT INTO `readreorderparagraphquestions` VALUES ('Liberal\'s mayor, Joe Denoyer, who was raised in A democratic family near Chicago and moved to Liberal in search of work', 1, 2);
+INSERT INTO `readreorderparagraphquestions` VALUES ('This should make the town receptive to Democrats, but Mr Trump easily won the country of which it forms part', 1, 3);
+INSERT INTO `readreorderparagraphquestions` VALUES ('Mr Denoyer voted for Mr Trump by being impressed by his promise, though he thinks it unlikely that the present will keep his promises.', 1, 4);
+INSERT INTO `readreorderparagraphquestions` VALUES ('The town of Liberal is said to have been named for an early settler famous among travellers for being free with drinking water.', 1, 5);
+INSERT INTO `readreorderparagraphquestions` VALUES ('dasdasd', 2, 1);
 COMMIT;
 
 -- ----------------------------
