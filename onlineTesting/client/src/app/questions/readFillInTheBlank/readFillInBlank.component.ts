@@ -20,6 +20,8 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
   isLoading: boolean = false;
   isAnswer: boolean = false;
   pageFormControl = new FormControl();
+  gotoNumber:number = 0;
+
 
   constructor(private httpService: PteHttpService,private commonService:CommonService) {
 
