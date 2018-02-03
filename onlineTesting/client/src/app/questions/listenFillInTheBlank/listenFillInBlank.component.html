@@ -22,7 +22,7 @@
         <ng-template #w>{{word?.text}}</ng-template>
       </span></mat-card-content></mat-card>
 
-        <pte-player [questionType]="'listenFillBlank'" [question]="selectedFillInTheBlank" *ngIf="selectedFillInTheBlank.audioPath"></pte-player>
+        <pte-player [questionType]="'listenFillBlank'" [question]="selectedFillInTheBlank" *ngIf="!isLoading && selectedFillInTheBlank.audioPath"></pte-player>
       <div class="answerAction">
         <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
         <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
