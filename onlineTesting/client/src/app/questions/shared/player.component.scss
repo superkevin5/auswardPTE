@@ -1,0 +1,43 @@
+.pte-player {
+    margin-top:20px;
+    height:100%;
+    background-color: #E7EFFA;
+    width:100%;
+    border:solid 2px;
+    border-color: #99AABF;
+    padding:10px;
+  audio{
+    min-width:100%;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .pte-player {
+    background-color:transparent !important;
+    outline: none !important;
+    border: none !important;
+  }
+}
+
+@supports (-ms-accelerator:true) {
+  .pte-player {
+    background-color:transparent !important;
+    outline: none !important;
+    border: none !important;
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  .pte-player {
+    background-color:transparent !important;
+    outline: none !important;
+    border: none !important;
+  }
+}
+
+.pte-player-actions {
+  margin-top:10px;
+  button {
+    width:40px;
+  }
+}

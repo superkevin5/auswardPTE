@@ -1,7 +1,8 @@
 export const pteConstants = {
   apiRoot:'http://localhost:9001/pteausward',
   audioPathMap:{
-    readAloud:'http://localhost:9001/public/readAloud/'
+    readAloud:'http://localhost:9001/public/readAloud/',
+    listenFillBlank:'http://localhost:9001/public/listenFillBlank/'
   },
   testCategory: {
     Speaking: [
@@ -45,7 +46,7 @@ export const pteConstants = {
       {
         key: 'listeningFillIntheBlanks',
         text: 'Listening Fill In the Blanks',
-        path: ''
+        path: 'questions/listen-fill-in-the-blank'
       },
       {
         key: 'highLightInCorrectWords',

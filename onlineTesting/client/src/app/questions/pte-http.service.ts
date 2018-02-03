@@ -26,6 +26,16 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+  getAllListenFillInTheBlanksIds(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllListenFillBlankIds`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getListenFillInTheBlanksById(id: number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getListenFillBlankById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
 
   getAllReadReorderParagraphIds(): Observable<any> {
     let apiURL = `${this.apiRoot}/getAllReadReorderParagraphIds`;
