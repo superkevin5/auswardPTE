@@ -14,11 +14,10 @@
 
         <span *ngIf="word?.text=='#404';else w" [ngClass]="{'selectBox': word?.text=='#404'}">
           &nbsp;
-         <mat-form-field>
+         <mat-form-field >
           <input matInput placeholder="Enter missing word">
+         <mat-hint [hidden]="!isAnswer" align="start" class="listenFillInTheBlanksAnswer">{{word?.answer}}</mat-hint>
         </mat-form-field>
-           &nbsp;
-           <strong [hidden]="!isAnswer" class="listenFillInTheBlanksAnswer">{{word?.answer}}</strong>
         </span>
         <ng-template #w>{{word?.text}}</ng-template>
       </span></mat-card-content></mat-card>

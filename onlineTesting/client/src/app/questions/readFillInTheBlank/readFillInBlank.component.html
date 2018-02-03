@@ -20,9 +20,10 @@
             {{option}}
           </mat-option>
         </mat-select>
+          <mat-hint [hidden]="!isAnswer" align="start" class="readFillInTheBlanksAnswer">{{word?.answer}}</mat-hint>
+
         </mat-form-field>
            &nbsp;
-           <strong [hidden]="!isAnswer" class="readFillInTheBlanksAnswer">{{word?.answer}}</strong>
         </span>
         <ng-template #w>{{word?.text}}</ng-template>
       </span></mat-card>
