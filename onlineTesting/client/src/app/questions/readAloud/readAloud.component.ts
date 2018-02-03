@@ -25,20 +25,6 @@ export class ReadAloudComponent implements OnInit {
 
   }
 
-  play(readAloudItem) {
-    this.player.play();
-  }
-
-  record(){
-    this.recorder.record();
-  }
-  playRecord(){
-    this.recorder.playRecord();
-  }
-  stopRecord(){
-    this.recorder.stop();
-  }
-
   goto(pageNumber) {
 
     if(!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber>this.readAlouds.length){
