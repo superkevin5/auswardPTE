@@ -20,10 +20,10 @@ export class ListenFillInBlankComponent implements OnInit,AfterContentInit {
   isLoading: boolean = false;
   isAnswer: boolean = false;
   pageFormControl = new FormControl();
-  gotoNumber:any='';
+  gotoNumber: any = '';
 
 
-  constructor(private httpService: PteHttpService,private commonService:CommonService) {
+  constructor(private httpService: PteHttpService, private commonService: CommonService) {
 
 
   }
@@ -108,10 +108,7 @@ export class ListenFillInBlankComponent implements OnInit,AfterContentInit {
     this.httpService.getAllListenFillInTheBlanksIds().flatMap((data)=> {
 
       if (data.body && data.body.length > 0) {
-
-        console.log(data);
         this.allListenFillInTheBlankIds = data.body;
-        console.log(this.allListenFillInTheBlankIds);
         this.currentIndex = 0;
         return this.httpService.getListenFillInTheBlanksById(this.allListenFillInTheBlankIds[0]);
       }

@@ -4,15 +4,12 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Howl} from 'howler';
 import {pteConstants} from '../../pteConstants';
-import {RecorderService} from './recorder.service';
-
 
 @Injectable()
 export class PlayerService implements OnInit {
   soundMale: any;
   soundFemale: any;
   beepSound: any;
-
 
   constructor() {
 
@@ -35,6 +32,14 @@ export class PlayerService implements OnInit {
     this.soundFemale = new Howl({
       src: [audioPathFemale]
     });
+  }
+
+  isMalePlaying() {
+    return this.soundMale.playing();
+  }
+
+  isFemalePlaying() {
+    return this.soundFemale.playing();
   }
 
   stop() {
@@ -68,6 +73,14 @@ export class PlayerService implements OnInit {
     } else {
       this.soundFemale.play();
     }
+  }
+
+  pauseMale() {
+    this.soundMale.pause();
+  }
+
+  pauseFemale() {
+    this.soundFemale.pause();
   }
 
   pause() {
