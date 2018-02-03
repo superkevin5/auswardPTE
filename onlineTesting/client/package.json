@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "^0.2.0",
     "@angular/animations": "^5.1.3",
     "@angular/cdk": "^5.0.3",
     "@angular/common": "^5.0.0",
@@ -32,7 +33,8 @@
     "lodash": "^4.17.4",
     "material-design-icons": "^3.0.1",
     "material-design-icons-iconfont": "^3.0.3",
-    "ng2-drag-drop": "^3.0.2",
+    "ng-drag-drop": "^4.0.0",
+    "ng2-dragula": "^1.5.0",
     "rxjs": "^5.5.2",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.14"

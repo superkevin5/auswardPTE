@@ -11,9 +11,11 @@ import { PlayerService } from './shared/player.service';
 import { RecorderService } from './shared/recorder.service';
 import {CommonService} from './common/common.service';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
+import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
 import { RecorderComponent } from './shared/recorder.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
+import { NgDragDropModule } from 'ng-drag-drop';
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import { CreateSelectPipe } from './pipe/create-select.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgDragDropModule.forRoot()
   ],
   providers:[PteHttpService,PlayerService,RecorderService,CommonService],
   declarations: [
@@ -31,6 +34,7 @@ import { CreateSelectPipe } from './pipe/create-select.pipe';
     RecorderComponent,
     ReadFillInBlankComponent,
     HighLightIncorrectWordsComponent,
+    ReadReorderParagraphComponent,
     CreateSelectPipe
   ]
 })

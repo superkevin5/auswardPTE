@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class RecorderComponent implements OnInit,OnDestroy {
 
-  currentStatus: Object = {};
+  currentStatus:any={text: '', id: -1};
   preparationTimer: any = '';
   recordingTimer: any = '';
   @Input() preparationCount: number = 0;
@@ -21,8 +21,13 @@ export class RecorderComponent implements OnInit,OnDestroy {
 
   }
 
-  answer(readAloudItem) {
-    this.player.play();
+  answerMale() {
+    this.recorder.stopCurrentRecordPlay();
+    this.player.playMale();
+  }
+  answerFemale() {
+    this.recorder.stopCurrentRecordPlay();
+    this.player.playFemale();
   }
 
   playRecord(): void {
@@ -73,7 +78,8 @@ export class RecorderComponent implements OnInit,OnDestroy {
   }
 
   clear(): void {
-    this.currentStatus = {};
+    this.currentStatus = {text:'',id:-1};
+    this.player.stop();
     this.cancelPreparationTimer();
     this.cancelRecordomgTimer();
   }

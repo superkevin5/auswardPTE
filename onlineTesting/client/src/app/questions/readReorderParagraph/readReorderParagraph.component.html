@@ -1,0 +1,90 @@
+<section class="readReorderParagraph-container">
+  <h4 class="title">Reading items - Re-order paragraphs</h4>
+
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
+
+    <h4 class="question-title">
+      <span>Question {{currentIndex+1}} :
+      The text boxes in the left panel have been placed in a random order. Restore the original order by dragging the text boxes from
+        the left panel to the right panel.
+        </span>
+    </h4>
+
+    <div class="question-body">
+      <mat-card fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px"
+                fxLayoutAlign="center stretch">
+        <div class="question-panel" fxFlex="48%" droppable [dropScope]="'swap-target-1'"
+             [dragOverClass]="'drag-target-border'"
+             [dragHintClass]="'drag-hint'" (onDrop)="onList1Drop($event)">
+          <ul>
+            <li draggable class="effect8" [dragScope]="'swap-target-2'" [dragClass]="'drag-over'" [dragData]="question"
+                *ngFor="let question of selectedReadReorderParagraph?.question; let index = index">
+              {{question.id}}. {{question.description}}
+            </li>
+          </ul>
+        </div>
+
+        <div fxFlex="48%"  fxHide.xs class="answer-panel" droppable [dropScope]="'swap-target-2'" [dragOverClass]="'drag-target-border'"
+             [dragHintClass]="'drag-hint'" (onDrop)="onList2Drop($event)">
+          Your answer:
+          <ul>
+            <li class="effect8" draggable
+                *ngFor="let question of selectedReadReorderParagraph?._userAnswer; let index = index" [dragScope]="'swap-target-1'" [dragClass]="'drag-over'" [dragData]="question" >
+              {{question.id}}. {{question.description}}
+            </li>
+          </ul>
+        </div>
+
+      </mat-card>
+      <div class="pte-center answerButton">
+        <div fxHide.gt-xs>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Enter your answer">
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+        <span *ngIf="isAnswer">&nbsp;&nbsp;&nbsp;{{selectedReadReorderParagraph?._answer}}</span>
+      </div>
+
+    </div>
+
+    <div class="question-footer">
+
+      <mat-button-toggle-group>
+        <button (click)="previous();" mat-button="" title="Previous" [disabled]="isLoading">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_before
+        </mat-icon></span>
+          Pre
+        </button>
+
+        <button (click)="next();" mat-button="" title="Next" [disabled]="isLoading">
+      <span class="mat-button-wrapper">
+          Next
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_next
+        </mat-icon></span>
+        </button>
+      </mat-button-toggle-group>
+
+      <div fxHide.xs fxHide.sm>
+        <button mat-button (click)="goto(gotoNumber);" [disabled]="isLoading">Go</button>
+        <mat-form-field>
+          <input matInput [formControl]="pageFormControl"
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
+          <mat-error *ngIf="pageFormControl.errors?.pattern">
+            <strong>Should be a number</strong>
+          </mat-error>
+          <mat-error *ngIf="pageFormControl.errors?.required">
+            <strong>Number required</strong>
+          </mat-error>
+        </mat-form-field>
+        <span>Question {{currentIndex+1}} of  {{allReadReorderParagraphIds.length}}</span>
+      </div>
+    </div>
+  </div>
+</section>

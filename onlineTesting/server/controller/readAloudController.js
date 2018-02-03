@@ -5,13 +5,6 @@ var readAloud = require('../model/readAloud');
 var pteConstants = require('../utility/constant.js');
 
 exports.getAllReadAloud = function(req, res) {
-    // readAloud.select({}, null, function (hasError, data) {
-    //
-    // });
-
-    // if (hasError) {
-    //
-    // }
 
     req.models.readAloud.all(function(error,data){
 

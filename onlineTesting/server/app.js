@@ -18,6 +18,9 @@ var orm = require("orm");
 var routes = require('./routes/index');
 var readAloud = require('./model/readAloud');
 var readFillBlank = require('./model/readFillBlank');
+var readReorderParagraph = require('./model/readReorderParagraph');
+var readReorderParagraphQuestions = require('./model/readReorderParagraphQuestions');
+
 //init app
 var app = express();
 
@@ -56,7 +59,6 @@ app.use(function (req, res, next) {
 
 //flash
 app.use(flash());
-
 
 
 //  rate limite apply to all requests
@@ -110,7 +112,19 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         db.settings.set('connection.reconnect', true);
         models.readAloud = readAloud(db);
         models.readFillBlank = readFillBlank(db);
-        console.log('db connected');
+
+        models.readReorderParagraph = readReorderParagraph(db);
+        models.readReorderParagraphQuestions = readReorderParagraphQuestions(db);
+
+        // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
+        //     autoFetch: true
+        // });
+        //
+        // models.readReorderParagraphQuestions.hasOne("questions1", models.readReorderParagraph, {}, {
+        //     autoFetch: true
+        // });
+
+
         next();
     }
 }));

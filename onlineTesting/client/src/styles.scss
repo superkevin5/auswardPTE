@@ -13,10 +13,25 @@ html, body {
   text-align: center;
 }
 
-.mat-card {
-  max-width: 80% !important;
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .mat-card {
+    max-width: 90% !important;
+  }
 }
 
+@supports (-ms-accelerator:true) {
+  .mat-card {
+    max-width: 90% !important;
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  .mat-card {
+    max-width: 90% !important;
+  }
+}
+
+@import '../node_modules/ng-drag-drop/style.css';
 
 @import '../node_modules/material-design-icons-iconfont/dist/material-design-icons.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
