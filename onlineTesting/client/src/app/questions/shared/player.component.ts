@@ -16,7 +16,7 @@ export class PlayerComponent implements OnInit,OnDestroy {
   @Input() questionType:string = '';
   @Input() question: any= {};
   @Input() action: string = 'preparation';
-  pageRenderingReady:booelan = false;
+  pageRenderingReady:boolean = false;
   audioPath:string = '';
 
   constructor(private player: PlayerService) {
