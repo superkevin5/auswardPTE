@@ -1,34 +1,30 @@
-<section class="readFillInTheBlank-container">
-  <h4 class="title">Reading items - Fill in the blanks</h4>
+<section class="listenFillInTheBlank-container">
+  <h4 class="title">Listening items - Fill in the blanks</h4>
 
   <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
 
     <h4 class="question-title">
       <span>Question {{currentIndex+1}} :
-       In the text below some words are missing. Select words from the box below.
+     You will hear a recoding. Type the missing words in the each blank
         </span>
     </h4>
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
-      <mat-card><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index" >
+      <mat-card><mat-card-content><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index">
 
-        <span *ngIf="word?.text=='#404';else w"  [ngClass]="{'selectBox': word?.text=='#404'}">
+        <span *ngIf="word?.text=='#404';else w" [ngClass]="{'selectBox': word?.text=='#404'}">
           &nbsp;
          <mat-form-field>
-        <mat-select placeholder="Choose answer"  name="option">
-          <mat-option *ngFor="let option of selectedFillInTheBlank?._options" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-select>
+          <input matInput placeholder="Enter missing word">
         </mat-form-field>
            &nbsp;
-           <strong [hidden]="!isAnswer" class="readFillInTheBlanksAnswer">{{word?.answer}}</strong>
+           <strong [hidden]="!isAnswer" class="listenFillInTheBlanksAnswer">{{word?.answer}}</strong>
         </span>
         <ng-template #w>{{word?.text}}</ng-template>
-      </span></mat-card>
-      <div>
-      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
-      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+      </span></mat-card-content></mat-card>
+      <div class="answerAction">
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
       </div>
     </div>
 
@@ -66,7 +62,7 @@
             <strong>Number required</strong>
           </mat-error>
         </mat-form-field>
-        <span>Question {{currentIndex+1}} of  {{allReadFillInTheBlankIds.length}}</span>
+        <span>Question {{currentIndex+1}} of  {{allListenFillInTheBlankIds.length}}</span>
       </div>
     </div>
   </div>

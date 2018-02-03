@@ -14,6 +14,7 @@ import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
 import { RecorderComponent } from './shared/recorder.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
+import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
 import { NgDragDropModule } from 'ng-drag-drop';
 
@@ -33,6 +34,7 @@ import { NgDragDropModule } from 'ng-drag-drop';
     ReadAloudComponent,
     RecorderComponent,
     ReadFillInBlankComponent,
+    ListenFillInBlankComponent,
     HighLightIncorrectWordsComponent,
     ReadReorderParagraphComponent,
     CreateSelectPipe
