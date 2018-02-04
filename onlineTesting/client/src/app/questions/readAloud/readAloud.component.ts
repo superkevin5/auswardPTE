@@ -14,7 +14,6 @@ export class ReadAloudComponent implements OnInit {
   readAlouds: any = new Array();
   currentIndex: number = 0;
   pageFormControl = new FormControl();
-
   gotoNumber:any='';
 
   @ViewChild(RecorderComponent)
