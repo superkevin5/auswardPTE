@@ -39,11 +39,7 @@ export class PlayerComponent implements OnInit,OnDestroy {
     console.log(this.audioPath);
     this.pageRenderingReady = true;
   }
-
-  isPlaying(){
-
-  }
-
+  
   play(questionType, audioPath): void {
     this.player.init(questionType, audioPath,audioPath);
     this.player.playMale();
