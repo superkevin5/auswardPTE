@@ -14,8 +14,8 @@
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
       <mat-card>{{readAlouds[currentIndex]?.description}}</mat-card>
-      <pte-recorder  [preparationCount]="readAlouds[currentIndex]?.recordingDuration"
-                    [action]="readAlouds[currentIndex]?._action" *ngIf="readAlouds[currentIndex]?.recordingDuration"></pte-recorder>
+      <pte-speak-aloud-recorder  [preparationCount]="readAlouds[currentIndex]?.recordingDuration"
+                    [action]="readAlouds[currentIndex]?._action" *ngIf="readAlouds[currentIndex]?.recordingDuration"></pte-speak-aloud-recorder>
     </div>
 
     <div class="question-footer">

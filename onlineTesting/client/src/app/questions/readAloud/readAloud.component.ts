@@ -3,7 +3,7 @@ import {PteHttpService} from '../pte-http.service';
 import {FormControl} from '@angular/forms';
 import {PlayerService} from '../shared/player.service';
 import {RecorderService} from '../shared/recorder.service';
-import {RecorderComponent} from '../shared/recorder.component';
+import {SpeakAloudRecorderComponent} from '../shared/speakaloudrecorder.component';
 
 @Component({
   selector: 'read-aloud',
@@ -16,8 +16,8 @@ export class ReadAloudComponent implements OnInit {
   pageFormControl = new FormControl();
   gotoNumber:any='';
 
-  @ViewChild(RecorderComponent)
-  private myChild: RecorderComponent;
+  @ViewChild(SpeakAloudRecorderComponent)
+  private myChild: SpeakAloudRecorderComponent;
 
   constructor(private  httpService: PteHttpService, private player: PlayerService,private recorder:RecorderService) {
 

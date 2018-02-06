@@ -5,11 +5,11 @@ import {Observable} from 'rxjs';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({
-  selector: 'pte-recorder',
-  templateUrl: 'recorder.component.html',
-  styleUrls: ['recorder.component.scss'],
+  selector: 'pte-speak-aloud-recorder',
+  templateUrl: 'speakaloudrecorder.component.html',
+  styleUrls: ['speakaloudrecorder.component.scss'],
 })
-export class RecorderComponent implements OnInit,OnDestroy {
+export class SpeakAloudRecorderComponent implements OnInit,OnDestroy {
 
   currentStatus:any={text: '', id: -1};
   preparationTimer: any = '';

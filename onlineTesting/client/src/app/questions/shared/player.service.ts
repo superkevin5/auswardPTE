@@ -16,8 +16,17 @@ export class PlayerService implements OnInit {
   }
 
   init(audioType, path1, path2) {
-    let audioPathMale = pteConstants.audioPathMap[audioType] + path1;
-    let audioPathFemale = pteConstants.audioPathMap[audioType] + path2;
+
+    let audioPathMale = '';
+    let audioPathFemale = '';
+
+    if (audioType == 'readAloud') {
+      audioPathMale = pteConstants.audioPathMap['readAloudMale'] + path1;
+      audioPathFemale = pteConstants.audioPathMap['readAloudFemale'] + path2;
+    } else {
+      audioPathMale = pteConstants.audioPathMap[audioType] + path1;
+      audioPathFemale = pteConstants.audioPathMap[audioType] + path2;
+    }
 
     if (this.soundMale) {
       this.soundMale.unload();

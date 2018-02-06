@@ -12,7 +12,7 @@ import { RecorderService } from './shared/recorder.service';
 import {CommonService} from './common/common.service';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
-import { RecorderComponent } from './shared/recorder.component';
+import { SpeakAloudRecorderComponent } from './shared/speakaloudrecorder.component';
 import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
@@ -33,7 +33,7 @@ import { NgDragDropModule } from 'ng-drag-drop';
   providers:[PteHttpService,PlayerService,RecorderService,CommonService],
   declarations: [
     ReadAloudComponent,
-    RecorderComponent,
+    SpeakAloudRecorderComponent,
     PlayerComponent,
     ReadFillInBlankComponent,
     ListenFillInBlankComponent,
