@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 03/02/2018 18:13:12
+ Date: 07/02/2018 13:38:57
 */
 
 SET NAMES utf8mb4;
@@ -108,6 +108,23 @@ INSERT INTO `readreorderparagraphquestions` VALUES ('This should make the town r
 INSERT INTO `readreorderparagraphquestions` VALUES ('Mr Denoyer voted for Mr Trump by being impressed by his promise, though he thinks it unlikely that the present will keep his promises.', 1, 4);
 INSERT INTO `readreorderparagraphquestions` VALUES ('The town of Liberal is said to have been named for an early settler famous among travellers for being free with drinking water.', 1, 5);
 INSERT INTO `readreorderparagraphquestions` VALUES ('dasdasd', 2, 1);
+
+-- ----------------------------
+-- Table structure for repeatsentence
+-- ----------------------------
+DROP TABLE IF EXISTS `repeatsentence`;
+CREATE TABLE `repeatsentence`  (
+  `id` int(20) NOT NULL,
+  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `audioPath` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of repeatsentence
+-- ----------------------------
+INSERT INTO `repeatsentence` VALUES (1, 'You will find the economics section on the second floor of the library.', '1.mp3');
+INSERT INTO `repeatsentence` VALUES (2, 'You will be informed of the results by email.', '2.mp3');
 
 -- ----------------------------
 -- Table structure for sessions

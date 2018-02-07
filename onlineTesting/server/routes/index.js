@@ -9,6 +9,9 @@ var readReorderParagraph_controller = require('../controller/readReorderParagrap
 
 var listenFillBlank_controller = require('../controller/listenFillBlankController');
 
+var repeatSentence_controller = require('../controller/repeatSentenceController');
+
+
 router.get('/', function(req, res, next) {
 	res.send('Hello testing');
 });
@@ -27,5 +30,6 @@ router.get('/pteausward/getAllListenFillBlankIds', listenFillBlank_controller.ge
 
 router.get('/pteausward/getListenFillBlankById/:id', listenFillBlank_controller.getListenFillBlankById);
 
+router.get('/pteausward/getAllRepeatSentence', repeatSentence_controller.getAllRepeatSentence);
 
 module.exports = router;

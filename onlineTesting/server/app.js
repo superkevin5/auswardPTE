@@ -21,7 +21,7 @@ var readFillBlank = require('./model/readFillBlank');
 var readReorderParagraph = require('./model/readReorderParagraph');
 var readReorderParagraphQuestions = require('./model/readReorderParagraphQuestions');
 var listenFillBlank = require('./model/listenFillBlank');
-
+var repeatSentence = require('./model/repeatSentence');
 //init app
 var app = express();
 
@@ -117,6 +117,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.readReorderParagraph = readReorderParagraph(db);
         models.readReorderParagraphQuestions = readReorderParagraphQuestions(db);
         models.listenFillBlank = listenFillBlank(db);
+        models.repeatSentence = repeatSentence(db);
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
