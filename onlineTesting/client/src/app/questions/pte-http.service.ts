@@ -16,6 +16,11 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+  getAllRepeatSentences() {
+    let apiURL = `${this.apiRoot}/getAllRepeatSentence`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
   getAllReadFillInTheBlanksIds(): Observable<any> {
     let apiURL = `${this.apiRoot}/getAllReadingFillBlankIds`;
     return this.http.get(apiURL, {observe: 'response'});

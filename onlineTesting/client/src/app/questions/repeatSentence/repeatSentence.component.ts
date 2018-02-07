@@ -1,144 +1,76 @@
-import {Component, OnInit, AfterContentInit} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {PteHttpService} from '../pte-http.service';
-import {CommonService} from '../common/common.service';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import 'rxjs/add/operator/mergeMap';
-import * as _ from "lodash";
+import {RecorderService} from '../shared/recorder.service';
+import {HowlerPlayerService} from '../shared/howler.player';
 
 @Component({
   selector: 'repeat-sentence',
   templateUrl: 'repeatSentence.component.html',
   styleUrls: ['repeatSentence.component.scss']
 })
-export class RepeatSentenceComponent implements OnInit,AfterContentInit {
-
-  allReadFillInTheBlankIds: any = new Array();
-
-  selectedFillInTheBlank: any = {};
+export class RepeatSentenceComponent implements OnInit {
+  repeatSentences: any = new Array();
   currentIndex: number = 0;
-  isLoading: boolean = false;
-  isAnswer: boolean = false;
   pageFormControl = new FormControl();
   gotoNumber:any='';
+  //
+  // @ViewChild(SpeakAloudRecorderComponent)
+  // private myChild: SpeakAloudRecorderComponent;
 
-
-  constructor(private httpService: PteHttpService,private commonService:CommonService) {
+  constructor(private  httpService: PteHttpService, private player: HowlerPlayerService) {
 
 
   }
 
   goto(pageNumber) {
-    this.toggleAnswer(false);
-    if (!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber > this.allReadFillInTheBlankIds.length) {
+
+    if(!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber>this.repeatSentences.length){
       console.log('invalid');
       return;
     }
 
-    if (pageNumber <= this.allReadFillInTheBlankIds.length) {
-      this.isLoading = true;
-      this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[pageNumber - 1]).subscribe(
-        data => {
-          this.processQuestions(data.body);
-          this.currentIndex = pageNumber - 1;
-        }, error=> {
-
-        }, ()=> {
-          this.isLoading = false;
-        });
+    this.currentIndex = pageNumber - 1;
+    if (this.currentIndex < this.repeatSentences.length) {
+      // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
+      // this.myChild.init();
     }
   }
 
   next() {
-    this.toggleAnswer(false);
-    if (this.currentIndex < this.allReadFillInTheBlankIds.length - 1) {
-      this.isLoading = true;
-      this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[this.currentIndex + 1]).subscribe(
-        data => {
-          this.processQuestions(data.body);
-          this.currentIndex++;
-        }, error=> {
-
-        }, ()=> {
-          this.isLoading = false;
-        });
+    if (this.currentIndex < this.repeatSentences.length - 1) {
+      this.currentIndex++;
+      // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
+      // this.myChild.init();
     }
   }
 
   previous() {
-    this.toggleAnswer(false);
     if (this.currentIndex > 0) {
-      this.isLoading = true;
-      this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[this.currentIndex - 1]).subscribe(
-        data => {
-          this.processQuestions(data.body);
-          this.currentIndex--;
-        }, error=> {
-
-        }, ()=> {
-          this.isLoading = false;
-        });
+      this.currentIndex--;
+      // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
+      // this.myChild.init();
     }
   }
 
-  toggleAnswer(a: boolean): void {
-    this.isAnswer = a;
-  }
-
-  shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-  processQuestions(question): void {
-
-    this.selectedFillInTheBlank = question;
-    let descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
-    this.selectedFillInTheBlank._descriptionInArrayMode = [];
-    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().replace(/\$/g, '').split('|');
-    this.selectedFillInTheBlank._options =_.cloneDeep(this.commonService.shuffleArray(this.selectedFillInTheBlank._answer));
-    let answer = _.cloneDeep(this.selectedFillInTheBlank._answer);
-    for (let word of descriptionInArrayMode) {
-
-      if (word.trim().toLowerCase() == '#404') {
-        let thisAnswer = answer.shift();
-        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, answer: thisAnswer});
-      } else {
-        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word});
-      }
-    }
-  }
-
-  ngAfterContentInit(): void {
-    this.isLoading = true;
-    this.httpService.getAllReadFillInTheBlanksIds().flatMap((data)=> {
-
-      if (data.body && data.body.length > 0) {
-        this.allReadFillInTheBlankIds = data.body;
-        this.currentIndex = 0;
-        return this.httpService.getReadFillInTheBlanksById(this.allReadFillInTheBlankIds[0]);
-      }
-      else {
-        return Observable.of({body: '1'});
-      }
-    })
-      .subscribe(
-        data => {
-          this.processQuestions(data.body);
-        },
-        error=> {
-
-        },
-        ()=> {
-          this.isLoading = false;
-        }
-      );
-
-  }
 
   ngOnInit(): void {
+    this.httpService.getAllRepeatSentences().subscribe(
+      data => {
+        this.repeatSentences = data.body;
 
+
+        if (this.repeatSentences.length > 0) {
+          this.currentIndex = 0;
+          // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
+        }
+
+        // for (let readAloud of  this.readAlouds) {
+        //   readAloud._action= 'preparation'
+        // }
+
+      }
+    );
   }
 }
 

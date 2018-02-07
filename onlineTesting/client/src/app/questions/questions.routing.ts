@@ -6,7 +6,6 @@ import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.c
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
 import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
-
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
 
 const routes: Routes = [
