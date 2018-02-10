@@ -9,6 +9,9 @@ var readReorderParagraph_controller = require('../controller/readReorderParagrap
 
 var listenFillBlank_controller = require('../controller/listenFillBlankController');
 
+var writeEssay_controller = require('../controller/writeEssayController');
+
+
 router.get('/', function(req, res, next) {
 	res.send('Hello testing');
 });
@@ -26,6 +29,8 @@ router.get('/pteausward/getReadReorderParagraphById/:id', readReorderParagraph_c
 router.get('/pteausward/getAllListenFillBlankIds', listenFillBlank_controller.getAllListenFillBlankIds);
 
 router.get('/pteausward/getListenFillBlankById/:id', listenFillBlank_controller.getListenFillBlankById);
+
+router.get('/pteausward/getAllWriteEssay', writeEssay_controller.getAllWriteEssay);
 
 
 module.exports = router;

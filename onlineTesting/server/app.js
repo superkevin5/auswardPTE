@@ -21,6 +21,8 @@ var readFillBlank = require('./model/readFillBlank');
 var readReorderParagraph = require('./model/readReorderParagraph');
 var readReorderParagraphQuestions = require('./model/readReorderParagraphQuestions');
 var listenFillBlank = require('./model/listenFillBlank');
+var writeEssay = require('./model/writeEssay');
+
 
 //init app
 var app = express();
@@ -117,6 +119,8 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.readReorderParagraph = readReorderParagraph(db);
         models.readReorderParagraphQuestions = readReorderParagraphQuestions(db);
         models.listenFillBlank = listenFillBlank(db);
+        models.writeEssay = writeEssay(db);
+
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
