@@ -5,6 +5,7 @@ import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
+import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
 
@@ -14,8 +15,8 @@ const routes: Routes = [
   { path: 'read-fill-in-the-blank', component: ReadFillInBlankComponent },
   { path: 'listen-fill-in-the-blank', component: ListenFillInBlankComponent },
   { path: 'read-reorder-paragraph', component: ReadReorderParagraphComponent },
-  { path: 'high-light-incorrect-words', component: HighLightIncorrectWordsComponent }
-
+  { path: 'high-light-incorrect-words', component: HighLightIncorrectWordsComponent },
+  { path: 'write-essay', component: WriteEssayComponent }
 
 
 ];

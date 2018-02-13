@@ -1,0 +1,62 @@
+
+<section class="writeEssay-container">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
+  <h4 class="title">Writing items - Write Essay</h4>
+
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
+
+    <h4 class="question-title">
+      <span>Question {{currentIndex+1}} :
+        You will have 20 minutes to plan, write and revise an essay about the topic below. Your response will be judged on how well you develop
+        a position, organize your ideas, present supporting details, and control the elements of standard written English. You should write 200-300 words.
+        </span>
+    </h4>
+
+
+    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+      <p>{{selectedWriteEssay?.description}}</p>
+      <mat-form-field>
+  <textarea matInput placeholder="Write your essay here" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="question-footer">
+
+      <mat-button-toggle-group>
+        <button (click)="previous();" mat-button="" title="Previous" [disabled]="isLoading">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_before
+        </mat-icon></span>
+          Pre
+        </button>
+
+        <button (click)="next();" mat-button="" title="Next" [disabled]="isLoading">
+      <span class="mat-button-wrapper">
+          Next
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_next
+        </mat-icon></span>
+        </button>
+      </mat-button-toggle-group>
+
+      <div fxHide.xs fxHide.sm>
+        <button mat-button (click)="goto(gotoNumber);" [disabled]="isLoading">Go</button>
+        <mat-form-field>
+          <input matInput [formControl]="pageFormControl"
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
+          <mat-error *ngIf="pageFormControl.errors?.pattern">
+            <strong>Should be a number</strong>
+          </mat-error>
+          <mat-error *ngIf="pageFormControl.errors?.required">
+            <strong>Number required</strong>
+          </mat-error>
+        </mat-form-field>
+        <span>Question {{currentIndex+1}} of  {{allWriteEssayIds.length}}</span>
+      </div>
+    </div>
+  </div>
+</section>

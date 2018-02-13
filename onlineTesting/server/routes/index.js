@@ -30,7 +30,9 @@ router.get('/pteausward/getAllListenFillBlankIds', listenFillBlank_controller.ge
 
 router.get('/pteausward/getListenFillBlankById/:id', listenFillBlank_controller.getListenFillBlankById);
 
-router.get('/pteausward/getAllWriteEssay', writeEssay_controller.getAllWriteEssay);
+router.get('/pteausward/getAllWriteEssayIds', writeEssay_controller.getAllWriteEssayIds);
+
+router.get('/pteausward/getAllWriteEssayById/:id', writeEssay_controller.getWriteEssayById);
 
 
 module.exports = router;
