@@ -16,6 +16,7 @@ import { SpeakAloudRecorderComponent } from './shared/speakaloudrecorder.compone
 import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
+import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
 import { NgDragDropModule } from 'ng-drag-drop';
 
@@ -39,6 +40,7 @@ import { NgDragDropModule } from 'ng-drag-drop';
     ListenFillInBlankComponent,
     HighLightIncorrectWordsComponent,
     ReadReorderParagraphComponent,
+    WriteEssayComponent,
     CreateSelectPipe
   ]
 })

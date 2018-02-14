@@ -48,4 +48,14 @@ export class PteHttpService {
   }
 
 
+  getAllWriteEssayIds(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllWriteEssayIds`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getWriteEssayById(id: number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllWriteEssayById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
 }
