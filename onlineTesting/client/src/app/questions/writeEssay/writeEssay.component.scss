@@ -6,6 +6,9 @@
   .title {
     padding: 10px;
   }
+  .countDown {
+    color:green;
+  }
   .question-continer {
     padding-top: 10px;
     .question-title {
@@ -27,11 +30,5 @@
 
     }
   }
-
-  .mat-form-field-flex {
-    border:solid 1px !important;
-    width:300px !important;
-    height:300px !important;
-  }
-
 }
+

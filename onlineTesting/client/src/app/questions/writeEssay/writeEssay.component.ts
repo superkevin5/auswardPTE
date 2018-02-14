@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterContentInit} from '@angular/core';
+import {Component, OnInit, AfterContentInit, OnDestroy} from '@angular/core';
 import {PteHttpService} from '../pte-http.service';
 import {CommonService} from '../common/common.service';
 import {FormControl} from '@angular/forms';
@@ -11,20 +11,35 @@ import * as _ from "lodash";
   templateUrl: 'writeEssay.component.html',
   styleUrls: ['writeEssay.component.scss']
 })
-export class WriteEssayComponent implements OnInit,AfterContentInit {
+export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
   allWriteEssayIds: any = new Array();
-
+  countDown: string = '20:00';
   selectedWriteEssay: any = {};
   currentIndex: number = 0;
   isLoading: boolean = false;
   isAnswer: boolean = false;
   pageFormControl = new FormControl();
-  gotoNumber:any='';
+  gotoNumber: any = '';
+  _sub: any = {};
 
 
-  constructor(private httpService: PteHttpService,private commonService:CommonService) {
+  constructor(private httpService: PteHttpService, private commonService: CommonService) {
+    this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 20 + 2000))
+      .subscribe(val => {
+        console.log('111111111');
+        this.countDown = this.secondsToMinutesAndSeconds(60 * 20 - val);
+      });
+  }
 
+  secondsToMinutesAndSeconds(totalSeconds): void {
 
+    let minutes = Math.floor(totalSeconds / 60);
+    let remainder = totalSeconds % 60;
+    if (remainder == 0) {
+      return `${minutes}:00`;
+    } else {
+      return remainder<10?`${minutes}:0${remainder}`:`${minutes}:${remainder}`;
+    }
   }
 
   goto(pageNumber) {
@@ -85,13 +100,20 @@ export class WriteEssayComponent implements OnInit,AfterContentInit {
   }
 
   shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   }
-}
+
   processQuestions(question): void {
-    this.selectedWriteEssay= question;
+    this.selectedWriteEssay = question;
+    this.countDown = '20:00';
+    this._sub.unsubscribe();
+    this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 20 + 2000))
+      .subscribe(val => {
+        this.countDown = this.secondsToMinutesAndSeconds(60 * 20 - val);
+      });
   }
 
   ngAfterContentInit(): void {
@@ -123,6 +145,11 @@ export class WriteEssayComponent implements OnInit,AfterContentInit {
 
   ngOnInit(): void {
 
+  }
+
+  ngOnDestroy() {
+    this.countDown = '20:00';
+    this._sub.unsubscribe();
   }
 }
 

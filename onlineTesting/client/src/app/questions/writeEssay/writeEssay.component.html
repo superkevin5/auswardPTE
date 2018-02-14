@@ -15,6 +15,8 @@
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
       <p>{{selectedWriteEssay?.description}}</p>
+      <br>
+      <p>Timer: <span class="countDown">{{countDown}}</span></p>
       <mat-form-field>
   <textarea matInput placeholder="Write your essay here" matTextareaAutosize matAutosizeMinRows="2"
             matAutosizeMaxRows="5"></textarea>

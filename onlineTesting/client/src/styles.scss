@@ -55,6 +55,21 @@ html, body {
   @include angular-material-theme($pte-theme2);
 }
 
-
+.writeEssay-container {
+  .question-body {
+    .mat-input-container{
+      margin-top:50px;
+    }
+    .mat-input-flex {
+      border: solid 1px !important;
+      width: 800px;
+      height: 100% !important;
+    }
+    textarea{
+      width: 800px;
+      height: 120px !important;
+    }
+  }
+}
 
 
