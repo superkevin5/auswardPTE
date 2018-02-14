@@ -1,0 +1,34 @@
+.writeEssay-container {
+
+  min-height: 100%;
+  padding-top: 64px;
+  box-sizing: border-box;
+  .title {
+    padding: 10px;
+  }
+  .countDown {
+    color:green;
+  }
+  .question-continer {
+    padding-top: 10px;
+    .question-title {
+      text-align: center;
+      font-style: italic;
+    }
+    .question-body {
+      padding: 40px;
+    }
+
+    .question-footer {
+      width: 100%;
+      mat-button-toggle-group {
+        padding: 20px;
+      }
+      display: inline-flex;
+      justify-content: space-around;
+      align-items: flex-end;
+
+    }
+  }
+}
+

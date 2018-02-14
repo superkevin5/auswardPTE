@@ -21,6 +21,7 @@ var readFillBlank = require('./model/readFillBlank');
 var readReorderParagraph = require('./model/readReorderParagraph');
 var readReorderParagraphQuestions = require('./model/readReorderParagraphQuestions');
 var listenFillBlank = require('./model/listenFillBlank');
+var writeEssay = require('./model/writeEssay');
 var repeatSentence = require('./model/repeatSentence');
 //init app
 var app = express();
@@ -50,11 +51,20 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header("Access-Control-Allow-Headers", "Content-Type");
-    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+
+    if( req.headers.origin == 'http://localhost:4200' || req.headers.origin == 'http://127.0.0.1:4200' ){
+        res.header("Access-Control-Allow-Origin", req.headers.origin);
+        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
+        res.header("Access-Control-Allow-Credentials", "true");
+    } else {
+        res.header("Access-Control-Allow-Origin", req.headers.origin);
+        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
+        res.header("Access-Control-Allow-Credentials", "true");
+    }
     next();
 });
 
@@ -117,6 +127,8 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.readReorderParagraph = readReorderParagraph(db);
         models.readReorderParagraphQuestions = readReorderParagraphQuestions(db);
         models.listenFillBlank = listenFillBlank(db);
+        models.writeEssay = writeEssay(db);
+
         models.repeatSentence = repeatSentence(db);
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
