@@ -124,22 +124,7 @@ CREATE TABLE `repeatsentence` (
 INSERT INTO `repeatsentence` VALUES ('1', 'You will find the economics section on the second floor of the library.', '1.mp3');
 INSERT INTO `repeatsentence` VALUES ('2', 'You will be informed of the results by email.', '2.mp3');
 
--- ----------------------------
--- Table structure for repeatsentence
--- ----------------------------
-DROP TABLE IF EXISTS `repeatsentence`;
-CREATE TABLE `repeatsentence`  (
-  `id` int(20) NOT NULL,
-  `description` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `audioPath` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
--- ----------------------------
--- Records of repeatsentence
--- ----------------------------
-INSERT INTO `repeatsentence` VALUES (1, 'You will find the economics section on the second floor of the library.', '1.mp3');
-INSERT INTO `repeatsentence` VALUES (2, 'You will be informed of the results by email.', '2.mp3');
 
 -- ----------------------------
 -- Table structure for sessions

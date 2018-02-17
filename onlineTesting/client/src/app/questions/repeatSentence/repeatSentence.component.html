@@ -6,15 +6,27 @@
 
     <h4 class="question-title">
       <span>Question {{currentIndex+1}} :
-      <!--Look at the text below. In {{repeatSentences[currentIndex]?.recordingDuration}} seconds, you must read this text aloud-->
-      <!--as naturally and clearly as possible. You have {{repeatSentences[currentIndex]?.recordingDuration}} seconds-->
-      <!--to read aloud.-->
-        </span>
+        You will hear a sentence. Please repeat the sentence exactly as you hear it. You will hear the sentence only once.
+      </span>
     </h4>
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
-      <howler-player></howler-player>
-      <mat-card>{{repeatSentences[currentIndex]?.description}}</mat-card>
+
+      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'repeatSentence'" [question]="repeatSentences[currentIndex]" *ngIf="!isLoading&&repeatSentences[currentIndex]?.description"></pte-player>
+
+      <div class="pte-recorder" color="primary">
+        <h2 class="pte-center"> Recorded Answer</h2>
+
+        <p color="primary" class="pte-center">{{currentStatus.text}}
+        </p>
+      </div>
+
+      <mat-card *ngIf="isAnswer">{{repeatSentences[currentIndex]?.description}}</mat-card>
+
+      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Script</button>
+      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Script</button>
+
+
     </div>
 
     <div class="question-footer">

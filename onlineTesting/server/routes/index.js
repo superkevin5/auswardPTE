@@ -37,5 +37,6 @@ router.get('/pteausward/getAllWriteEssayIds', writeEssay_controller.getAllWriteE
 
 router.get('/pteausward/getAllWriteEssayById/:id', writeEssay_controller.getWriteEssayById);
 
+router.get('/pteausward/getAllRepeatSentence', repeatSentence_controller.getAllRepeatSentence);
 
 module.exports = router;

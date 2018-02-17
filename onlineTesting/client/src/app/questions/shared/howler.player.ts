@@ -21,10 +21,11 @@ export class HowlerPlayerService implements OnInit {
       this.sound.unload();
     }
     this.sound = new Howl({
-      src: [audioPathMale]
+      src: [audioPathMale],
+      onend:onendCallback
     });
 
-    this.sound.onend(onendCallback);
+    // this.sound.onend(onendCallback);
   }
 
   isPlaying() {

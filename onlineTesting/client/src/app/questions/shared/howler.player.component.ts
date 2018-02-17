@@ -13,8 +13,13 @@ import * as _ from "lodash";
 })
 export class HowlerPlayerComponent implements OnInit,OnDestroy {
 
-  constructor(private player: HowlerPlayerService) {
+  playSeek: number = 0;
 
+  @Input() action: string = '';
+  @Input() path: string = '';
+
+  constructor(private player: HowlerPlayerService) {
+    this.playSeek = 0;
   }
 
   clear(): void {
@@ -25,15 +30,17 @@ export class HowlerPlayerComponent implements OnInit,OnDestroy {
   }
 
   init(): void {
-
   }
 
   ngOnInit(): void {
     this.init();
+    this.player.init('repeatSentence', this.path, function () {
+      console.log('end');
+    });
+    this.player.play();
   }
 
   ngOnDestroy() {
-
   }
 }
 

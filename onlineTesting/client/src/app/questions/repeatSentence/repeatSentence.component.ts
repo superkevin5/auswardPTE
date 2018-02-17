@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PteHttpService} from '../pte-http.service';
 import {FormControl} from '@angular/forms';
 import {RecorderService} from '../shared/recorder.service';
@@ -13,62 +13,56 @@ export class RepeatSentenceComponent implements OnInit {
   repeatSentences: any = new Array();
   currentIndex: number = 0;
   pageFormControl = new FormControl();
-  gotoNumber:any='';
-  //
-  // @ViewChild(SpeakAloudRecorderComponent)
-  // private myChild: SpeakAloudRecorderComponent;
+  gotoNumber: any = '';
+  isAnswer: boolean = false;
+  isLoading: boolean = false;
 
   constructor(private  httpService: PteHttpService, private player: HowlerPlayerService) {
+  }
 
-
+  toggleAnswer(a: boolean): void {
+    this.isAnswer = a;
   }
 
   goto(pageNumber) {
-
-    if(!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber>this.repeatSentences.length){
+    this.isLoading = true;
+    if (!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber > this.repeatSentences.length) {
       console.log('invalid');
+      this.isLoading = false;
       return;
     }
 
+    this.isLoading = false;
     this.currentIndex = pageNumber - 1;
-    if (this.currentIndex < this.repeatSentences.length) {
-      // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
-      // this.myChild.init();
-    }
   }
 
   next() {
+    this.isLoading = true;
     if (this.currentIndex < this.repeatSentences.length - 1) {
       this.currentIndex++;
-      // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
-      // this.myChild.init();
     }
+    this.isLoading = false;
   }
 
   previous() {
+    this.isLoading = true;
     if (this.currentIndex > 0) {
       this.currentIndex--;
-      // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
-      // this.myChild.init();
     }
+    this.isLoading = false;
   }
 
+  startRecord(signal:string) {
+    console.log(signal);
+  }
 
   ngOnInit(): void {
     this.httpService.getAllRepeatSentences().subscribe(
       data => {
         this.repeatSentences = data.body;
-
-
         if (this.repeatSentences.length > 0) {
           this.currentIndex = 0;
-          // this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale,this.readAlouds[this.currentIndex].audioPathFemale);
         }
-
-        // for (let readAloud of  this.readAlouds) {
-        //   readAloud._action= 'preparation'
-        // }
-
       }
     );
   }

@@ -2,12 +2,32 @@
   min-height: 100%;
   padding-top: 64px;
   box-sizing: border-box;
+
+  .pte-recorder {
+    margin-top:5px;
+    margin-bottom:5px;
+    height:100px;
+    background-color: #E7EFFA;
+    width:300px;
+    border:solid 2px;
+    border-color: #99AABF;
+    padding:10px;
+  }
+
   .title {
-    padding: 10px;
+    padding: 10px 20px;
   }
   .question-continer {
     padding-top: 10px;
+    mat-card {
+      margin-bottom: 20px;
+    }
+    pte-player {
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
     .question-title {
+      padding: 20px;
       text-align: center;
       font-style: italic;
     }

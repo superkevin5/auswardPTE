@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy, ViewChild, ElementRef, Output, EventEmitter} from '@angular/core';
 import {PlayerService} from './player.service';
 import {Observable} from 'rxjs';
 import {Subscription} from 'rxjs/Subscription';
@@ -13,11 +13,16 @@ import * as _ from "lodash";
 })
 export class PlayerComponent implements OnInit,OnDestroy {
 
-  @Input() questionType:string = '';
-  @Input() question: any= {};
+  @Input() questionType: string = '';
+  @Input() question: any = {};
   @Input() action: string = 'preparation';
-  pageRenderingReady:boolean = false;
-  audioPath:string = '';
+
+  @Output() onPlayEnd: EventEmitter<string> = new EventEmitter<string>();
+
+  @ViewChild("audio") audioRef: ElementRef;
+
+  pageRenderingReady: boolean = false;
+  audioPath: string = '';
 
   constructor(private player: PlayerService) {
 
@@ -32,20 +37,17 @@ export class PlayerComponent implements OnInit,OnDestroy {
   }
 
   init(): void {
-    let  audioPath = this.question.audioPath;
-    console.log(audioPath);
-    console.log(pteConstants.audioPathMap[this.questionType]);
+    let audioPath = this.question.audioPath;
     this.audioPath = pteConstants.audioPathMap[this.questionType] + audioPath;
-    console.log(this.audioPath);
     this.pageRenderingReady = true;
   }
-  
+
   play(questionType, audioPath): void {
-    this.player.init(questionType, audioPath,audioPath);
+    this.player.init(questionType, audioPath, audioPath);
     this.player.playMale();
   }
 
-  isPlaying(){
+  isPlaying() {
     return this.player.isMalePlaying();
   }
 
@@ -55,6 +57,15 @@ export class PlayerComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.init();
+  }
+
+  ngAfterViewInit(): void {
+    let onPlayEnd = this.onPlayEnd;
+
+    this.audioRef.nativeElement.addEventListener('ended', function () {
+      console.log('ended');
+      onPlayEnd.emit('end');
+    });
   }
 
   ngOnDestroy() {
