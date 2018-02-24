@@ -52,8 +52,13 @@ export class PlayerService implements OnInit {
   }
 
   stop() {
-    this.soundMale.stop();
-    this.soundFemale.stop();
+    if (this.soundMale && this.soundMale.playing()) {
+      this.soundMale.stop();
+    }
+
+    if (this.soundFemale && this.soundFemale.playing()) {
+      this.soundFemale.stop();
+    }
   }
 
   playBeep() {
