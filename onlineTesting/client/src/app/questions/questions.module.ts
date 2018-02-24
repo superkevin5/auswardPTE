@@ -13,12 +13,15 @@ import {CommonService} from './common/common.service';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
 import { SpeakAloudRecorderComponent } from './shared/speakaloudrecorder.component';
+import { HowlerPlayerComponent } from './shared/howler.player.component';
 import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
 import { WriteEssayComponent } from './writeEssay/writeEssay.component';
+import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { HowlerPlayerService } from './shared/howler.player';
 
 @NgModule({
   imports: [
@@ -31,7 +34,7 @@ import { NgDragDropModule } from 'ng-drag-drop';
     FlexLayoutModule,
     NgDragDropModule.forRoot()
   ],
-  providers:[PteHttpService,PlayerService,RecorderService,CommonService],
+  providers:[PteHttpService,PlayerService,RecorderService,CommonService,HowlerPlayerService],
   declarations: [
     ReadAloudComponent,
     SpeakAloudRecorderComponent,
@@ -41,6 +44,8 @@ import { NgDragDropModule } from 'ng-drag-drop';
     HighLightIncorrectWordsComponent,
     ReadReorderParagraphComponent,
     WriteEssayComponent,
+    RepeatSentenceComponent,
+    HowlerPlayerComponent,
     CreateSelectPipe
   ]
 })

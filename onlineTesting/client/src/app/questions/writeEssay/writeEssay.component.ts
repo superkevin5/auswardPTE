@@ -26,12 +26,11 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
   constructor(private httpService: PteHttpService, private commonService: CommonService) {
     this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 20 + 2000))
       .subscribe(val => {
-        console.log('111111111');
         this.countDown = this.secondsToMinutesAndSeconds(60 * 20 - val);
       });
   }
 
-  secondsToMinutesAndSeconds(totalSeconds): void {
+  secondsToMinutesAndSeconds(totalSeconds): string {
 
     let minutes = Math.floor(totalSeconds / 60);
     let remainder = totalSeconds % 60;

@@ -1,16 +1,7 @@
 <div class="pte-player" color="primary">
-  <audio controls *ngIf="question.audioPath && pageRenderingReady">
+  <audio #audio controls *ngIf="question.audioPath && pageRenderingReady">
     <source src="{{audioPath}}" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </div>
-
-<!--<div class="pte-center pte-player-actions">-->
-<!--<button mat-raised-button color="primary" (click)="play(questionType,question.audioPath)">Play</button>-->
-
-<!--<button mat-raised-button color="primary" (click)="play(questionType,question.audioPath)">Play</button>-->
-
-<!--</div>-->
-
-
 

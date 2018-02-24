@@ -12,6 +12,9 @@ var listenFillBlank_controller = require('../controller/listenFillBlankControlle
 var writeEssay_controller = require('../controller/writeEssayController');
 
 
+var repeatSentence_controller = require('../controller/repeatSentenceController');
+
+
 router.get('/', function(req, res, next) {
 	res.send('Hello testing');
 });
@@ -34,5 +37,6 @@ router.get('/pteausward/getAllWriteEssayIds', writeEssay_controller.getAllWriteE
 
 router.get('/pteausward/getAllWriteEssayById/:id', writeEssay_controller.getWriteEssayById);
 
+router.get('/pteausward/getAllRepeatSentence', repeatSentence_controller.getAllRepeatSentence);
 
 module.exports = router;

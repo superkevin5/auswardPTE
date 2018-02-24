@@ -3,7 +3,8 @@ export const pteConstants = {
   audioPathMap:{
     readAloudMale:'http://localhost:9001/public/readAloud/male/',
     readAloudFemale:'http://localhost:9001/public/readAloud/female/',
-    listenFillBlank:'http://localhost:9001/public/listenFillBlank/'
+    listenFillBlank:'http://localhost:9001/public/listenFillBlank/',
+    repeatSentence:'http://localhost:9001/public/repeatSentence/'
   },
   testCategory: {
     Speaking: [
@@ -15,7 +16,7 @@ export const pteConstants = {
       {
         key: 'repeatSentence',
         text: 'Repeat Sentence',
-        path: ''
+        path: 'questions/repeat-sentence'
       },
       {
         key: 'describeImage',

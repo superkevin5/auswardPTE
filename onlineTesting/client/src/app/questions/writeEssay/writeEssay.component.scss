@@ -1,22 +1,23 @@
 .writeEssay-container {
-
   min-height: 100%;
   padding-top: 64px;
   box-sizing: border-box;
-  .title {
-    padding: 10px;
+  .question-title{
+    word-wrap:break-word;
   }
-  .countDown {
-    color:green;
+  .title {
+    padding: 10px 20px;
   }
   .question-continer {
     padding-top: 10px;
     .question-title {
+      padding: 20px;
       text-align: center;
       font-style: italic;
     }
     .question-body {
       padding: 40px;
+      line-height: 300%;
     }
 
     .question-footer {
@@ -31,4 +32,3 @@
     }
   }
 }
-

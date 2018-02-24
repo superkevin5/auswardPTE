@@ -18,6 +18,12 @@ export class RecorderService {
 
   }
 
+  public init() {
+    this.isRecording = false;
+    this.chunks = [];
+    this.stopCurrentRecordPlay();
+  }
+
   public stopCurrentRecordPlay(){
     if (this.audio && this.audio.duration > 0) {
       this.audio.pause();
@@ -36,6 +42,7 @@ export class RecorderService {
     } else if (this.audio.paused && this.audio.currentTime > 0 && !this.audio.ended) {
       this.audio.play();
     } else {
+      console.log(this.chunks);
       const blob = new Blob(this.chunks, {'type': 'audio/wav; codecs=opus'});
       this.audio.src = window.URL.createObjectURL(blob);
       this.audio.load();
@@ -44,6 +51,7 @@ export class RecorderService {
   }
 
   public record() {
+    this.chunks = [];
     this.isRecording = true;
     navigator.getUserMedia = (navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
@@ -55,7 +63,7 @@ export class RecorderService {
 
       this.mediaRecorder.ondataavailable = e => {
         console.log('collecting data');
-        this.chunks.length = 0;
+
         this.chunks.push(e.data)
       };
       this.mediaRecorder.start();

@@ -40,6 +40,7 @@ export class SpeakAloudRecorderComponent implements OnInit,OnDestroy {
     this.clear();
     this.currentStatus = {text: "Completed", id: 2};
     this.recorder.stop();
+    console.log('finish record');
   }
 
   skipPreparation(): void {
@@ -59,7 +60,7 @@ export class SpeakAloudRecorderComponent implements OnInit,OnDestroy {
       }, error => {
 
       }, () => {
-        this.currentStatus = {text: "Completed", id: 2};
+        this.finishRecord();
       });
       this.recorder.record();
     }, 800);
@@ -119,7 +120,7 @@ export class SpeakAloudRecorderComponent implements OnInit,OnDestroy {
           }, error => {
 
           }, () => {
-            this.currentStatus = {text: "Completed", id: 2};
+            this.finishRecord();
           });
         }, 800);
       });
