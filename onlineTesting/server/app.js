@@ -23,6 +23,7 @@ var readReorderParagraphQuestions = require('./model/readReorderParagraphQuestio
 var listenFillBlank = require('./model/listenFillBlank');
 var writeEssay = require('./model/writeEssay');
 var repeatSentence = require('./model/repeatSentence');
+var retellLecture = require('./model/retellLecture');
 //init app
 var app = express();
 
@@ -130,6 +131,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.writeEssay = writeEssay(db);
 
         models.repeatSentence = repeatSentence(db);
+        models.retellLecture = retellLecture(db);
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
