@@ -13,6 +13,7 @@ import {CommonService} from './common/common.service';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
 import { SpeakAloudRecorderComponent } from './shared/speakaloudrecorder.component';
+import { RetellLectureComponent } from './retellLecture/retellLecture.component';
 import { HowlerPlayerComponent } from './shared/howler.player.component';
 import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
@@ -22,6 +23,7 @@ import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.compone
 import { CreateSelectPipe } from './pipe/create-select.pipe';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { HowlerPlayerService } from './shared/howler.player';
+import { Dialog } from './shared/dialog.component';
 
 @NgModule({
   imports: [
@@ -35,7 +37,11 @@ import { HowlerPlayerService } from './shared/howler.player';
     NgDragDropModule.forRoot()
   ],
   providers:[PteHttpService,PlayerService,RecorderService,CommonService,HowlerPlayerService],
+  entryComponents: [
+    Dialog
+  ],
   declarations: [
+    Dialog,
     ReadAloudComponent,
     SpeakAloudRecorderComponent,
     PlayerComponent,
@@ -43,6 +49,7 @@ import { HowlerPlayerService } from './shared/howler.player';
     ListenFillInBlankComponent,
     HighLightIncorrectWordsComponent,
     ReadReorderParagraphComponent,
+    RetellLectureComponent,
     WriteEssayComponent,
     RepeatSentenceComponent,
     HowlerPlayerComponent,

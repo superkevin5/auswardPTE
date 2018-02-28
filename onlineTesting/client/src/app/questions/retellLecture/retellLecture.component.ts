@@ -4,14 +4,18 @@ import {FormControl} from '@angular/forms';
 import {RecorderService} from '../shared/recorder.service';
 import {PlayerService} from '../shared/player.service';
 import {Observable} from 'rxjs';
+import {MatDialog} from '@angular/material';
+import {Dialog} from '../shared/dialog.component';
+import {pteConstants} from '../../pteConstants';
 
 @Component({
-  selector: 'repeat-sentence',
-  templateUrl: 'repeatSentence.component.html',
-  styleUrls: ['repeatSentence.component.scss']
+  selector: 'retell-lecture',
+  templateUrl: 'retellLecture.component.html',
+  styleUrls: ['retellLecture.component.scss']
 })
-export class RepeatSentenceComponent implements OnInit, OnDestroy {
-  repeatSentences: any = new Array();
+export class RetellLectureComponent implements OnInit, OnDestroy {
+  allRetellLectureIds: any = new Array();
+  retellLecture: any = '';
   currentIndex: number = 0;
   pageFormControl = new FormControl();
   gotoNumber: any = '';
@@ -22,38 +26,11 @@ export class RepeatSentenceComponent implements OnInit, OnDestroy {
   preparationTimer: any = '';
   currentStatus: any = {text: '', id: -1};
 
-
-  constructor(private  httpService: PteHttpService, private player: PlayerService, private recorder: RecorderService) {
+  constructor(private  httpService: PteHttpService, private player: PlayerService, private recorder: RecorderService, public dialog: MatDialog) {
   }
 
   toggleAnswer(a: boolean): void {
     this.isAnswer = a;
-  }
-
-  goto(pageNumber) {
-    this.isLoading = true;
-    if (!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber > this.repeatSentences.length) {
-      console.log('invalid');
-      this.isLoading = false;
-      return;
-    }
-
-    setTimeout(a => {
-      this.clear();
-      this.isLoading = false;
-      this.currentIndex = pageNumber - 1;
-    }, 800);
-  }
-
-  next() {
-    if (this.currentIndex < this.repeatSentences.length - 1) {
-      this.isLoading = true;
-      setTimeout(a => {
-        this.currentIndex++;
-        this.clear();
-        this.isLoading = false;
-      }, 800);
-    }
   }
 
   cancelPreparationTimer(): void {
@@ -68,17 +45,6 @@ export class RepeatSentenceComponent implements OnInit, OnDestroy {
     }
   }
 
-  previous() {
-    if (this.currentIndex > 0) {
-      this.isLoading = true;
-      setTimeout(a => {
-        this.currentIndex--;
-        this.clear();
-        this.isLoading = false;
-      }, 800);
-    }
-  }
-
   playRecord() {
     this.recorder.playRecord();
   }
@@ -86,19 +52,24 @@ export class RepeatSentenceComponent implements OnInit, OnDestroy {
   finishRecord(): void {
     this.clear();
     this.currentStatus = {text: "Completed", id: 2};
+    this.recordedDone = true;
     this.recorder.stop();
+  }
+
+  isRecordedRecording() {
+    return this.recorder.isRecording;
   }
 
   startRecord(signal: string) {
     this.clear();
     this.recorder.stopCurrentRecordPlay();
     this.recordedDone = false;
-    let start1 = 3;
+    let start1 = 10;
     let preparationTimerObs = Observable.timer(1000, 1000)
       .map(tick => start1 - tick)
       .take(start1 + 1);
 
-    let start2 = 10;
+    let start2 = 40;
     let recordingTimerObs = Observable.timer(1000, 1000)
       .map(tick => start2 - tick)
       .take(start2 + 1);
@@ -143,15 +114,133 @@ export class RepeatSentenceComponent implements OnInit, OnDestroy {
     this.cancelRecordomgTimer();
   }
 
-  ngOnInit(): void {
-    this.httpService.getAllRepeatSentences().subscribe(
-      data => {
-        this.repeatSentences = data.body;
-        if (this.repeatSentences.length > 0) {
-          this.currentIndex = 0;
-        }
-      }
-    );
+  goto(pageNumber) {
+    this.toggleAnswer(false);
+    if (!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber > this.allRetellLectureIds.length) {
+      console.log('invalid');
+      return;
+    }
+    this.clear();
+    if (pageNumber <= this.allRetellLectureIds.length) {
+      this.isLoading = true;
+      this.httpService.getRetellLectureById(this.allRetellLectureIds[pageNumber - 1]).subscribe(
+        data => {
+          this.processQuestions(data.body);
+          this.currentIndex = pageNumber - 1;
+        }, error => {
+
+        }, () => {
+          this.isLoading = false;
+        });
+    }
   }
+
+  downloadScript() {
+    window.open( this.retellLecture.descriptionPath);
+  }
+
+  retry($event) {
+
+    console.log($event);
+    const dialogRef = this.dialog.open(Dialog, {
+      data: {
+        title: 'Are you sure to retry?'
+      },
+      autoFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.toggleAnswer(false);
+        this.isLoading = true;
+        this.clear();
+        this.httpService.getRetellLectureById(this.allRetellLectureIds[this.currentIndex]).subscribe(
+          data => {
+            this.processQuestions(data.body);
+          }, error => {
+
+          }, () => {
+            this.isLoading = false;
+          });
+      }
+    });
+  }
+
+  next() {
+    this.toggleAnswer(false);
+    if (this.currentIndex < this.allRetellLectureIds.length - 1) {
+      this.isLoading = true;
+      this.clear();
+      this.httpService.getRetellLectureById(this.allRetellLectureIds[this.currentIndex + 1]).subscribe(
+        data => {
+          this.processQuestions(data.body);
+          this.currentIndex++;
+        }, error => {
+
+        }, () => {
+          this.isLoading = false;
+        });
+    }
+  }
+
+  previous() {
+    this.toggleAnswer(false);
+    if (this.currentIndex > 0) {
+      this.isLoading = true;
+      this.clear();
+      this.httpService.getRetellLectureById(this.allRetellLectureIds[this.currentIndex - 1]).subscribe(
+        data => {
+          this.processQuestions(data.body);
+          this.currentIndex--;
+        }, error => {
+
+        }, () => {
+          this.isLoading = false;
+        });
+    }
+  }
+
+  processQuestions(question): void {
+    this.retellLecture = question;
+    this.retellLecture.descriptionPath = `${pteConstants.descriptionPath.retellLecture}${this.retellLecture.descriptionPath}`;
+    this.retellLecture.imagePath = `${pteConstants.imagePath.retellLecture}${this.retellLecture.imagePath}`;
+  }
+
+  ngOnInit(): void {
+    this.isLoading = true;
+    this.httpService.getAllRetellLectureIds().flatMap((data) => {
+
+      if (data.body && data.body.length > 0) {
+        this.allRetellLectureIds = data.body;
+        this.currentIndex = 0;
+        return this.httpService.getRetellLectureById(this.allRetellLectureIds[0]);
+      }
+      else {
+        return Observable.of({body: '1'});
+      }
+    })
+      .subscribe(
+        data => {
+          this.processQuestions(data.body);
+        },
+        error => {
+
+        },
+        () => {
+          this.isLoading = false;
+        }
+      );
+  }
+
+  // ngOnInit(): void {
+  //   this.httpService.getAllRetellLectureIds().subscribe(
+  //     data => {
+  //       this.repeatSentences = data.body;
+  //       if (this.repeatSentences.length > 0) {
+  //         this.currentIndex = 0;
+  //       }
+  //     }
+  //   );
+  // }
 }
 

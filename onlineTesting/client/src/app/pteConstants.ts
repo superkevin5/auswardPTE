@@ -4,7 +4,14 @@ export const pteConstants = {
     readAloudMale:'http://localhost:9001/public/readAloud/male/',
     readAloudFemale:'http://localhost:9001/public/readAloud/female/',
     listenFillBlank:'http://localhost:9001/public/listenFillBlank/',
-    repeatSentence:'http://localhost:9001/public/repeatSentence/'
+    repeatSentence:'http://localhost:9001/public/repeatSentence/',
+    retellLecture:'http://localhost:9001/public/retellLecture/audio/',
+  },
+  descriptionPath: {
+    retellLecture:'http://localhost:9001/public/retellLecture/description/',
+  },
+  imagePath: {
+    retellLecture:'http://localhost:9001/public/retellLecture/image/',
   },
   testCategory: {
     Speaking: [
@@ -26,7 +33,7 @@ export const pteConstants = {
       {
         key: 'retellLecture',
         text: 'Retell Lecture',
-        path: ''
+        path: 'questions/retell-lecture'
       },
       {
         key: 'answerShortQuestion',

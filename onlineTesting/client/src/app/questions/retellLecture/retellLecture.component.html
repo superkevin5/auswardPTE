@@ -1,4 +1,4 @@
-<section class="repeatSentence-container">
+<section class="retellLecture-container">
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
   <h4 class="title">Speaking items - Retell lecture</h4>
 
@@ -6,13 +6,15 @@
 
     <h4 class="question-title">
       <span>Question {{currentIndex+1}} :
-        You will hear a sentence. Please repeat the sentence exactly as you hear it. You will hear the sentence only once.
+        You will hear a lecture. After listening to the lecture, in 10 seconds, please speak into the microphone and retell what you have
+        just heard from the lecture in your own words. You will have 40 seconds to give your response.
       </span>
     </h4>
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
 
-      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'repeatSentence'" [question]="repeatSentences[currentIndex]" *ngIf="!isLoading&&repeatSentences[currentIndex]?.description"></pte-player>
+      <img src="{{retellLecture?.imagePath}}">
+      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'retellLecture'" [question]="retellLecture" *ngIf="!isLoading&&retellLecture?.description"></pte-player>
 
       <div class="pte-recorder" color="primary">
         <h2 class="pte-center"> Recorded Answer</h2>
@@ -20,13 +22,13 @@
         <p color="primary" class="pte-center">{{currentStatus.text}}
         </p>
       </div>
-
-      <mat-card *ngIf="isAnswer">{{repeatSentences[currentIndex]?.description}}</mat-card>
-
-      <button style="margin-bottom:5px" mat-raised-button color="primary" *ngIf="recordedDone" (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
-      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Script</button>
-      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Script</button>
-
+      <mat-card *ngIf="isAnswer">{{retellLecture?.description}}</mat-card>
+      <div class="pte-center pte-recorder-actions">
+        <button  mat-raised-button  color="primary" *ngIf="recordedDone && !isRecordedRecording()" (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
+        <button mat-raised-button color="primary" (click)="finishRecord()" *ngIf="isRecordedRecording()">Finish Record</button>
+        <button  mat-raised-button color="primary"  (click)="retry($event)">Retry</button>
+        <button mat-raised-button color="primary" (click)="downloadScript()">Open Script</button>
+      </div>
     </div>
 
     <div class="question-footer">
@@ -63,7 +65,7 @@
             <strong>Number required</strong>
           </mat-error>
         </mat-form-field>
-        <span>Question {{currentIndex+1}} of  {{repeatSentences.length}}</span>
+        <span>Question {{currentIndex+1}} of  {{allRetellLectureIds.length}}</span>
       </div>
     </div>
   </div>

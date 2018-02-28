@@ -63,4 +63,14 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+
+  getAllRetellLectureIds(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllRetellLectureIds`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getRetellLectureById(id:number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getRetellLectureById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
 }
