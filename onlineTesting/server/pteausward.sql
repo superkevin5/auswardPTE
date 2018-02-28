@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : pteAusward
+Source Server         : kevin
 Source Server Version : 50719
 Source Host           : localhost:3306
 Source Database       : pteausward
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-02-15 02:30:39
+Date: 2018-02-28 23:55:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -124,7 +124,24 @@ CREATE TABLE `repeatsentence` (
 INSERT INTO `repeatsentence` VALUES ('1', 'You will find the economics section on the second floor of the library.', '1.mp3');
 INSERT INTO `repeatsentence` VALUES ('2', 'You will be informed of the results by email.', '2.mp3');
 
+-- ----------------------------
+-- Table structure for retelllecture
+-- ----------------------------
+DROP TABLE IF EXISTS `retelllecture`;
+CREATE TABLE `retelllecture` (
+  `id` int(20) NOT NULL,
+  `audioPath` varchar(40) DEFAULT NULL,
+  `description` varchar(2000) DEFAULT NULL,
+  `imagePath` varchar(40) DEFAULT NULL,
+  `descriptionPath` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- ----------------------------
+-- Records of retelllecture
+-- ----------------------------
+INSERT INTO `retelllecture` VALUES ('1', '1.mp3', 'description', '1.jpg', '1.txt');
+INSERT INTO `retelllecture` VALUES ('2', '2.mp3', 'description2', '2.jpg', '2.txt');
 
 -- ----------------------------
 -- Table structure for sessions

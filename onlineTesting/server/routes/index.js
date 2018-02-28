@@ -11,6 +11,7 @@ var listenFillBlank_controller = require('../controller/listenFillBlankControlle
 
 var writeEssay_controller = require('../controller/writeEssayController');
 
+var retellLecture_controller = require('../controller/retellLectureController');
 
 var repeatSentence_controller = require('../controller/repeatSentenceController');
 
@@ -38,5 +39,9 @@ router.get('/pteausward/getAllWriteEssayIds', writeEssay_controller.getAllWriteE
 router.get('/pteausward/getAllWriteEssayById/:id', writeEssay_controller.getWriteEssayById);
 
 router.get('/pteausward/getAllRepeatSentence', repeatSentence_controller.getAllRepeatSentence);
+
+router.get('/pteausward/getAllRetellLectureIds', retellLecture_controller.getAllRetellLectureIds);
+
+router.get('/pteausward/getRetellLectureById/:id', retellLecture_controller.getRetellLectureById);
 
 module.exports = router;

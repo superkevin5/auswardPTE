@@ -7,6 +7,7 @@ import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInB
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
 import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
+import { RetellLectureComponent } from './retellLecture/retellLecture.component';
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
 
 const routes: Routes = [
@@ -17,9 +18,8 @@ const routes: Routes = [
   { path: 'read-reorder-paragraph', component: ReadReorderParagraphComponent },
   { path: 'high-light-incorrect-words', component: HighLightIncorrectWordsComponent },
   { path: 'write-essay', component: WriteEssayComponent },
-  { path: 'repeat-sentence', component: RepeatSentenceComponent }
-
-
+  { path: 'repeat-sentence', component: RepeatSentenceComponent },
+  { path: 'retell-lecture', component: RetellLectureComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

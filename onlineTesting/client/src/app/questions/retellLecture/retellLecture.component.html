@@ -1,0 +1,72 @@
+<section class="retellLecture-container">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
+  <h4 class="title">Speaking items - Retell lecture</h4>
+
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
+
+    <h4 class="question-title">
+      <span>Question {{currentIndex+1}} :
+        You will hear a lecture. After listening to the lecture, in 10 seconds, please speak into the microphone and retell what you have
+        just heard from the lecture in your own words. You will have 40 seconds to give your response.
+      </span>
+    </h4>
+
+    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+
+      <img src="{{retellLecture?.imagePath}}">
+      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'retellLecture'" [question]="retellLecture" *ngIf="!isLoading&&retellLecture?.description"></pte-player>
+
+      <div class="pte-recorder" color="primary">
+        <h2 class="pte-center"> Recorded Answer</h2>
+
+        <p color="primary" class="pte-center">{{currentStatus.text}}
+        </p>
+      </div>
+      <mat-card *ngIf="isAnswer">{{retellLecture?.description}}</mat-card>
+      <div class="pte-center pte-recorder-actions">
+        <button  mat-raised-button  color="primary" *ngIf="recordedDone && !isRecordedRecording()" (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
+        <button mat-raised-button color="primary" (click)="finishRecord()" *ngIf="isRecordedRecording()">Finish Record</button>
+        <button  mat-raised-button color="primary"  (click)="retry($event)">Retry</button>
+        <button mat-raised-button color="primary" (click)="downloadScript()">Open Script</button>
+      </div>
+    </div>
+
+    <div class="question-footer">
+
+      <mat-button-toggle-group>
+        <button (click)="previous();" mat-button="" title="Previous">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_before
+        </mat-icon></span>
+          Pre
+        </button>
+
+        <button (click)="next();" mat-button="" title="Next">
+      <span class="mat-button-wrapper">
+          Next
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_next
+        </mat-icon></span>
+        </button>
+      </mat-button-toggle-group>
+
+      <div fxHide.xs fxHide.sm>
+        <button mat-button (click)="goto(gotoNumber);">Go</button>
+        <mat-form-field>
+          <input matInput [formControl]="pageFormControl"
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
+          <mat-error *ngIf="pageFormControl.errors?.pattern">
+            <strong>Should be a number</strong>
+          </mat-error>
+          <mat-error *ngIf="pageFormControl.errors?.required">
+            <strong>Number required</strong>
+          </mat-error>
+        </mat-form-field>
+        <span>Question {{currentIndex+1}} of  {{allRetellLectureIds.length}}</span>
+      </div>
+    </div>
+  </div>
+</section>
