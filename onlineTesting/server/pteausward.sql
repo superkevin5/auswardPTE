@@ -10,10 +10,27 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-02-28 23:55:27
+Date: 2018-03-01 00:23:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for answershortquestion
+-- ----------------------------
+DROP TABLE IF EXISTS `answershortquestion`;
+CREATE TABLE `answershortquestion` (
+  `id` int(20) NOT NULL,
+  `audioPath` varchar(300) DEFAULT NULL,
+  `answer` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of answershortquestion
+-- ----------------------------
+INSERT INTO `answershortquestion` VALUES ('1', '1.mp3', 'Decade');
+INSERT INTO `answershortquestion` VALUES ('2', '2.mp3', 'Decade');
 
 -- ----------------------------
 -- Table structure for listenfillblank

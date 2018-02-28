@@ -24,6 +24,7 @@ var listenFillBlank = require('./model/listenFillBlank');
 var writeEssay = require('./model/writeEssay');
 var repeatSentence = require('./model/repeatSentence');
 var retellLecture = require('./model/retellLecture');
+var answerShortQuestion = require('./model/answerShortQuestion');
 //init app
 var app = express();
 
@@ -132,6 +133,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
 
         models.repeatSentence = repeatSentence(db);
         models.retellLecture = retellLecture(db);
+        models.answerShortQuestion = answerShortQuestion(db);
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
