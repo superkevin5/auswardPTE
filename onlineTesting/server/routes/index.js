@@ -15,7 +15,7 @@ var retellLecture_controller = require('../controller/retellLectureController');
 
 var repeatSentence_controller = require('../controller/repeatSentenceController');
 var answerShortQuestion_controller = require('../controller/answerShortQuestionController');
-
+var describeImage_controller = require('../controller/describeImageController');
 
 
 router.get('/', function(req, res, next) {
@@ -48,5 +48,6 @@ router.get('/pteausward/getRetellLectureById/:id', retellLecture_controller.getR
 
 router.get('/pteausward/getAllShortQuestions', answerShortQuestion_controller.getAllShortQuestions);
 
+router.get('/pteausward/getAllDescribeImages', describeImage_controller.getAllDescribeImage);
 
 module.exports = router;

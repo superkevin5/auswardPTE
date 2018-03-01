@@ -10,6 +10,7 @@ import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.compone
 import { RetellLectureComponent } from './retellLecture/retellLecture.component';
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
 import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
+import { DescribeImageComponent } from './describeImage/describeImage.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'write-essay', component: WriteEssayComponent },
   { path: 'repeat-sentence', component: RepeatSentenceComponent },
   { path: 'retell-lecture', component: RetellLectureComponent },
-  { path: 'short-question', component: AnswerShortQuestionComponent }
+  { path: 'short-question', component: AnswerShortQuestionComponent },
+  { path: 'describe-image', component: DescribeImageComponent }
+
 
 ];
 

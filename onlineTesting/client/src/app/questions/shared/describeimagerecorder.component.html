@@ -1,0 +1,18 @@
+<div class="pte-recorder" color="primary">
+  <h2 class="pte-center"> Recorded Answer</h2>
+
+  <p color="primary" class="pte-center">{{currentStatus.text}}
+  </p>
+</div>
+<div class="pte-center pte-describe-recorder-actions">
+<button mat-raised-button color="primary" (click)="skipPreparation()" *ngIf="currentStatus.id==0">Skip</button>
+<button mat-raised-button color="primary" (click)="finishRecord()" *ngIf="currentStatus.id==1">Finish</button>
+<button mat-raised-button color="primary" (click)="playRecord()" *ngIf="currentStatus.id==2">My record</button>
+<button mat-raised-button color="primary" (click)="retry()">Retry</button>
+</div>
+<div class="pte-center pte-describe-recorder-actions">
+  <button mat-raised-button color="primary" (click)="answerMale()"  *ngIf="currentStatus.id!=1">Sample</button>
+  <button mat-raised-button color="primary" (click)="showScript()">Open script</button>
+</div>
+
+

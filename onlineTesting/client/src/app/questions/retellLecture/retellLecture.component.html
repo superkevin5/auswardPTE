@@ -11,10 +11,12 @@
       </span>
     </h4>
 
-    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="question-body" fxLayout.md="row" fxLayout.lg="row" fxLayout="column" fxLayoutAlign="space-between center">
 
-      <img src="{{retellLecture?.imagePath}}">
+      <img src="{{retellLecture?.imagePath}}"  *ngIf="retellLecture?.imagePath">
+      <div>
       <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'retellLecture'" [question]="retellLecture" *ngIf="!isLoading&&retellLecture?.description"></pte-player>
+
 
       <div class="pte-recorder" color="primary">
         <h2 class="pte-center"> Recorded Answer</h2>
@@ -28,6 +30,7 @@
         <button mat-raised-button color="primary" (click)="finishRecord()" *ngIf="isRecordedRecording()">Finish Record</button>
         <button  mat-raised-button color="primary"  (click)="retry($event)">Retry</button>
         <button mat-raised-button color="primary" (click)="downloadScript()">Open Script</button>
+      </div>
       </div>
     </div>
 

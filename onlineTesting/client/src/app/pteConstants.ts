@@ -3,6 +3,7 @@ export const pteConstants = {
   audioPathMap:{
     readAloudMale:'http://localhost:9001/public/readAloud/male/',
     readAloudFemale:'http://localhost:9001/public/readAloud/female/',
+    describeImage:'http://localhost:9001/public/describeImage/audio/',
     listenFillBlank:'http://localhost:9001/public/listenFillBlank/',
     repeatSentence:'http://localhost:9001/public/repeatSentence/',
     retellLecture:'http://localhost:9001/public/retellLecture/audio/',
@@ -10,9 +11,11 @@ export const pteConstants = {
   },
   descriptionPath: {
     retellLecture:'http://localhost:9001/public/retellLecture/description/',
+    describeImage:'http://localhost:9001/public/describeImage/description/',
   },
   imagePath: {
     retellLecture:'http://localhost:9001/public/retellLecture/image/',
+    describeImage:'http://localhost:9001/public/describeImage/image/',
   },
   testCategory: {
     Speaking: [
@@ -29,7 +32,7 @@ export const pteConstants = {
       {
         key: 'describeImage',
         text: 'Describe Image',
-        path: ''
+        path: 'questions/describe-image'
       },
       {
         key: 'retellLecture',
