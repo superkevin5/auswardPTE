@@ -24,6 +24,7 @@ var listenFillBlank = require('./model/listenFillBlank');
 var writeEssay = require('./model/writeEssay');
 var repeatSentence = require('./model/repeatSentence');
 var retellLecture = require('./model/retellLecture');
+var answerShortQuestion = require('./model/answerShortQuestion');
 //init app
 var app = express();
 
@@ -37,7 +38,7 @@ var logStdout = process.stdout;
 
 var limiter = new RateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    max: 200, // limit each IP to 100 requests per windowMs
     delayMs: 0, // disable delaying - full speed until the max limit is reached,
     message: 'too many requests, you are blocked!!'
 });
@@ -132,6 +133,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
 
         models.repeatSentence = repeatSentence(db);
         models.retellLecture = retellLecture(db);
+        models.answerShortQuestion = answerShortQuestion(db);
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true

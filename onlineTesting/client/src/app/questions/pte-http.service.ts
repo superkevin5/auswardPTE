@@ -73,4 +73,10 @@ export class PteHttpService {
     let apiURL = `${this.apiRoot}/getRetellLectureById/${id}`;
     return this.http.get(apiURL, {observe: 'response'});
   }
+
+  getAllAnswerShortQuestions() {
+    let apiURL = `${this.apiRoot}/getAllShortQuestions`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
 }

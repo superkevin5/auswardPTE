@@ -1,32 +1,36 @@
-<section class="repeatSentence-container">
+<section class="answerShortQuestion-container">
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
-  <h4 class="title">Speaking items - Repeat sentence</h4>
+  <h4 class="title">Speaking items - Answer Short Questions</h4>
 
   <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
 
     <h4 class="question-title">
       <span>Question {{currentIndex+1}} :
-        You will hear a sentence. Please repeat the sentence exactly as you hear it. You will hear the sentence only once.
+        You will hear a question. Please give a simple and short answer. Often just one or a few words is enough.
       </span>
     </h4>
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
 
-      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'repeatSentence'" [question]="repeatSentences[currentIndex]" *ngIf="!isLoading&&repeatSentences[currentIndex]?.description"></pte-player>
 
-      <div class="pte-recorder" color="primary">
-        <h2 class="pte-center"> Recorded Answer</h2>
+      <pte-player (onPlayEnd)="playerEnd($event)" [questionType]="'answerShortQuestion'"
+                  [question]="shortQuestions[currentIndex]"
+                  *ngIf="!isLoading&&shortQuestions[currentIndex]?.description"></pte-player>
 
-        <p color="primary" class="pte-center">{{currentStatus.text}}
-        </p>
-      </div>
+
+
+      <mat-card *ngIf="isAnswer">{{shortQuestions[currentIndex]?.answer}}</mat-card>
 
       <div class="pte-center pte-recorder-actions">
-        <button mat-raised-button color="primary" *ngIf="recordedDone" (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
-        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Script</button>
-        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Script</button>
+        <button mat-raised-button color="primary" (click)="tooltip.show()"><i class="material-icons">question_answer</i>Audio transcript
+        </button>
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
       </div>
-      <mat-card *ngIf="isAnswer">{{repeatSentences[currentIndex]?.description}}</mat-card>
+      <div class="pte-center">
+        <div [matTooltipPosition]="'below'" matTooltip="{{shortQuestions[currentIndex]?.description}}" #tooltip="matTooltip"></div>
+      </div>
+
     </div>
 
     <div class="question-footer">
@@ -63,7 +67,7 @@
             <strong>Number required</strong>
           </mat-error>
         </mat-form-field>
-        <span>Question {{currentIndex+1}} of  {{repeatSentences.length}}</span>
+        <span>Question {{currentIndex+1}} of  {{shortQuestions.length}}</span>
       </div>
     </div>
   </div>

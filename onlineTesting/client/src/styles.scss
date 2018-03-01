@@ -63,6 +63,11 @@ audio::-webkit-media-controls-panel {
   width: calc(100% + 30px);
 }
 
+.mat-tooltip {
+  width:300px;
+  font-size:20px;
+}
+
 mat-card {
   line-height: 25px;
 }

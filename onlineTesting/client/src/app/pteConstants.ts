@@ -6,6 +6,7 @@ export const pteConstants = {
     listenFillBlank:'http://localhost:9001/public/listenFillBlank/',
     repeatSentence:'http://localhost:9001/public/repeatSentence/',
     retellLecture:'http://localhost:9001/public/retellLecture/audio/',
+    answerShortQuestion:'http://localhost:9001/public/answershortquestion/',
   },
   descriptionPath: {
     retellLecture:'http://localhost:9001/public/retellLecture/description/',
@@ -38,7 +39,7 @@ export const pteConstants = {
       {
         key: 'answerShortQuestion',
         text: 'Answer Short Question',
-        path: ''
+        path: 'questions/short-question'
       }
     ],
     Listening: [
