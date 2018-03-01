@@ -20,12 +20,13 @@
         <p color="primary" class="pte-center">{{currentStatus.text}}
         </p>
       </div>
+
+      <div class="pte-center pte-recorder-actions">
+        <button mat-raised-button color="primary" *ngIf="recordedDone" (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Script</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Script</button>
+      </div>
       <mat-card *ngIf="isAnswer">{{repeatSentences[currentIndex]?.description}}</mat-card>
-
-      <button style="margin-bottom:5px" mat-raised-button color="primary" *ngIf="recordedDone" (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
-      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Script</button>
-      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Script</button>
-
     </div>
 
     <div class="question-footer">

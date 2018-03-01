@@ -6,16 +6,11 @@
 
     <h4 class="question-title">
       <span>Question {{currentIndex+1}} :
-        You will hear a sentence. Please repeat the sentence exactly as you hear it. You will hear the sentence only once.
+        You will hear a question. Please give a simple and short answer. Often just one or a few words is enough.
       </span>
     </h4>
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
-
-      <div class="pte-center">
-        <button mat-button (click)="tooltip.show()" >Audio transcript</button><br>
-        <!--<div class="pte-tooltip" [matTooltipPosition]="'above'" matTooltip="{{shortQuestions[currentIndex]?.description}}" #tooltip="matTooltip"></div>-->
-      </div>
 
 
       <pte-player (onPlayEnd)="playerEnd($event)" [questionType]="'answerShortQuestion'"
@@ -24,12 +19,17 @@
 
 
 
-      <mat-card *ngIf="isAnswer">{{shortQuestions[currentIndex]?.description}}</mat-card>
+      <mat-card *ngIf="isAnswer">{{shortQuestions[currentIndex]?.answer}}</mat-card>
 
-      <button style="margin-bottom:5px" mat-raised-button color="primary" *ngIf="recordedDone" (click)="playRecord()">
-        &nbsp;My &nbsp;record&nbsp;</button>
-      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Script</button>
-      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Script</button>
+      <div class="pte-center pte-recorder-actions">
+        <button mat-raised-button color="primary" (click)="tooltip.show()"><i class="material-icons">question_answer</i>Audio transcript
+        </button>
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+      </div>
+      <div class="pte-center">
+        <div [matTooltipPosition]="'below'" matTooltip="{{shortQuestions[currentIndex]?.description}}" #tooltip="matTooltip"></div>
+      </div>
 
     </div>
 
