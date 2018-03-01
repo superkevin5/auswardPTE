@@ -79,4 +79,9 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+  getAllDescribeImages() {
+    let apiURL = `${this.apiRoot}/getAllDescribeImages`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
 }

@@ -11,8 +11,10 @@ import { PlayerService } from './shared/player.service';
 import { RecorderService } from './shared/recorder.service';
 import {CommonService} from './common/common.service';
 import { ReadAloudComponent } from './readAloud/readAloud.component';
+import { DescribeImageComponent } from './describeImage/describeImage.component';
 import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorderParagraph.component';
 import { SpeakAloudRecorderComponent } from './shared/speakaloudrecorder.component';
+import { DescribeImageRecorderComponent } from './shared/describeimagerecorder.component';
 import { RetellLectureComponent } from './retellLecture/retellLecture.component';
 import { HowlerPlayerComponent } from './shared/howler.player.component';
 import { PlayerComponent } from './shared/player.component';
@@ -55,6 +57,8 @@ import { Dialog } from './shared/dialog.component';
     RepeatSentenceComponent,
     AnswerShortQuestionComponent,
     HowlerPlayerComponent,
+    DescribeImageComponent,
+    DescribeImageRecorderComponent,
     CreateSelectPipe
   ]
 })
