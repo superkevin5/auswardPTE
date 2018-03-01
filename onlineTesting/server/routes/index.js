@@ -14,6 +14,8 @@ var writeEssay_controller = require('../controller/writeEssayController');
 var retellLecture_controller = require('../controller/retellLectureController');
 
 var repeatSentence_controller = require('../controller/repeatSentenceController');
+var answerShortQuestion_controller = require('../controller/answerShortQuestionController');
+
 
 
 router.get('/', function(req, res, next) {
@@ -43,5 +45,8 @@ router.get('/pteausward/getAllRepeatSentence', repeatSentence_controller.getAllR
 router.get('/pteausward/getAllRetellLectureIds', retellLecture_controller.getAllRetellLectureIds);
 
 router.get('/pteausward/getRetellLectureById/:id', retellLecture_controller.getRetellLectureById);
+
+router.get('/pteausward/getAllShortQuestions', answerShortQuestion_controller.getAllShortQuestions);
+
 
 module.exports = router;
