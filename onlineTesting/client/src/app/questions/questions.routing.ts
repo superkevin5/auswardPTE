@@ -9,6 +9,8 @@ import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
 import { RetellLectureComponent } from './retellLecture/retellLecture.component';
 import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
+import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'read-aloud', pathMatch: 'full'  },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'high-light-incorrect-words', component: HighLightIncorrectWordsComponent },
   { path: 'write-essay', component: WriteEssayComponent },
   { path: 'repeat-sentence', component: RepeatSentenceComponent },
-  { path: 'retell-lecture', component: RetellLectureComponent }
+  { path: 'retell-lecture', component: RetellLectureComponent },
+  { path: 'short-question', component: AnswerShortQuestionComponent }
+
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

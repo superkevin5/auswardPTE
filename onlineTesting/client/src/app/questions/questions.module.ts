@@ -20,6 +20,7 @@ import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.c
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
 import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
+import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { HowlerPlayerService } from './shared/howler.player';
@@ -52,6 +53,7 @@ import { Dialog } from './shared/dialog.component';
     RetellLectureComponent,
     WriteEssayComponent,
     RepeatSentenceComponent,
+    AnswerShortQuestionComponent,
     HowlerPlayerComponent,
     CreateSelectPipe
   ]
