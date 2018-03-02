@@ -1,0 +1,42 @@
+.highLightIncorrectWords-container {
+
+  .listenFillInTheBlanksAnswer {
+    color: green;
+    font-size:1.5em;
+  }
+
+  min-height: 100%;
+  padding-top: 64px;
+  box-sizing: border-box;
+  .title {
+    padding: 10px;
+  }
+  .question-continer {
+    padding-top: 10px;
+    .question-title {
+      padding: 20px;
+      text-align: center;
+      font-style: italic;
+    }
+    .question-body {
+      padding: 10px;
+      line-height: 200%;
+      .answerAction {
+        margin-top:30px;
+      }
+    }
+    pte-player {
+      width:90%;
+    }
+    .question-footer {
+      width: 100%;
+      mat-button-toggle-group {
+        padding: 20px;
+      }
+      display: inline-flex;
+      justify-content: space-around;
+      align-items: flex-end;
+
+    }
+  }
+}

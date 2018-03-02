@@ -51,9 +51,9 @@ router.get('/pteausward/getAllShortQuestions', answerShortQuestion_controller.ge
 
 router.get('/pteausward/getAllDescribeImages', describeImage_controller.getAllDescribeImage);
 
-router.get('/pteausward/getAllHightLightIncorrectWordsIds', hightLightIncorrect_controller.getAllHighLightIncorrectWordsIds);
+router.get('/pteausward/getAllHighLightIncorrectWordsIds', hightLightIncorrect_controller.getAllHighLightIncorrectWordsIds);
 
-router.get('/pteausward/getHightLightIncorrectWordsById/:id', hightLightIncorrect_controller.getHighLightIncorrectWordsById);
+router.get('/pteausward/getHighLightIncorrectWordsById/:id', hightLightIncorrect_controller.getHighLightIncorrectWordsById);
 
 
 module.exports = router;
