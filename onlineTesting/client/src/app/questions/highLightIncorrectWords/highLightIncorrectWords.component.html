@@ -17,18 +17,18 @@
         <mat-card-content><span
           *ngFor="let word of selectedIncorrectedWord?._descriptionInArrayMode; let index = index">
 
-        <!--<span *ngIf="word?.text=='#404';else w" [ngClass]="{'selectBox': word?.text=='#404'}">-->
+        <!--<span *ngIf="word?.text=='#404';else w">-->
           <!--&nbsp;-->
-         <!--<mat-form-field>-->
-          <!--<input matInput placeholder="Enter missing word">-->
-         <!--<mat-hint [hidden]="!isAnswer" align="start" class="listenFillInTheBlanksAnswer">{{word?.answer}}</mat-hint>-->
-        <!--</mat-form-field>-->
-        <!--</span>-->
-        <!--<ng-template #w>{{word?.text}}</ng-template>-->
+          <!--<mat-form-field>-->
+          <!--{{word?.answer}}-->
+          <!--<mat-hint [hidden]="!isAnswer" align="start" class="listenFillInTheBlanksAnswer">{{word?.answer}}</mat-hint>-->
+          <!--</mat-form-field>-->
+          <!--</span>-->
+          <!--<ng-template #w>{{word?.text}}</ng-template>-->
 
 
-          <span (click)="toggleWord(index)">{{word?.text}}</span>
-
+          <span (click)="toggleWord(index)" [hidden]="word?.text=='#404'" [ngClass]="{'selected': isSelected(index),'selectedCorrect':isSelectedCorrect(index),'selectedNotCorrect':isSelectedNotCorrect(index)}">{{word?.text}}</span>
+          <span [hidden]="!isAnswer"  *ngIf="word?.text=='#404'" class="answer">{{word?.answer}}</span>
 
       </span></mat-card-content>
       </mat-card>

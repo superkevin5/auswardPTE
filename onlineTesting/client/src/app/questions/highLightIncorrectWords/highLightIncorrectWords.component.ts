@@ -28,14 +28,36 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
 
   }
 
-  toggleWord(index:number) {
+  isSelected(index: number) {
+    if (this.answerBook.indexOf(index) != -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isSelectedCorrect(index: number) {
+    let wordAfter = '';
+    if(this.selectedIncorrectedWord._descriptionInArrayMode[index + 1]){
+      wordAfter = this.selectedIncorrectedWord._descriptionInArrayMode[index + 1];
+    }
+    return this.isAnswer && this.isSelected(index) && wordAfter.text === '#404';
+  }
+  isSelectedNotCorrect(index: number) {
+    let wordAfter = '';
+    if(this.selectedIncorrectedWord._descriptionInArrayMode[index + 1]){
+      wordAfter = this.selectedIncorrectedWord._descriptionInArrayMode[index + 1];
+    }
+    return this.isAnswer && this.isSelected(index) && wordAfter.text !== '#404';
+  }
+
+  toggleWord(index: number) {
     var wordId = this.answerBook.indexOf(index);
-    if ( wordId!= -1) {
-      this.answerBook.splice(wordId,1);
-    } else{
+    if (wordId != -1) {
+      this.answerBook.splice(wordId, 1);
+    } else {
       this.answerBook.push(index);
     }
-    console.log(this.answerBook);
   }
 
   goto(pageNumber) {
