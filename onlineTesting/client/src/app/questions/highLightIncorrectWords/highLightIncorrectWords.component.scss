@@ -1,0 +1,66 @@
+.highLightIncorrectWords-container {
+
+  .listenFillInTheBlanksAnswer {
+    color: green;
+    font-size: 1.5em;
+  }
+  .selected {
+    background-color: yellow;
+  }
+  .selectedCorrect {
+    background-color: greenyellow;
+  }
+
+  .selectedNotCorrect {
+    background-color: red;
+  }
+
+  mat-card-content {
+    line-height: 3em;
+    span {
+      cursor: pointer;
+      margin-left: 2px;
+    }
+  }
+  .answer {
+    color: green;
+    font-weight: bold;
+  }
+  .answer::before {
+    content: "\21CC  ";
+  }
+  min-height: 100%;
+  padding-top: 64px;
+  box-sizing: border-box;
+  .title {
+    padding: 10px;
+  }
+  .question-continer {
+    padding-top: 10px;
+    .question-title {
+      padding: 20px;
+      text-align: center;
+      font-style: italic;
+    }
+    .question-body {
+      padding: 10px;
+      line-height: 200%;
+      .answerAction {
+        margin-top: 30px;
+      }
+    }
+    pte-player {
+      width: 90%;
+    }
+    .question-footer {
+      width: 100%;
+      mat-button-toggle-group {
+        padding: 20px;
+      }
+      display: inline-flex;
+      justify-content: space-around;
+      align-items: flex-end;
+
+    }
+  }
+}

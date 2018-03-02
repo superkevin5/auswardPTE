@@ -84,4 +84,14 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+  getAllHighLightIncorrectWordsIds(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllHighLightIncorrectWordsIds`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getHighLightIncorrectWordById(id: number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getHighLightIncorrectWordsById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
 }

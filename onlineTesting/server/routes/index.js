@@ -16,6 +16,7 @@ var retellLecture_controller = require('../controller/retellLectureController');
 var repeatSentence_controller = require('../controller/repeatSentenceController');
 var answerShortQuestion_controller = require('../controller/answerShortQuestionController');
 var describeImage_controller = require('../controller/describeImageController');
+var hightLightIncorrect_controller = require('../controller/highLightIncorrectWordsController');
 
 
 router.get('/', function(req, res, next) {
@@ -49,5 +50,10 @@ router.get('/pteausward/getRetellLectureById/:id', retellLecture_controller.getR
 router.get('/pteausward/getAllShortQuestions', answerShortQuestion_controller.getAllShortQuestions);
 
 router.get('/pteausward/getAllDescribeImages', describeImage_controller.getAllDescribeImage);
+
+router.get('/pteausward/getAllHighLightIncorrectWordsIds', hightLightIncorrect_controller.getAllHighLightIncorrectWordsIds);
+
+router.get('/pteausward/getHighLightIncorrectWordsById/:id', hightLightIncorrect_controller.getHighLightIncorrectWordsById);
+
 
 module.exports = router;

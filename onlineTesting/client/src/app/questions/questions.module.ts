@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { routing } from './questions.routing';
-import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
+import { HighLightIncorrectWordsComponent } from './highLightIncorrectWords/highLightIncorrectWords.component';
 import { PteHttpService } from './pte-http.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';

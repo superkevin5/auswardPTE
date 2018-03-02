@@ -8,6 +8,7 @@ export const pteConstants = {
     repeatSentence:'http://localhost:9001/public/repeatSentence/',
     retellLecture:'http://localhost:9001/public/retellLecture/audio/',
     answerShortQuestion:'http://localhost:9001/public/answershortquestion/',
+    highLightIncorrectWords:'http://localhost:9001/public/highLightIncorrect/',
   },
   descriptionPath: {
     retellLecture:'http://localhost:9001/public/retellLecture/description/',

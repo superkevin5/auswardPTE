@@ -8,9 +8,9 @@ import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorde
 import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
 import { RetellLectureComponent } from './retellLecture/retellLecture.component';
-import { HighLightIncorrectWordsComponent } from './highlightIncorrect/hightLightIncorrectWords.component';
 import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
 import { DescribeImageComponent } from './describeImage/describeImage.component';
+import { HighLightIncorrectWordsComponent } from './highLightIncorrectWords/highLightIncorrectWords.component';
 
 
 const routes: Routes = [
