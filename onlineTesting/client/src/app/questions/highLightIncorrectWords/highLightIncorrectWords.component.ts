@@ -77,6 +77,7 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
 
         }, ()=> {
           this.isLoading = false;
+          this.answerBook = [];
         });
     }
   }
@@ -93,6 +94,7 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
 
         }, ()=> {
           this.isLoading = false;
+          this.answerBook = [];
         });
     }
   }
@@ -109,6 +111,7 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
 
         }, ()=> {
           this.isLoading = false;
+          this.answerBook = [];
         });
     }
   }
