@@ -26,6 +26,8 @@ var repeatSentence = require('./model/repeatSentence');
 var retellLecture = require('./model/retellLecture');
 var answerShortQuestion = require('./model/answerShortQuestion');
 var describeImage = require('./model/describeImage');
+var highLightIncorrectWords = require('./model/highLightIncorrectWords');
+
 
 
 //init app
@@ -138,6 +140,8 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.retellLecture = retellLecture(db);
         models.answerShortQuestion = answerShortQuestion(db);
         models.describeImage = describeImage(db);
+        models.highLightIncorrectWords = highLightIncorrectWords(db);
+
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
