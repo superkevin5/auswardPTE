@@ -37,14 +37,15 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
   }
 
   isSelectedCorrect(index: number) {
-    let wordAfter = '';
+    let wordAfter = {text:''};
     if(this.selectedIncorrectedWord._descriptionInArrayMode[index + 1]){
       wordAfter = this.selectedIncorrectedWord._descriptionInArrayMode[index + 1];
     }
     return this.isAnswer && this.isSelected(index) && wordAfter.text === '#404';
   }
+
   isSelectedNotCorrect(index: number) {
-    let wordAfter = '';
+    let wordAfter =  {text:''};
     if(this.selectedIncorrectedWord._descriptionInArrayMode[index + 1]){
       wordAfter = this.selectedIncorrectedWord._descriptionInArrayMode[index + 1];
     }
