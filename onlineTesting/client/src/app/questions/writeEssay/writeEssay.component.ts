@@ -13,6 +13,7 @@ import * as _ from "lodash";
 })
 export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
   allWriteEssayIds: any = new Array();
+  essayRecorded: any = ' ';
   countDown: string = '20:00';
   selectedWriteEssay: any = {};
   currentIndex: number = 0;
@@ -37,7 +38,7 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
     if (remainder == 0) {
       return `${minutes}:00`;
     } else {
-      return remainder<10?`${minutes}:0${remainder}`:`${minutes}:${remainder}`;
+      return remainder < 10 ? `${minutes}:0${remainder}` : `${minutes}:${remainder}`;
     }
   }
 
@@ -61,6 +62,42 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
         });
     }
   }
+
+  saveTextAsFile(data, filename) {
+
+    if (!data) {
+      console.error('Console.save: No data');
+      return;
+    }
+
+    if (!filename) filename = 'console.json';
+
+    var blob = new Blob([data], {type: 'text/plain'}),
+      e = document.createEvent('MouseEvents'),
+      a = document.createElement('a');
+// FOR IE:
+
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blob, filename);
+    }
+    else {
+      var e = document.createEvent('MouseEvents'),
+        a = document.createElement('a');
+
+      a.download = filename;
+      a.href = window.URL.createObjectURL(blob);
+      a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':');
+      e.initEvent('click', true, false, window,
+        0, 0, 0, 0, 0, false, false, false, false, 0, null);
+      a.dispatchEvent(e);
+    }
+  }
+
+
+  download() {
+    this.saveTextAsFile(this.essayRecorded, 'pteEssay' + (this.currentIndex + 1));
+  }
+
 
   next() {
     this.toggleAnswer(false);

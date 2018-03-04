@@ -24,6 +24,8 @@ import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
 import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
+import { WordCounterPipe } from './pipe/word-counter.pipe';
+
 import { NgDragDropModule } from 'ng-drag-drop';
 import { HowlerPlayerService } from './shared/howler.player';
 import { Dialog } from './shared/dialog.component';
@@ -59,7 +61,8 @@ import { Dialog } from './shared/dialog.component';
     HowlerPlayerComponent,
     DescribeImageComponent,
     DescribeImageRecorderComponent,
-    CreateSelectPipe
+    CreateSelectPipe,
+    WordCounterPipe
   ]
 })
 export class QuestionsModule { }

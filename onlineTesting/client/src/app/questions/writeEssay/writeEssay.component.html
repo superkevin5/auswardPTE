@@ -5,10 +5,10 @@
   <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
 
     <h4 class="question-title">
-     <p>Question {{currentIndex+1}} :
+      <p>Question {{currentIndex+1}} :
         You will have 20 minutes to plan, write and revise an essay about the topic below.
         Your response will be judged on how well you develop</p>
-        <p>a position, organize your ideas, present supporting details,
+      <p>a position, organize your ideas, present supporting details,
         and control the elements of standard written English. You should write 200-300 words.</p>
 
     </h4>
@@ -17,10 +17,17 @@
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
       <mat-card>{{selectedWriteEssay?.description}}</mat-card>
       <p>Timer: <span class="countDown">{{countDown}}</span></p>
+      <mat-chip-list class="mat-chip-list-stacked">
+        <mat-chip>
+          {{essayRecorded|wordCounter}} words
+        </mat-chip>
+      </mat-chip-list>
       <mat-form-field>
-  <textarea matInput placeholder="Write your essay here" matTextareaAutosize matAutosizeMinRows="2"
-            matAutosizeMaxRows="5"></textarea>
+        <textarea matInput placeholder="Write your essay here" matTextareaAutosize matAutosizeMinRows="2"
+                  matAutosizeMaxRows="5" [(ngModel)]="essayRecorded"></textarea>
       </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="download()">Save</button>
     </div>
 
     <div class="question-footer">
