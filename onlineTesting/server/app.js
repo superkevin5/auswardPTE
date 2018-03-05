@@ -22,6 +22,8 @@ var readReorderParagraph = require('./model/readReorderParagraph');
 var readReorderParagraphQuestions = require('./model/readReorderParagraphQuestions');
 var listenFillBlank = require('./model/listenFillBlank');
 var writeEssay = require('./model/writeEssay');
+var summariseWrittenText= require('./model/summariseWrittenText');
+
 var repeatSentence = require('./model/repeatSentence');
 var retellLecture = require('./model/retellLecture');
 var answerShortQuestion = require('./model/answerShortQuestion');
@@ -141,7 +143,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.answerShortQuestion = answerShortQuestion(db);
         models.describeImage = describeImage(db);
         models.highLightIncorrectWords = highLightIncorrectWords(db);
-
+        models.summariseWrittenText = summariseWrittenText(db);
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
