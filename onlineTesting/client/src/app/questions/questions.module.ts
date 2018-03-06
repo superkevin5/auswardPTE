@@ -16,6 +16,7 @@ import { ReadReorderParagraphComponent } from './readReorderParagraph/readReorde
 import { SpeakAloudRecorderComponent } from './shared/speakaloudrecorder.component';
 import { DescribeImageRecorderComponent } from './shared/describeimagerecorder.component';
 import { RetellLectureComponent } from './retellLecture/retellLecture.component';
+import { SummariseWrittenTextComponent } from './summariseWrittenText/summariseWrittenText.component';
 import { HowlerPlayerComponent } from './shared/howler.player.component';
 import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
@@ -61,6 +62,7 @@ import { Dialog } from './shared/dialog.component';
     HowlerPlayerComponent,
     DescribeImageComponent,
     DescribeImageRecorderComponent,
+    SummariseWrittenTextComponent,
     CreateSelectPipe,
     WordCounterPipe
   ]

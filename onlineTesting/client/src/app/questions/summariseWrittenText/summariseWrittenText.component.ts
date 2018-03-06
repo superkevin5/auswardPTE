@@ -7,11 +7,11 @@ import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
 
 @Component({
-  selector: 'write-essay',
-  templateUrl: 'writeEssay.component.html',
-  styleUrls: ['writeEssay.component.scss']
+  selector: 'summarise-written-text',
+  templateUrl: 'summariseWrittenText.component.html',
+  styleUrls: ['summariseWrittenText.component.scss']
 })
-export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
+export class SummariseWrittenTextComponent implements OnInit,AfterContentInit,OnDestroy {
   allWriteEssayIds: any = new Array();
   essayRecorded: any = ' ';
   countDown: string = '20:00';
@@ -79,16 +79,6 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
 
     if (window.navigator && window.navigator.msSaveOrOpenBlob) {
       window.navigator.msSaveOrOpenBlob(blob, filename);
-    }
-    else {
-      var e = document.createEvent('MouseEvents'),
-        a = document.createElement('a');
-
-      a.download = filename;
-      a.href = window.URL.createObjectURL(blob);
-      a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':');
-      e.initEvent('click', true, false);
-      a.dispatchEvent(e);
     }
   }
 
