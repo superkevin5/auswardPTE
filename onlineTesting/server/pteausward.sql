@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-03-05 00:09:21
+Date: 2018-03-07 00:11:18
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,16 +42,15 @@ CREATE TABLE `describeimage` (
   `imagePath` varchar(40) DEFAULT NULL,
   `audioPath` varchar(40) DEFAULT NULL,
   `descriptionPath` varchar(40) DEFAULT NULL,
-  `category` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of describeimage
 -- ----------------------------
-INSERT INTO `describeimage` VALUES ('1', '1.jpg', '1.mp3', '1.txt', '1');
-INSERT INTO `describeimage` VALUES ('2', '2.jpg', '2.mp3', '2.txt', '2');
-INSERT INTO `describeimage` VALUES ('3', '3.jpg', '3.mp3', '3.txt', '3');
+INSERT INTO `describeimage` VALUES ('1', '1.jpg', '1.mp3', '1.pdf');
+INSERT INTO `describeimage` VALUES ('2', '2.jpg', '2.mp3', '2.txt');
+INSERT INTO `describeimage` VALUES ('3', '3.jpg', '3.mp3', '3.txt');
 
 -- ----------------------------
 -- Table structure for highlightincorrectwords
@@ -186,7 +185,6 @@ DROP TABLE IF EXISTS `retelllecture`;
 CREATE TABLE `retelllecture` (
   `id` int(20) NOT NULL,
   `audioPath` varchar(40) DEFAULT NULL,
-  `description` varchar(2000) DEFAULT NULL,
   `imagePath` varchar(40) DEFAULT NULL,
   `descriptionPath` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -195,8 +193,8 @@ CREATE TABLE `retelllecture` (
 -- ----------------------------
 -- Records of retelllecture
 -- ----------------------------
-INSERT INTO `retelllecture` VALUES ('1', '1.mp3', 'description', '1.jpg', '1.txt');
-INSERT INTO `retelllecture` VALUES ('2', '2.mp3', 'description2', '2.jpg', '2.txt');
+INSERT INTO `retelllecture` VALUES ('1', '1.mp3', '1.jpg', '1.txt');
+INSERT INTO `retelllecture` VALUES ('2', '2.mp3', '2.jpg', '2.txt');
 
 -- ----------------------------
 -- Table structure for sessions
