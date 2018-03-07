@@ -142,6 +142,7 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
   }
 
   processQuestions(question): void {
+    this.essayRecorded ='';
     this.selectedWriteEssay = question;
     this.countDown = '20:00';
     this._sub.unsubscribe();
