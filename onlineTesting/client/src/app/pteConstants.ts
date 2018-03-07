@@ -84,7 +84,7 @@ export const pteConstants = {
       {
         key: 'summarizeWrittenText',
         text: 'Summarize Written Text',
-        path: ''
+        path: 'questions/summarise-written-text'
       },
       {
         key: 'writeEssay',

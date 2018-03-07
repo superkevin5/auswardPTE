@@ -94,4 +94,15 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+  getAllSummariseWrittenTextIds(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllSummariseWrittenTextIds`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getAllSummariseWrittenTextById(id: number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllSummariseWrittenTextById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+
 }

@@ -7,15 +7,15 @@ import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
 
 @Component({
-  selector: 'write-essay',
-  templateUrl: 'writeEssay.component.html',
-  styleUrls: ['writeEssay.component.scss']
+  selector: 'summarise-written-text',
+  templateUrl: 'summariseWrittenText.component.html',
+  styleUrls: ['summariseWrittenText.component.scss']
 })
-export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
-  allWriteEssayIds: any = new Array();
+export class SummariseWrittenTextComponent implements OnInit,AfterContentInit,OnDestroy {
+  summariseWrittenTextIds: any = new Array();
   essayRecorded: any = ' ';
   countDown: string = '20:00';
-  selectedWriteEssay: any = {};
+  selectSummariseWrittenText: any = {};
   currentIndex: number = 0;
   isLoading: boolean = false;
   isAnswer: boolean = false;
@@ -25,9 +25,9 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
 
 
   constructor(private httpService: PteHttpService, private commonService: CommonService) {
-    this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 20 + 2000))
+    this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 10 + 2000))
       .subscribe(val => {
-        this.countDown = this.secondsToMinutesAndSeconds(60 * 20 - val);
+        this.countDown = this.secondsToMinutesAndSeconds(60 * 10 - val);
       });
   }
 
@@ -44,14 +44,14 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
 
   goto(pageNumber) {
     this.toggleAnswer(false);
-    if (!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber > this.allWriteEssayIds.length) {
+    if (!/^[1-9]$|^[1-9][0-9]+$/.test(pageNumber) || pageNumber > this.summariseWrittenTextIds.length) {
       console.log('invalid');
       return;
     }
 
-    if (pageNumber <= this.allWriteEssayIds.length) {
+    if (pageNumber <= this.summariseWrittenTextIds.length) {
       this.isLoading = true;
-      this.httpService.getWriteEssayById(this.allWriteEssayIds[pageNumber - 1]).subscribe(
+      this.httpService.getWriteEssayById(this.summariseWrittenTextIds[pageNumber - 1]).subscribe(
         data => {
           this.processQuestions(data.body);
           this.currentIndex = pageNumber - 1;
@@ -94,15 +94,15 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
 
 
   download() {
-    this.saveTextAsFile(this.essayRecorded, 'pteEssay' + (this.currentIndex + 1));
+    this.saveTextAsFile(this.essayRecorded, 'pteSummariseText' + (this.currentIndex + 1));
   }
 
 
   next() {
     this.toggleAnswer(false);
-    if (this.currentIndex < this.allWriteEssayIds.length - 1) {
+    if (this.currentIndex < this.summariseWrittenTextIds.length - 1) {
       this.isLoading = true;
-      this.httpService.getWriteEssayById(this.allWriteEssayIds[this.currentIndex + 1]).subscribe(
+      this.httpService.getAllSummariseWrittenTextById(this.summariseWrittenTextIds[this.currentIndex + 1]).subscribe(
         data => {
           this.processQuestions(data.body);
           this.currentIndex++;
@@ -118,7 +118,7 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
     this.toggleAnswer(false);
     if (this.currentIndex > 0) {
       this.isLoading = true;
-      this.httpService.getWriteEssayById(this.allWriteEssayIds[this.currentIndex - 1]).subscribe(
+      this.httpService.getAllSummariseWrittenTextById(this.summariseWrittenTextIds[this.currentIndex - 1]).subscribe(
         data => {
           this.processQuestions(data.body);
           this.currentIndex--;
@@ -143,23 +143,23 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
 
   processQuestions(question): void {
     this.essayRecorded ='';
-    this.selectedWriteEssay = question;
-    this.countDown = '20:00';
+    this.selectSummariseWrittenText = question;
+    this.countDown = '10:00';
     this._sub.unsubscribe();
-    this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 20 + 2000))
+    this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 10 + 2000))
       .subscribe(val => {
-        this.countDown = this.secondsToMinutesAndSeconds(60 * 20 - val);
+        this.countDown = this.secondsToMinutesAndSeconds(60 * 10 - val);
       });
   }
 
   ngAfterContentInit(): void {
     this.isLoading = true;
-    this.httpService.getAllWriteEssayIds().flatMap((data)=> {
+    this.httpService.getAllSummariseWrittenTextIds().flatMap((data)=> {
 
       if (data.body && data.body.length > 0) {
-        this.allWriteEssayIds = data.body;
+        this.summariseWrittenTextIds = data.body;
         this.currentIndex = 0;
-        return this.httpService.getWriteEssayById(this.allWriteEssayIds[0]);
+        return this.httpService.getAllSummariseWrittenTextById(this.summariseWrittenTextIds[0]);
       }
       else {
         return Observable.of({body: '1'});
@@ -184,7 +184,7 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
   }
 
   ngOnDestroy() {
-    this.countDown = '20:00';
+    this.countDown = '10:00';
     this._sub.unsubscribe();
   }
 }

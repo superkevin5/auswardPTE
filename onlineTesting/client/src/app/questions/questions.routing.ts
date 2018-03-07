@@ -11,6 +11,7 @@ import { RetellLectureComponent } from './retellLecture/retellLecture.component'
 import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
 import { DescribeImageComponent } from './describeImage/describeImage.component';
 import { HighLightIncorrectWordsComponent } from './highLightIncorrectWords/highLightIncorrectWords.component';
+import { SummariseWrittenTextComponent } from './summariseWrittenText/summariseWrittenText.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'repeat-sentence', component: RepeatSentenceComponent },
   { path: 'retell-lecture', component: RetellLectureComponent },
   { path: 'short-question', component: AnswerShortQuestionComponent },
-  { path: 'describe-image', component: DescribeImageComponent }
+  { path: 'describe-image', component: DescribeImageComponent },
+  { path: 'summarise-written-text', component: SummariseWrittenTextComponent }
 
 
 ];

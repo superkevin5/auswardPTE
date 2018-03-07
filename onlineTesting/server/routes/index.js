@@ -11,6 +11,8 @@ var listenFillBlank_controller = require('../controller/listenFillBlankControlle
 
 var writeEssay_controller = require('../controller/writeEssayController');
 
+var summariseWrittenText_controller = require('../controller/summariseWrittenTextController');
+
 var retellLecture_controller = require('../controller/retellLectureController');
 
 var repeatSentence_controller = require('../controller/repeatSentenceController');
@@ -54,6 +56,10 @@ router.get('/pteausward/getAllDescribeImages', describeImage_controller.getAllDe
 router.get('/pteausward/getAllHighLightIncorrectWordsIds', hightLightIncorrect_controller.getAllHighLightIncorrectWordsIds);
 
 router.get('/pteausward/getHighLightIncorrectWordsById/:id', hightLightIncorrect_controller.getHighLightIncorrectWordsById);
+
+router.get('/pteausward/getAllSummariseWrittenTextIds', summariseWrittenText_controller.getAllSummariseWrittenTextIds);
+
+router.get('/pteausward/getAllSummariseWrittenTextById/:id', summariseWrittenText_controller.getAllSummariseWrittenTextById);
 
 
 module.exports = router;

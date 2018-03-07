@@ -1,21 +1,18 @@
-<section class="writeEssay-container">
+<section class="summariseWrittenText-container">
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
-  <h4 class="title">Writing items - Write Essay</h4>
+  <h4 class="title">Writing items - Summarize written text</h4>
 
   <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
 
     <h4 class="question-title">
       <p>Question {{currentIndex+1}} :
-        You will have 20 minutes to plan, write and revise an essay about the topic below.
-        Your response will be judged on how well you develop</p>
-      <p>a position, organize your ideas, present supporting details,
-        and control the elements of standard written English. You should write 200-300 words.</p>
-
+        You have 10 minutes to write your summary. Make sure to include the main points of the reading passage in a
+        full, single sentence of no more than 75 words.
+      </p>
     </h4>
 
-
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
-      <mat-card>{{selectedWriteEssay?.description}}</mat-card>
+      <mat-card>{{selectSummariseWrittenText?.description}}</mat-card>
       <p>Timer: <span class="countDown">{{countDown}}</span></p>
       <mat-chip-list class="mat-chip-list-stacked">
         <mat-chip>
@@ -23,11 +20,16 @@
         </mat-chip>
       </mat-chip-list>
       <mat-form-field>
-        <textarea matInput placeholder="Write your essay here" matTextareaAutosize matAutosizeMinRows="2"
+        <textarea matInput placeholder="Write your summary here" matTextareaAutosize matAutosizeMinRows="2"
                   matAutosizeMaxRows="5" [(ngModel)]="essayRecorded"></textarea>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="download()">Save</button>
+      <div>
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+      </div>
+      <mat-card *ngIf="isAnswer">{{selectSummariseWrittenText?.answer}}</mat-card>
+
     </div>
 
     <div class="question-footer">
@@ -64,7 +66,7 @@
             <strong>Number required</strong>
           </mat-error>
         </mat-form-field>
-        <span>Question {{currentIndex+1}} of  {{allWriteEssayIds.length}}</span>
+        <span>Question {{currentIndex+1}} of  {{summariseWrittenTextIds.length}}</span>
       </div>
     </div>
   </div>

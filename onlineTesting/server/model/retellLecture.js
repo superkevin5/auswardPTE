@@ -4,7 +4,6 @@ module.exports = function (db) {
         id: Number,
         audioPath: String,
         imagePath: String,
-        description: String,
         descriptionPath: String
     });
 };
