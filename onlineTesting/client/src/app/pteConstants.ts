@@ -9,6 +9,7 @@ export const pteConstants = {
     retellLecture:'http://localhost:9001/public/retellLecture/audio/',
     answerShortQuestion:'http://localhost:9001/public/answershortquestion/',
     highLightIncorrectWords:'http://localhost:9001/public/highLightIncorrect/',
+    writeFromDictation:'http://localhost:9001/public/writeFromDictation/',
   },
   descriptionPath: {
     retellLecture:'http://localhost:9001/public/retellLecture/description/',
@@ -55,7 +56,7 @@ export const pteConstants = {
       {
         key: 'writeFromDictation',
         text: 'Write From Dictation',
-        path: ''
+        path: 'questions/write-from-dictation'
       },
       {
         key: 'listeningFillIntheBlanks',

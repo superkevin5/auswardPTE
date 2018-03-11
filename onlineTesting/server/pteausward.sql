@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-03-07 00:11:18
+Date: 2018-03-12 00:38:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -243,3 +243,20 @@ CREATE TABLE `writeessay` (
 -- ----------------------------
 INSERT INTO `writeessay` VALUES ('1', 'Age discrimination occurs when a decison is made on the basis of a person\'s age. In the workplace, these are most often decisions about being employed in the first place, winnning promotions of being unfairly dismissed. Should discrimination against older workers be made illegal?');
 INSERT INTO `writeessay` VALUES ('2', 'Age discrimination occurs when a decison is made on the basis of a person\'s age. In the workplace, these are most often decisions about being employed in the first place, winnning promotions of being unfairly dismissed. Should discrimination against older workers be made illegal?');
+
+-- ----------------------------
+-- Table structure for writefromdictation
+-- ----------------------------
+DROP TABLE IF EXISTS `writefromdictation`;
+CREATE TABLE `writefromdictation` (
+  `id` int(20) NOT NULL,
+  `audioPath` varchar(30) DEFAULT NULL,
+  `answer` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of writefromdictation
+-- ----------------------------
+INSERT INTO `writefromdictation` VALUES ('1', '1.mp3', 'This class will look at the structure of the essay');
+INSERT INTO `writefromdictation` VALUES ('2', '2.mp3', 'They have struggled since last year to make their services paid.');

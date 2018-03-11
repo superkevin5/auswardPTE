@@ -12,7 +12,7 @@ import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQ
 import { DescribeImageComponent } from './describeImage/describeImage.component';
 import { HighLightIncorrectWordsComponent } from './highLightIncorrectWords/highLightIncorrectWords.component';
 import { SummariseWrittenTextComponent } from './summariseWrittenText/summariseWrittenText.component';
-
+import { WriteFromDictationComponent } from './writeFromDictation/WriteFromDictation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'read-aloud', pathMatch: 'full'  },
@@ -26,9 +26,8 @@ const routes: Routes = [
   { path: 'retell-lecture', component: RetellLectureComponent },
   { path: 'short-question', component: AnswerShortQuestionComponent },
   { path: 'describe-image', component: DescribeImageComponent },
-  { path: 'summarise-written-text', component: SummariseWrittenTextComponent }
-
-
+  { path: 'summarise-written-text', component: SummariseWrittenTextComponent },
+  { path: 'write-from-dictation', component: WriteFromDictationComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);
