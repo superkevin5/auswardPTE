@@ -79,6 +79,11 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+  getAllWriteFromDictation() {
+    let apiURL = `${this.apiRoot}/getAllWriteFromDictations`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
   getAllDescribeImages() {
     let apiURL = `${this.apiRoot}/getAllDescribeImages`;
     return this.http.get(apiURL, {observe: 'response'});

@@ -22,6 +22,7 @@ import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
 import { WriteEssayComponent } from './writeEssay/writeEssay.component';
+import { WriteFromDictationComponent } from './writeFromDictation/WriteFromDictation.component';
 import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.component';
 import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
@@ -63,6 +64,7 @@ import { Dialog } from './shared/dialog.component';
     DescribeImageComponent,
     DescribeImageRecorderComponent,
     SummariseWrittenTextComponent,
+    WriteFromDictationComponent,
     CreateSelectPipe,
     WordCounterPipe
   ]

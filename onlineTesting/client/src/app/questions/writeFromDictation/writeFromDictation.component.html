@@ -1,0 +1,75 @@
+<section class="writeFromDictation-container">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
+  <h4 class="title">Writing items - Write from dictation</h4>
+
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
+
+    <h4 class="question-title">
+      <span>Question {{currentIndex+1}} :
+        You will hear a sentence. Type the sentence in the box below exactly as you hear it. Write it as much of the sentence as you can
+        .You will hear the sentence only once.
+      </span>
+    </h4>
+
+    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+
+
+      <pte-player (onPlayEnd)="playerEnd($event)" [questionType]="'writeFromDictation'"
+                  [question]="writeFromDictations[currentIndex]"
+                  *ngIf="!isLoading&&writeFromDictations[currentIndex]?.answer"></pte-player>
+
+
+
+      <mat-card *ngIf="isAnswer">{{writeFromDictations[currentIndex]?.answer}}</mat-card>
+
+      <div class="pte-center pte-recorder-actions">
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+      </div>
+
+      <mat-form-field>
+        <textarea matInput placeholder="Write your answer here" matTextareaAutosize matAutosizeMinRows="2"
+                  matAutosizeMaxRows="5" [(ngModel)]="essayRecorded"></textarea>
+      </mat-form-field>
+
+    </div>
+
+    <div class="question-footer">
+
+      <mat-button-toggle-group>
+        <button (click)="previous();" mat-button="" title="Previous">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_before
+        </mat-icon></span>
+          Pre
+        </button>
+
+        <button (click)="next();" mat-button="" title="Next">
+      <span class="mat-button-wrapper">
+          Next
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_next
+        </mat-icon></span>
+        </button>
+      </mat-button-toggle-group>
+
+      <div fxHide.xs fxHide.sm>
+        <button mat-button (click)="goto(gotoNumber);">Go</button>
+        <mat-form-field>
+          <input matInput [formControl]="pageFormControl"
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
+          <mat-error *ngIf="pageFormControl.errors?.pattern">
+            <strong>Should be a number</strong>
+          </mat-error>
+          <mat-error *ngIf="pageFormControl.errors?.required">
+            <strong>Number required</strong>
+          </mat-error>
+        </mat-form-field>
+        <span>Question {{currentIndex+1}} of  {{writeFromDictations.length}}</span>
+      </div>
+    </div>
+  </div>
+</section>

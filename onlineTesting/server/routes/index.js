@@ -20,6 +20,8 @@ var answerShortQuestion_controller = require('../controller/answerShortQuestionC
 var describeImage_controller = require('../controller/describeImageController');
 var hightLightIncorrect_controller = require('../controller/highLightIncorrectWordsController');
 
+var writeFromDictation_controller = require('../controller/writeFromDictationController');
+
 
 router.get('/', function(req, res, next) {
 	res.send('Hello testing');
@@ -50,6 +52,9 @@ router.get('/pteausward/getAllRetellLectureIds', retellLecture_controller.getAll
 router.get('/pteausward/getRetellLectureById/:id', retellLecture_controller.getRetellLectureById);
 
 router.get('/pteausward/getAllShortQuestions', answerShortQuestion_controller.getAllShortQuestions);
+
+router.get('/pteausward/getAllWriteFromDictations', writeFromDictation_controller.getAllWriteFromDictations);
+
 
 router.get('/pteausward/getAllDescribeImages', describeImage_controller.getAllDescribeImage);
 

@@ -29,6 +29,7 @@ var retellLecture = require('./model/retellLecture');
 var answerShortQuestion = require('./model/answerShortQuestion');
 var describeImage = require('./model/describeImage');
 var highLightIncorrectWords = require('./model/highLightIncorrectWords');
+var writeFromDictation = require('./model/writeFromDictation');
 
 
 
@@ -144,7 +145,7 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.describeImage = describeImage(db);
         models.highLightIncorrectWords = highLightIncorrectWords(db);
         models.summariseWrittenText = summariseWrittenText(db);
-
+        models.writeFromDictation = writeFromDictation(db);
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
         // });
