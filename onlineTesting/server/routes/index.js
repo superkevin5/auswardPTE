@@ -22,6 +22,7 @@ var hightLightIncorrect_controller = require('../controller/highLightIncorrectWo
 
 var writeFromDictation_controller = require('../controller/writeFromDictationController');
 
+var summariseSpokenText_controller = require('../controller/summariseSpokenTextController');
 
 router.get('/', function(req, res, next) {
 	res.send('Hello testing');
@@ -66,5 +67,8 @@ router.get('/pteausward/getAllSummariseWrittenTextIds', summariseWrittenText_con
 
 router.get('/pteausward/getAllSummariseWrittenTextById/:id', summariseWrittenText_controller.getAllSummariseWrittenTextById);
 
+router.get('/pteausward/getAllSummariseSpokenTextIds', summariseSpokenText_controller.getAllSummariseSpokenTextIds);
+
+router.get('/pteausward/getAllSummariseSpokenTextById/:id', summariseSpokenText_controller.getSummariseSpokenTextById);
 
 module.exports = router;

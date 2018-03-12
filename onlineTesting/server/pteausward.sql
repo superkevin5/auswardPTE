@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-03-12 00:38:31
+Date: 2018-03-12 23:51:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -210,6 +210,23 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for summarisespokentext
+-- ----------------------------
+DROP TABLE IF EXISTS `summarisespokentext`;
+CREATE TABLE `summarisespokentext` (
+  `id` int(20) NOT NULL,
+  `audioPath` varchar(20) DEFAULT NULL,
+  `description` varchar(2000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of summarisespokentext
+-- ----------------------------
+INSERT INTO `summarisespokentext` VALUES ('1', '1.mp3', 'So, you see, physical illness can have psychological causes. Now, we just have time to introduce another interesting example of the interaction between the mind and the body, placebos. Placebos—maybe you\'ve heard them called sugar pills—are harmless substances, not always sugar, that are used routinely on groups of sick people in experiments. These experiments test the effectiveness of new drugs. One group is given the new drug, the other group is given a placebo, and the results are measured. As you might guess, some of the people who receive the new drug get better. Surprisingly, however, some of the placebo group also get better. Why? Well, it\'s an interesting question, one which doctors can\'t quite answer. Some of the group may have gotten better on their own, without any treatment at all, but research has shown that the very act of taking a medication that you think will make you better, often does make you feel better. Have you ever taken an aspirin and felt better in five minutes? Aspirin doesn\'t work that fast, does it? Basically, if you believe you will get better, sometimes you do. The history of how doctors and healers have used the mind-body connection to cure people is long and interesting, but I see that it\'s time to chose, so I\'ll have to cover this in the next class. You\'ll have to hold your questions on this topic till then. Before you go, I have some handouts for you concerning the midterm exams next week.\r\n\r\n');
+INSERT INTO `summarisespokentext` VALUES ('2', '2.mp3', 'Well, in answer to your question, several women actively participated in the Civil War. The one that comes immediately to mind is Mary Walker. She\'s important because she\'s the only woman ever to be awarded the Congressional Medal of Honor. As you know, this medal is given to people who\'ve served the United States with exceptional bravery. In addition, she was the only female physician in either of the two armies that fought in that war. Even though she had two medical degrees, many officers made her life difficult because they didn\'t believe that a woman should be a doctor. However, she refused to back down and leave the army. In fact, she risked her life several times during the war and was even captured at one point, but she was soon released. Umm, after the war, she was arrested several times for wearing pants. And although Congress eventually tried to take her medal away, she refused to give it back and continued to wear it wherever she went. She died in 1919, a year before women received the right to vote, which brings me to my next point.');
 
 -- ----------------------------
 -- Table structure for summarisewrittentext

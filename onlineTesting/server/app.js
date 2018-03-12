@@ -31,6 +31,7 @@ var describeImage = require('./model/describeImage');
 var highLightIncorrectWords = require('./model/highLightIncorrectWords');
 var writeFromDictation = require('./model/writeFromDictation');
 
+var summariseSpokenText = require('./model/summariseSpokenText');
 
 
 //init app
@@ -146,6 +147,8 @@ app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.
         models.highLightIncorrectWords = highLightIncorrectWords(db);
         models.summariseWrittenText = summariseWrittenText(db);
         models.writeFromDictation = writeFromDictation(db);
+        models.summariseSpokenText = summariseSpokenText(db);
+
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true
         // });
