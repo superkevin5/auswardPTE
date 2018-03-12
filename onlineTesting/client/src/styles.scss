@@ -78,9 +78,9 @@ mat-card {
       margin-top:20px;
     }
     .mat-input-flex {
-      border: solid 1px !important;
       border-radius: 2px;
       height: 100% !important;
+      border:2px dashed #D1C7AC;
     }
     textarea{
       padding:5px;
@@ -98,8 +98,9 @@ mat-card {
       margin-top:20px;
     }
     .mat-input-flex {
-      border: solid 1px !important;
       border-radius: 2px;
+      border:2px dashed #D1C7AC;
+
     }
     .mat-form-field{
       width:100%;
@@ -116,9 +117,8 @@ mat-card {
       margin-top:20px;
     }
     .mat-input-flex {
-      border: solid 1px !important;
       border-radius: 2px;
-
+      border:2px dashed #D1C7AC;
     }
     .mat-form-field{
       width:400px;
@@ -127,6 +127,15 @@ mat-card {
       padding:5px;
       height: 50px !important;
     }
+
   }
+
+  @media only screen and (max-width: 768px) {
+    .mat-form-field{
+      width:100% !important;
+    }
+  }
+
+
 }
 
