@@ -17,6 +17,7 @@ import { SpeakAloudRecorderComponent } from './shared/speakaloudrecorder.compone
 import { DescribeImageRecorderComponent } from './shared/describeimagerecorder.component';
 import { RetellLectureComponent } from './retellLecture/retellLecture.component';
 import { SummariseWrittenTextComponent } from './summariseWrittenText/summariseWrittenText.component';
+import { SummariseSpokenTextComponent } from './summariseSpokenText/summariseSpokenText.component';
 import { HowlerPlayerComponent } from './shared/howler.player.component';
 import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
@@ -27,7 +28,6 @@ import { RepeatSentenceComponent } from './repeatSentence/repeatSentence.compone
 import { AnswerShortQuestionComponent } from './answerShortQuestion/answerShortQuestion.component';
 import { CreateSelectPipe } from './pipe/create-select.pipe';
 import { WordCounterPipe } from './pipe/word-counter.pipe';
-
 import { NgDragDropModule } from 'ng-drag-drop';
 import { HowlerPlayerService } from './shared/howler.player';
 import { Dialog } from './shared/dialog.component';
@@ -65,6 +65,7 @@ import { Dialog } from './shared/dialog.component';
     DescribeImageRecorderComponent,
     SummariseWrittenTextComponent,
     WriteFromDictationComponent,
+    SummariseSpokenTextComponent,
     CreateSelectPipe,
     WordCounterPipe
   ]

@@ -109,5 +109,15 @@ export class PteHttpService {
     return this.http.get(apiURL, {observe: 'response'});
   }
 
+  getAllSummariseSpokenTextIds(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllSummariseSpokenTextIds`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getSummariseSpokenTextById(id:number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getSummariseSpokenTextById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
 
 }

@@ -69,6 +69,6 @@ router.get('/pteausward/getAllSummariseWrittenTextById/:id', summariseWrittenTex
 
 router.get('/pteausward/getAllSummariseSpokenTextIds', summariseSpokenText_controller.getAllSummariseSpokenTextIds);
 
-router.get('/pteausward/getAllSummariseSpokenTextById/:id', summariseSpokenText_controller.getSummariseSpokenTextById);
+router.get('/pteausward/getSummariseSpokenTextById/:id', summariseSpokenText_controller.getSummariseSpokenTextById);
 
 module.exports = router;
