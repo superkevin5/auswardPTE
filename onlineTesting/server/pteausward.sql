@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-03-12 00:38:31
+Date: 2018-03-13 23:03:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -210,6 +210,23 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for summarisespokentext
+-- ----------------------------
+DROP TABLE IF EXISTS `summarisespokentext`;
+CREATE TABLE `summarisespokentext` (
+  `id` int(20) NOT NULL,
+  `audioPath` varchar(20) DEFAULT NULL,
+  `descriptionPath` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of summarisespokentext
+-- ----------------------------
+INSERT INTO `summarisespokentext` VALUES ('1', '1.mp3', '1.txt');
+INSERT INTO `summarisespokentext` VALUES ('2', '2.mp3', '1.txt');
 
 -- ----------------------------
 -- Table structure for summarisewrittentext

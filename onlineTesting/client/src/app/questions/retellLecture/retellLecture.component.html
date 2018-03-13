@@ -15,7 +15,7 @@
 
       <img src="{{retellLecture?.imagePath}}"  *ngIf="retellLecture?.imagePath">
       <div>
-      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'retellLecture'" [question]="retellLecture" *ngIf="!isLoading&&retellLecture?.description"></pte-player>
+      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'retellLecture'" [question]="retellLecture" *ngIf="!isLoading"></pte-player>
 
 
       <div class="pte-recorder" color="primary">

@@ -1,0 +1,75 @@
+<section class="summariseSpokenText-container">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
+  <h4 class="title">Listening items - Summarize Spoken Text</h4>
+
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
+
+    <h4 class="question-title">
+      <span><p>Question {{currentIndex+1}} :
+      You will hear a short lecture. Write a summary for a fellow student who was not present at the lecture.</p>
+        <p>You should write 50-70 words.
+        You have 10 minutes to finish this task. Your response will be judged on the quality of your writing and on how well your response presents
+        the key points presented in the lecture.
+        </p>
+      </span>
+    </h4>
+
+    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+
+      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'summariseSpokenText'"
+                  [question]="summariseSpokenText" *ngIf="!isLoading"></pte-player>
+
+      <p>Timer: <span class="countDown">{{countDown}}</span></p>
+      <mat-chip-list class="mat-chip-list-stacked">
+        <mat-chip>
+          {{essayRecorded|wordCounter}} words
+        </mat-chip>
+      </mat-chip-list>
+
+    </div>
+    <mat-form-field class="question-fill">
+        <textarea matInput placeholder="Write your summary here" matTextareaAutosize matAutosizeMinRows="2"
+                  matAutosizeMaxRows="5" [(ngModel)]="essayRecorded"></textarea>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" (click)="downloadScript()">Open Script</button>
+    </div>
+    <div class="question-footer">
+
+      <mat-button-toggle-group>
+        <button (click)="previous();" mat-button="" title="Previous">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_before
+        </mat-icon></span>
+          Pre
+        </button>
+
+        <button (click)="next();" mat-button="" title="Next">
+      <span class="mat-button-wrapper">
+          Next
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_next
+        </mat-icon></span>
+        </button>
+      </mat-button-toggle-group>
+
+      <div fxHide.xs fxHide.sm>
+        <button mat-button (click)="goto(gotoNumber);">Go</button>
+        <mat-form-field>
+          <input matInput [formControl]="pageFormControl"
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
+          <mat-error *ngIf="pageFormControl.errors?.pattern">
+            <strong>Should be a number</strong>
+          </mat-error>
+          <mat-error *ngIf="pageFormControl.errors?.required">
+            <strong>Number required</strong>
+          </mat-error>
+        </mat-form-field>
+        <span>Question {{currentIndex+1}} of  {{allsummariseSpokenTextIds.length}}</span>
+      </div>
+    </div>
+  </div>
+</section>

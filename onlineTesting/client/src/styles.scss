@@ -56,7 +56,7 @@ html, body {
 }
 
 audio::-webkit-media-controls-enclosure {
-  overflow:hidden;
+  overflow: hidden;
 }
 
 audio::-webkit-media-controls-panel {
@@ -64,8 +64,8 @@ audio::-webkit-media-controls-panel {
 }
 
 .mat-tooltip {
-  width:300px;
-  font-size:20px;
+  width: 300px;
+  font-size: 20px;
 }
 
 mat-card {
@@ -74,68 +74,87 @@ mat-card {
 
 .writeEssay-container {
   .question-body {
-    .mat-input-container{
-      margin-top:20px;
+    .mat-input-container {
+      margin-top: 20px;
     }
     .mat-input-flex {
       border-radius: 2px;
       height: 100% !important;
-      border:2px dashed #D1C7AC;
+      border: 2px dashed #D1C7AC;
     }
-    textarea{
-      padding:5px;
+    textarea {
+      padding: 5px;
       height: 120px !important;
     }
-    .mat-form-field{
-      width:100%;
+    .mat-form-field {
+      width: 100%;
     }
   }
 }
 
 .summariseWrittenText-container {
   .question-body {
-    .mat-input-container{
-      margin-top:20px;
+    .mat-input-container {
+      margin-top: 20px;
     }
     .mat-input-flex {
       border-radius: 2px;
-      border:2px dashed #D1C7AC;
+      border: 2px dashed #D1C7AC;
 
     }
-    .mat-form-field{
-      width:100%;
+    .mat-form-field {
+      width: 100%;
     }
-    textarea{
-      padding:5px;
+    textarea {
+      padding: 5px;
       height: 50px !important;
     }
   }
 }
-.writeFromDictation-container {
-  .question-body {
-    .mat-input-container{
-      margin-top:20px;
+
+.summariseSpokenText-container {
+  .question-fill{
+    .mat-input-container {
+      margin-top: 20px;
     }
     .mat-input-flex {
       border-radius: 2px;
-      border:2px dashed #D1C7AC;
+      border: 2px dashed #D1C7AC;
     }
-    .mat-form-field{
-      width:400px;
-    }
-    textarea{
-      padding:5px;
+    textarea {
+      padding: 5px;
       height: 50px !important;
     }
+  }
 
+  .question-fill.mat-form-field {
+      width: 90%;
+    }
+
+}
+
+.writeFromDictation-container {
+  .question-body {
+    .mat-input-container {
+      margin-top: 20px;
+    }
+    .mat-input-flex {
+      border-radius: 2px;
+      border: 2px dashed #D1C7AC;
+    }
+    .mat-form-field {
+      width: 400px;
+    }
+    textarea {
+      padding: 5px;
+      height: 50px !important;
+    }
   }
 
   @media only screen and (max-width: 768px) {
-    .mat-form-field{
-      width:100% !important;
+    .mat-form-field {
+      width: 100% !important;
     }
   }
-
-
 }
 

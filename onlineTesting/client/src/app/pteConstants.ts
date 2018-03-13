@@ -10,10 +10,12 @@ export const pteConstants = {
     answerShortQuestion:'http://localhost:9001/public/answershortquestion/',
     highLightIncorrectWords:'http://localhost:9001/public/highLightIncorrect/',
     writeFromDictation:'http://localhost:9001/public/writeFromDictation/',
+    summariseSpokenText:'http://localhost:9001/public/summariseSpokenText/audio/',
   },
   descriptionPath: {
     retellLecture:'http://localhost:9001/public/retellLecture/description/',
     describeImage:'http://localhost:9001/public/describeImage/description/',
+    summariseSpokenText:'http://localhost:9001/public/summariseSpokenText/description/',
   },
   imagePath: {
     retellLecture:'http://localhost:9001/public/retellLecture/image/',
@@ -51,7 +53,7 @@ export const pteConstants = {
       {
         key: 'summarizeSpokenText',
         text: 'Summarize Spoken Text',
-        path: ''
+        path: 'questions/summarise-spoken-text'
       },
       {
         key: 'writeFromDictation',
