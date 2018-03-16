@@ -6,11 +6,14 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
 import {DropEvent} from 'ng-drag-drop';
 import * as _ from "lodash";
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'read-reorder-paragraph',
   templateUrl: 'readReorderParagraph.component.html',
-  styleUrls: ['readReorderParagraph.component.scss']
+  styleUrls: ['readReorderParagraph.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class ReadReorderParagraphComponent implements OnInit,AfterContentInit {
 

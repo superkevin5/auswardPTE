@@ -5,11 +5,14 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'high-light-incorrect-words',
   templateUrl: 'highLightIncorrectWords.component.html',
-  styleUrls: ['highLightIncorrectWords.component.scss']
+  styleUrls: ['highLightIncorrectWords.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit {
 

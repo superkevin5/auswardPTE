@@ -5,11 +5,14 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'summarise-written-text',
   templateUrl: 'summariseWrittenText.component.html',
-  styleUrls: ['summariseWrittenText.component.scss']
+  styleUrls: ['summariseWrittenText.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class SummariseWrittenTextComponent implements OnInit,AfterContentInit,OnDestroy {
   summariseWrittenTextIds: any = new Array();

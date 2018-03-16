@@ -5,11 +5,14 @@ import {PlayerService} from '../shared/player.service';
 import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {pteConstants} from '../../pteConstants';
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'summarise-spoken-text',
   templateUrl: 'summariseSpokenText.component.html',
-  styleUrls: ['summariseSpokenText.component.scss']
+  styleUrls: ['summariseSpokenText.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class SummariseSpokenTextComponent implements OnInit, OnDestroy {
   allsummariseSpokenTextIds: any = new Array();

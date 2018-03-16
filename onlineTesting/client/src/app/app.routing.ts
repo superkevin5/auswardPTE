@@ -6,4 +6,4 @@ const routes: Routes = [
   { path: 'questions',  loadChildren: './questions/questions.module#QuestionsModule' }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes,{useHash: true});

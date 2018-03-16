@@ -4,11 +4,14 @@ import {FormControl} from '@angular/forms';
 import {RecorderService} from '../shared/recorder.service';
 import {PlayerService} from '../shared/player.service';
 import {Observable} from 'rxjs';
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'repeat-sentence',
   templateUrl: 'repeatSentence.component.html',
-  styleUrls: ['repeatSentence.component.scss']
+  styleUrls: ['repeatSentence.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class RepeatSentenceComponent implements OnInit, OnDestroy {
   repeatSentences: any = new Array();

@@ -4,11 +4,14 @@ import {FormControl} from '@angular/forms';
 import {PlayerService} from '../shared/player.service';
 import {RecorderService} from '../shared/recorder.service';
 import {SpeakAloudRecorderComponent} from '../shared/speakaloudrecorder.component';
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'read-aloud',
   templateUrl: 'readAloud.component.html',
-  styleUrls: ['readAloud.component.scss']
+  styleUrls: ['readAloud.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class ReadAloudComponent implements OnInit {
   readAlouds: any = new Array();

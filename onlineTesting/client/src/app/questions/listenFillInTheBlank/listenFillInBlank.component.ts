@@ -5,11 +5,14 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'listen-fill-in-the-blank',
   templateUrl: 'listenFillInBlank.component.html',
-  styleUrls: ['listenFillInBlank.component.scss']
+  styleUrls: ['listenFillInBlank.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class ListenFillInBlankComponent implements OnInit,AfterContentInit {
 

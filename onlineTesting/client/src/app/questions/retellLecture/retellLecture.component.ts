@@ -7,11 +7,14 @@ import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {Dialog} from '../shared/dialog.component';
 import {pteConstants} from '../../pteConstants';
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'retell-lecture',
   templateUrl: 'retellLecture.component.html',
-  styleUrls: ['retellLecture.component.scss']
+  styleUrls: ['retellLecture.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class RetellLectureComponent implements OnInit, OnDestroy {
   allRetellLectureIds: any = new Array();

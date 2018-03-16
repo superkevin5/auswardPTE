@@ -5,11 +5,14 @@ import {PlayerService} from '../shared/player.service';
 import {RecorderService} from '../shared/recorder.service';
 import {DescribeImageRecorderComponent} from '../shared/describeimagerecorder.component';
 import {pteConstants} from '../../pteConstants';
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'describe-image',
   templateUrl: 'describeImage.component.html',
-  styleUrls: ['describeImage.component.scss']
+  styleUrls: ['describeImage.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class DescribeImageComponent implements OnInit {
   describeImages: any = new Array();

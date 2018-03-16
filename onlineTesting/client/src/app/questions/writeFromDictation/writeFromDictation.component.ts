@@ -4,11 +4,14 @@ import {FormControl} from '@angular/forms';
 import {RecorderService} from '../shared/recorder.service';
 import {PlayerService} from '../shared/player.service';
 import {Observable} from 'rxjs';
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'write-from-dictation',
   templateUrl: 'writeFromDictation.component.html',
-  styleUrls: ['writeFromDictation.component.scss']
+  styleUrls: ['writeFromDictation.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class WriteFromDictationComponent implements OnInit, OnDestroy {
   writeFromDictations: any = new Array();

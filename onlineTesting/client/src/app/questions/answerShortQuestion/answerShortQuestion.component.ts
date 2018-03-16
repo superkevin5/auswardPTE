@@ -4,11 +4,14 @@ import {FormControl} from '@angular/forms';
 import {RecorderService} from '../shared/recorder.service';
 import {PlayerService} from '../shared/player.service';
 import {Observable} from 'rxjs';
+import { routerTransition } from '../../animation/animation';
 
 @Component({
   selector: 'short-question',
   templateUrl: 'answerShortQuestion.component.html',
-  styleUrls: ['answerShortQuestion.component.scss']
+  styleUrls: ['answerShortQuestion.component.scss'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class AnswerShortQuestionComponent implements OnInit, OnDestroy {
   shortQuestions: any = new Array();
