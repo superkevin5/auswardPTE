@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {pteConstants} from './pteConstants';
 import {OverlayContainer} from '@angular/cdk/overlay';
-import { Router } from '@angular/router';
+import { Router,NavigationEnd } from '@angular/router';
+
+declare var ga:Function;
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -18,6 +20,18 @@ export class AppComponent implements OnInit {
     this.testsCategory = pteConstants.testCategory;
     this.overlayContainer = overlayContainer;
     this._router = _router;
+    this._router.events.subscribe(event => {
+
+
+      // Send GA tracking on NavigationEnd event. You may wish to add other
+      // logic here too or change which event to work with
+      if (event instanceof NavigationEnd) {
+        // When the route is '/', location.path actually returns ''.
+        let newRoute = this._router.url || '/';
+        ga('send', 'pageview', newRoute);
+        console.log(newRoute);
+      }
+    });
   }
 
   ngOnInit(): void {
