@@ -147,12 +147,18 @@ export class WriteEssayComponent implements OnInit,AfterContentInit,OnDestroy {
   processQuestions(question): void {
     this.essayRecorded ='';
     this.selectedWriteEssay = question;
+
     this.countDown = '20:00';
     this._sub.unsubscribe();
     this._sub = Observable.interval(1000).takeUntil(Observable.timer(1000 * 60 * 20 + 2000))
       .subscribe(val => {
         this.countDown = this.secondsToMinutesAndSeconds(60 * 20 - val);
       });
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'write-essay',
+      eventAction: `Question:${ question.id} visited`
+    });
   }
 
   ngAfterContentInit(): void {

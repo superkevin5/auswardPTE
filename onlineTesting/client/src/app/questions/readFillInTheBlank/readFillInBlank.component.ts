@@ -95,7 +95,6 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
   }
 }
   processQuestions(question): void {
-
     this.selectedFillInTheBlank = question;
     let descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
     this.selectedFillInTheBlank._descriptionInArrayMode = [];
@@ -111,6 +110,11 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
         this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word});
       }
     }
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'read-fill-in-the-blank',
+      eventAction: `Question:${ question.id} visited`
+    });
   }
 
   ngAfterContentInit(): void {

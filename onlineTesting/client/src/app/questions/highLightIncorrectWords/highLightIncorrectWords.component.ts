@@ -140,6 +140,11 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
         this.selectedIncorrectedWord._descriptionInArrayMode.push({text: word});
       }
     }
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'high-light-incorrect-words',
+      eventAction: `Question:${question.id} visited`
+    });
   }
 
   ngAfterContentInit(): void {

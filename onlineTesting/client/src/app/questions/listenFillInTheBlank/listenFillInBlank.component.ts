@@ -89,7 +89,6 @@ export class ListenFillInBlankComponent implements OnInit,AfterContentInit {
   }
 
   processQuestions(question): void {
-
     this.selectedFillInTheBlank = question;
     let descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
     this.selectedFillInTheBlank._descriptionInArrayMode = [];
@@ -104,6 +103,11 @@ export class ListenFillInBlankComponent implements OnInit,AfterContentInit {
         this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word});
       }
     }
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'listen-fill-in-blank',
+      eventAction: `Question:${question.id} visited`
+    });
   }
 
   ngAfterContentInit(): void {

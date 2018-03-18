@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     this.testsCategory = pteConstants.testCategory;
     this.overlayContainer = overlayContainer;
     this._router = _router;
+
     this._router.events.subscribe(event => {
 
 
@@ -29,7 +30,6 @@ export class AppComponent implements OnInit {
         // When the route is '/', location.path actually returns ''.
         let newRoute = this._router.url || '/';
         ga('send', 'pageview', newRoute);
-        console.log(newRoute);
       }
     });
   }

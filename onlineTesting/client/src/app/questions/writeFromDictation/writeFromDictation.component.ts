@@ -41,7 +41,11 @@ export class WriteFromDictationComponent implements OnInit, OnDestroy {
       this.isLoading = false;
       return;
     }
-
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'write-from-dictation',
+      eventAction: `Question:${ pageNumber} visited`
+    });
     setTimeout(a => {
       this.clear();
       this.isLoading = false;
@@ -56,6 +60,11 @@ export class WriteFromDictationComponent implements OnInit, OnDestroy {
         this.currentIndex++;
         this.clear();
         this.isLoading = false;
+        window["ga"]('send', {
+          hitType: 'event',
+          eventCategory: 'write-from-dictation',
+          eventAction: `Question:${this.currentIndex+1} visited`
+        });
       }, 800);
     }
   }
@@ -79,6 +88,11 @@ export class WriteFromDictationComponent implements OnInit, OnDestroy {
         this.currentIndex--;
         this.clear();
         this.isLoading = false;
+        window["ga"]('send', {
+          hitType: 'event',
+          eventCategory: 'write-from-dictation',
+          eventAction: `Question:${this.currentIndex+1} visited`
+        });
       }, 800);
     }
   }

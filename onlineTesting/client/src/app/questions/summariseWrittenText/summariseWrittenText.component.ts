@@ -153,6 +153,11 @@ export class SummariseWrittenTextComponent implements OnInit,AfterContentInit,On
       .subscribe(val => {
         this.countDown = this.secondsToMinutesAndSeconds(60 * 10 - val);
       });
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'summarise-written-text',
+      eventAction: `Question:${question.id} visited`
+    });
   }
 
   ngAfterContentInit(): void {
