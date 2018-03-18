@@ -207,6 +207,11 @@ export class RetellLectureComponent implements OnInit, OnDestroy {
     this.retellLecture = question;
     this.retellLecture.descriptionPath = `${pteConstants.descriptionPath.retellLecture}${this.retellLecture.descriptionPath}`;
     this.retellLecture.imagePath = `${pteConstants.imagePath.retellLecture}${this.retellLecture.imagePath}`;
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'retell-lecture',
+      eventAction: `Question:${question.id} visited`
+    });
   }
 
   ngOnInit(): void {

@@ -127,6 +127,11 @@ export class SummariseSpokenTextComponent implements OnInit, OnDestroy {
   processQuestions(question): void {
     this.summariseSpokenText = question;
     this.summariseSpokenText.descriptionPath = `${pteConstants.descriptionPath.summariseSpokenText}${this.summariseSpokenText.descriptionPath}`;
+    window["ga"]('send', {
+      hitType: 'event',
+      eventCategory: 'summarise-spoken-text',
+      eventAction: `Question:${question.id} visited`
+    });
   }
 
   ngOnInit(): void {

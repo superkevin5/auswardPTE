@@ -47,7 +47,7 @@ var logStdout = process.stdout;
 
 var limiter = new RateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 200, // limit each IP to 100 requests per windowMs
+    max: 500, // limit each IP to 100 requests per windowMs
     delayMs: 0, // disable delaying - full speed until the max limit is reached,
     message: 'too many requests, you are blocked!!'
 });
@@ -129,7 +129,7 @@ app.use(function (err, req, res, next) {
 
 app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.dbOptions.password + "@" + pteContants.dbOptions.host + "/" + pteContants.dbOptions.database, {
     define: function (db, models, next) {
-        db.settings.set('instance.identityCache', false);
+        db.settings.set('instance.identityCache', true);
         db.settings.set('connection.pool', true);
         db.settings.set('connection.reconnect', true);
         models.readAloud = readAloud(db);

@@ -45,6 +45,11 @@ export class AnswerShortQuestionComponent implements OnInit, OnDestroy {
       this.clear();
       this.isLoading = false;
       this.currentIndex = pageNumber - 1;
+      window["ga"]('send', {
+        hitType: 'event',
+        eventCategory: 'answer-short-question',
+        eventAction: `Question:${this.currentIndex+1} visited`
+      });
     }, 800);
   }
 
@@ -55,6 +60,11 @@ export class AnswerShortQuestionComponent implements OnInit, OnDestroy {
         this.currentIndex++;
         this.clear();
         this.isLoading = false;
+        window["ga"]('send', {
+          hitType: 'event',
+          eventCategory: 'answer-short-question',
+          eventAction: `Question:${this.currentIndex+1} visited`
+        });
       }, 800);
     }
   }
@@ -78,6 +88,11 @@ export class AnswerShortQuestionComponent implements OnInit, OnDestroy {
         this.currentIndex--;
         this.clear();
         this.isLoading = false;
+        window["ga"]('send', {
+          hitType: 'event',
+          eventCategory: 'answer-short-question',
+          eventAction: `Question:${this.currentIndex+1} visited`
+        });
       }, 800);
     }
   }

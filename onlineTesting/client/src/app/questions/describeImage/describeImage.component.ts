@@ -39,6 +39,11 @@ export class DescribeImageComponent implements OnInit {
     if (this.currentIndex < this.describeImages.length) {
       this.player.init('describeImage', this.describeImages[this.currentIndex].audioPath, this.describeImages[this.currentIndex].audioPath);
       this.myChild.init();
+      window["ga"]('send', {
+        hitType: 'event',
+        eventCategory: 'describe-image',
+        eventAction: `Question:${pageNumber} visited`
+      });
     }
   }
 
@@ -47,6 +52,11 @@ export class DescribeImageComponent implements OnInit {
       this.currentIndex++;
       this.player.init('describeImage', this.describeImages[this.currentIndex].audioPath, this.describeImages[this.currentIndex].audioPath);
       this.myChild.init();
+      window["ga"]('send', {
+        hitType: 'event',
+        eventCategory: 'describe-image',
+        eventAction: `Question:${this.currentIndex+1} visited`
+      });
     }
   }
 
@@ -55,6 +65,11 @@ export class DescribeImageComponent implements OnInit {
       this.currentIndex--;
       this.player.init('describeImage', this.describeImages[this.currentIndex].audioPath, this.describeImages[this.currentIndex].audioPath);
       this.myChild.init();
+      window["ga"]('send', {
+        hitType: 'event',
+        eventCategory: 'describe-image',
+        eventAction: `Question:${this.currentIndex+1} visited`
+      });
     }
   }
 

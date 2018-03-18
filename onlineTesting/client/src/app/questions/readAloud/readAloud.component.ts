@@ -38,6 +38,11 @@ export class ReadAloudComponent implements OnInit {
     if (this.currentIndex < this.readAlouds.length) {
       this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale, this.readAlouds[this.currentIndex].audioPathFemale);
       this.myChild.init();
+      window["ga"]('send', {
+        hitType: 'event',
+        eventCategory: 'read-aloud',
+        eventAction: `Question:${ pageNumber} visited`
+      });
     }
   }
 
@@ -46,6 +51,11 @@ export class ReadAloudComponent implements OnInit {
       this.currentIndex++;
       this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale, this.readAlouds[this.currentIndex].audioPathFemale);
       this.myChild.init();
+      window["ga"]('send', {
+        hitType: 'event',
+        eventCategory: 'read-aloud',
+        eventAction: `Question:${this.currentIndex+1} visited`
+      });
     }
   }
 
@@ -54,6 +64,11 @@ export class ReadAloudComponent implements OnInit {
       this.currentIndex--;
       this.player.init('readAloud', this.readAlouds[this.currentIndex].audioPathMale, this.readAlouds[this.currentIndex].audioPathFemale);
       this.myChild.init();
+      window["ga"]('send', {
+        hitType: 'event',
+        eventCategory: 'read-aloud',
+        eventAction: `Question:${this.currentIndex+1} visited`
+      });
     }
   }
 
