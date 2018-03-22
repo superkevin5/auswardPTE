@@ -75,7 +75,7 @@ export class DescribeImageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.isLoading = false;
+    this.isLoading = true;
     this.httpService.getAllDescribeImages().subscribe(
       data => {
         this.describeImages = data.body;
@@ -99,7 +99,7 @@ export class DescribeImageComponent implements OnInit {
 
       },
       ()=>{
-        this.isLoading = true;
+        this.isLoading = false;
       }
     );
   }

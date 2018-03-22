@@ -74,7 +74,7 @@ export class ReadAloudComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.isLoading = false;
+    this.isLoading = true;
     this.httpService.getAllReadAloud().subscribe(
       data => {
         this.readAlouds = data.body;
@@ -94,7 +94,7 @@ export class ReadAloudComponent implements OnInit {
 
       },
       ()=>{
-        this.isLoading = true;
+        this.isLoading = false;
       }
     );
   }
