@@ -19,7 +19,7 @@ export class DescribeImageComponent implements OnInit {
   currentIndex: number = 0;
   pageFormControl = new FormControl();
   gotoNumber: any = '';
-
+  isLoading:boolean = false;
   @ViewChild(DescribeImageRecorderComponent)
   private myChild: DescribeImageRecorderComponent;
 
@@ -75,6 +75,7 @@ export class DescribeImageComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.isLoading = false;
     this.httpService.getAllDescribeImages().subscribe(
       data => {
         this.describeImages = data.body;
@@ -93,6 +94,12 @@ export class DescribeImageComponent implements OnInit {
           describeImage._action = 'preparation'
         }
 
+      },
+      error =>{
+
+      },
+      ()=>{
+        this.isLoading = true;
       }
     );
   }
