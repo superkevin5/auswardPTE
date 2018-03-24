@@ -18,7 +18,7 @@ export class ReadAloudComponent implements OnInit {
   currentIndex: number = 0;
   pageFormControl = new FormControl();
   gotoNumber: any = '';
-
+  isLoading:boolean = false;
   @ViewChild(SpeakAloudRecorderComponent)
   private myChild: SpeakAloudRecorderComponent;
 
@@ -74,6 +74,7 @@ export class ReadAloudComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.httpService.getAllReadAloud().subscribe(
       data => {
         this.readAlouds = data.body;
@@ -88,6 +89,12 @@ export class ReadAloudComponent implements OnInit {
           readAloud._action = 'preparation'
         }
 
+      },
+      error =>{
+
+      },
+      ()=>{
+        this.isLoading = false;
       }
     );
   }

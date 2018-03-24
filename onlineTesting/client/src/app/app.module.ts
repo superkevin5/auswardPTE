@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { routing } from './app.routing';
 import { FlexLayoutModule } from '@angular/flex-layout'
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     BrowserAnimationsModule,
     MaterialModule,
     CommonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],
   bootstrap: [AppComponent]
