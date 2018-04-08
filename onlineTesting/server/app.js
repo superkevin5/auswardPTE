@@ -52,6 +52,8 @@ var limiter = new RateLimit({
     message: 'too many requests, you are blocked!!'
 });
 
+var cliArgs = process.argv.slice(2);
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -126,28 +128,35 @@ app.use(function (err, req, res, next) {
     });
 });
 
+var dbStr = "mysql://" + pteContants.dbOptions.user + ":" + pteContants.dbOptions.password + "@" + pteContants.dbOptions.host + "/" + pteContants.dbOptions.database;
+if (cliArgs[0] == 'prd') {
+    dbStr = "mysql://" + pteContants.dbOptionsprd.user + ":" + pteContants.dbOptionsprd.password + "@" + pteContants.dbOptionsprd.host + "/" + pteContants.dbOptionsprd.database;
+    console.log('connecting to prd db');
+}
 
-app.use(orm.express("mysql://" + pteContants.dbOptions.user + ":" + pteContants.dbOptions.password + "@" + pteContants.dbOptions.host + "/" + pteContants.dbOptions.database, {
+app.use(orm.express(dbStr, {
     define: function (db, models, next) {
-        db.settings.set('instance.identityCache', true);
+
+        db.settings.set('instance.identityCache', false);
         db.settings.set('connection.pool', true);
         db.settings.set('connection.reconnect', true);
-        models.readAloud = readAloud(db);
-        models.readFillBlank = readFillBlank(db);
+        models.readaloud = readAloud(db);
+        models.readfillblank = readFillBlank(db);
 
-        models.readReorderParagraph = readReorderParagraph(db);
-        models.readReorderParagraphQuestions = readReorderParagraphQuestions(db);
-        models.listenFillBlank = listenFillBlank(db);
-        models.writeEssay = writeEssay(db);
+        models.readreorderparagraph = readReorderParagraph(db);
+        models.readreorderparagraphquestions = readReorderParagraphQuestions(db);
+        models.listenfillblank = listenFillBlank(db);
+        models.writeessay = writeEssay(db);
 
-        models.repeatSentence = repeatSentence(db);
-        models.retellLecture = retellLecture(db);
-        models.answerShortQuestion = answerShortQuestion(db);
-        models.describeImage = describeImage(db);
-        models.highLightIncorrectWords = highLightIncorrectWords(db);
-        models.summariseWrittenText = summariseWrittenText(db);
-        models.writeFromDictation = writeFromDictation(db);
-        models.summariseSpokenText = summariseSpokenText(db);
+        models.repeatsentence = repeatSentence(db);
+        models.retelllecture = retellLecture(db);
+        models.answershortquestion = answerShortQuestion(db);
+        models.describeimage = describeImage(db);
+        models.highLightincorrectwords = highLightIncorrectWords(db);
+        models.summarisewrittentext = summariseWrittenText(db);
+        models.writefromdictation = writeFromDictation(db);
+        models.summarisespokentext = summariseSpokenText(db);
+
 
         // models.readReorderParagraph.hasMany("questions", models.readReorderParagraphQuestions, {}, {
         //     autoFetch: true

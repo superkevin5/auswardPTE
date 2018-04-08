@@ -1,6 +1,6 @@
 module.exports = function (db) {
 
-    return db.define("retellLecture", {
+    return db.define("retelllecture", {
         id: Number,
         audioPath: String,
         imagePath: String,

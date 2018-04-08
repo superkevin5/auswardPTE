@@ -6,12 +6,13 @@ var pteConstants = require('../utility/constant.js');
 
 exports.getAllShortQuestions = function(req, res) {
 
-    req.models.answerShortQuestion.all(function(error,data){
+    req.models.answershortquestion.all(function(error,data){
 
         if(error){
-            res.status(pteConstants.InternalServerError);
+            res.status(pteConstants.InternalServerError).send(error);
+        }else{
+            res.status(200).json(data);
         }
-        res.status(200).json(data);
     });
 
 };

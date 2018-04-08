@@ -1,6 +1,6 @@
 module.exports = function (db) {
 
-    return db.define("listenFillBlank", {
+    return db.define("listenfillblank", {
         id: Number,
         description: String,
         answer: String,

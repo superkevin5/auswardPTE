@@ -6,12 +6,13 @@ var pteConstants = require('../utility/constant.js');
 
 exports.getAllWriteFromDictations = function(req, res) {
 
-    req.models.writeFromDictation.all(function(error,data){
+    req.models.writefromdictation.all(function(error,data){
 
         if(error){
-            res.status(pteConstants.InternalServerError);
+            res.status(pteConstants.InternalServerError).send(error);
+        } else{
+            res.status(200).json(data);
         }
-        res.status(200).json(data);
     });
 
 };

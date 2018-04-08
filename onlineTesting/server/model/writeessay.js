@@ -1,6 +1,6 @@
 module.exports = function (db) {
 
-    return db.define("writeEssay", {
+    return db.define("writeessay", {
         id: Number,
         description: String
     });

@@ -23,6 +23,16 @@ module.exports = Object.freeze({
         password : 'a',
         database : 'pteausward',
         debug    :  false
+    },
+    dbOptionsprd: {
+        connectionLimit : 100, //important
+        host     : 'pteausward.cwh50d7mpeqc.ap-southeast-2.rds.amazonaws.com',
+        port:'3306',
+        databaseType:'mysql',
+        user     : 'ausward',
+        password : 'kevinausward',
+        database : 'pteausward',
+        debug    :  false
     }
 });
 

@@ -1,6 +1,6 @@
 module.exports = function (db) {
 
-    return db.define("answerShortQuestion", {
+    return db.define("answershortquestion", {
         id: Number,
         audioPath: String,
         answer: String,
