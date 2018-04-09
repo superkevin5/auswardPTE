@@ -8,6 +8,7 @@ exports.getAllHighLightIncorrectWordsIds = function (req, res) {
 
 
     req.models.highlightincorrectwords.all(function (error, data) {
+        console.log('11111111111');
         if (error) {
             res.status(pteConstants.InternalServerError).send(error);
         }else{

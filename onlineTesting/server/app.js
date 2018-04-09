@@ -152,7 +152,7 @@ app.use(orm.express(dbStr, {
         models.retelllecture = retellLecture(db);
         models.answershortquestion = answerShortQuestion(db);
         models.describeimage = describeImage(db);
-        models.highLightincorrectwords = highLightIncorrectWords(db);
+        models.highlightincorrectwords = highLightIncorrectWords(db);
         models.summarisewrittentext = summariseWrittenText(db);
         models.writefromdictation = writeFromDictation(db);
         models.summarisespokentext = summariseSpokenText(db);
