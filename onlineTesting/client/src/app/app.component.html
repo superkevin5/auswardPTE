@@ -24,7 +24,7 @@
               <h3>{{key}}</h3>
             </mat-expansion-panel-header>
 
-            <div *ngFor="let testItem of testsCategory[key];index as y;" class="nav-item" (click)='routing(testItem.path)'>
+            <div *ngFor="let testItem of testsCategory[key];index as y;" class="nav-item" (click)='sidenav.toggle();routing(testItem.path)'>
               {{y+1}}: {{testItem.text}}
             </div>
           </mat-expansion-panel>
