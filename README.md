@@ -4,6 +4,7 @@ an educational websites including online test for  students to use
 
 
 ng serve --prod --build-optimizer
+ng build --env=prod
 
 source-map-explorer ..\..\dist\vendor.bundle.js
 
