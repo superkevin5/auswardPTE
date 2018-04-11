@@ -6,6 +6,8 @@ an educational websites including online test for  students to use
 ng serve --prod --build-optimizer
 ng build --env=prod
 
+ng serve --host 0.0.0.0
+
 source-map-explorer ..\..\dist\vendor.bundle.js
 
 npm install http-server -g

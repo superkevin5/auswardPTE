@@ -1,6 +1,6 @@
 export const pteConstants = {
   // http://54.79.126.69/
-  apiRoot:'http://localhost:9001/pteausward',
+  apiRoot:'http://54.79.126.69:9001/pteausward',
   // audioPathMap:{
   //   readAloudMale:'http://localhost:9001/public/readAloud/male/',
   //   readAloudFemale:'http://localhost:9001/public/readAloud/female/',
