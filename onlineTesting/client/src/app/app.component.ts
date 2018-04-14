@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import {pteConstants} from './pteConstants';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import { Router,NavigationEnd } from '@angular/router';
+import { SeoService } from './questions/common/seo.service';
 
 declare var ga:Function;
 @Component({
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
   keys: any[] = new Array();
   testsCategory: any = new Array();
   themeColor = 'pte-theme1';
-  constructor(private overlayContainer: OverlayContainer,private _router: Router) {
+  constructor(private overlayContainer: OverlayContainer,private _router: Router,private seoService: SeoService) {
     this.keys = Object.keys(pteConstants.testCategory);
     this.testsCategory = pteConstants.testCategory;
     this.overlayContainer = overlayContainer;
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
         ga('send', 'pageview', newRoute);
       }
     });
+    seoService.addSeoData()
   }
 
   ngOnInit(): void {

@@ -10,6 +10,8 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home.component';
+import { SeoService } from './questions/common/seo.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { HomeComponent } from './home.component';
     FlexLayoutModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
-  providers: [],
+  providers: [SeoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
