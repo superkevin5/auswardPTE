@@ -9,11 +9,12 @@ import { routing } from './app.routing';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import { HomeComponent } from './home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    HomeComponent
   ],
   imports: [
     routing,
