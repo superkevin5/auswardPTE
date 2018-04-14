@@ -137,7 +137,7 @@ if (cliArgs[0] == 'prd') {
 app.use(orm.express(dbStr, {
     define: function (db, models, next) {
 
-        db.settings.set('instance.identityCache', false);
+        db.settings.set('instance.identityCache', true);
         db.settings.set('connection.pool', true);
         db.settings.set('connection.reconnect', true);
         models.readaloud = readAloud(db);
