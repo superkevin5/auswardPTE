@@ -55,7 +55,6 @@
       </mat-button-toggle-group>
 
       <div fxHide.xs fxHide.sm>
-        <button mat-button (click)="goto(gotoNumber);" [disabled]="isLoading">Go</button>
         <mat-form-field>
           <input matInput [formControl]="pageFormControl"
                  placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
@@ -66,6 +65,7 @@
             <strong>Number required</strong>
           </mat-error>
         </mat-form-field>
+        <button mat-button (click)="goto(gotoNumber);" [disabled]="isLoading">Go</button>
         <span>Question {{currentIndex+1}} of  {{summariseWrittenTextIds.length}}</span>
       </div>
     </div>

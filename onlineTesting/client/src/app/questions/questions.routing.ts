@@ -45,7 +45,7 @@ const routes: Routes = [
   }
   },
   {
-    path: 'Listen-fill-in-the-blank', component: ListenFillInBlankComponent,
+    path: 'listen-fill-in-the-blank', component: ListenFillInBlankComponent,
     data: {
       title: "Listen fill in the blank",
       metatags: {
