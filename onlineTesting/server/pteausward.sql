@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-04-08 19:38:05
+Date: 2018-04-21 21:38:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -494,15 +494,16 @@ DROP TABLE IF EXISTS `readfillblank`;
 CREATE TABLE `readfillblank` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `description` varchar(2000) COLLATE utf8_bin DEFAULT NULL,
-  `answer` varchar(200) COLLATE utf8_bin DEFAULT NULL,
+  `options` varchar(500) COLLATE utf8_bin DEFAULT NULL,
+  `answer` varchar(500) COLLATE utf8_bin DEFAULT NULL,
+  `type` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of readfillblank
 -- ----------------------------
-INSERT INTO `readfillblank` VALUES ('1', 'The inevitable consequences  #404 rampant corruption, an absence of globally competitive Chinese companies,  #404 waste of resources, rampant environmental  #404 and soaring inequality. Above all, the monopoly over power of an ideologically bankrupt communist party is  #404 with the pluralism of opinion, security of property and vibrant competition on which a dynamic economy depends. As a result, Chinese development remains parasitic on know-how and institutions developed elsewhere.\n', '$include|chronic|degradation|inconsistent$ ');
-INSERT INTO `readfillblank` VALUES ('2', 'The inevitable consequences  #404 rampant corruption, an absence of globally competitive Chinese companies,  #404 waste of resources, rampant environmental  #404 and soaring inequality. Above all, the monopoly over power of an ideologically bankrupt communist party is  #404 with the pluralism of opinion, security of property and vibrant competition on which a dynamic economy depends. As a result, Chinese development remains parasitic on know-how and institutions developed elsewhere.\nThe inevitable consequences  #404 rampant corruption, an absence of globally competitive Chinese companies,  #404 waste of resources, rampant environmental  #404 and soaring inequality. Above all, the monopoly over power of an ideologically bankrupt communist party is  #404 with the pluralism of opinion, security of property and vibrant competition on which a dynamic economy depends. As a result, Chinese development remains parasitic on know-how and institutions developed elsewhere.', '$include|chronic|degradation|inconsistent$ ');
+INSERT INTO `readfillblank` VALUES ('1', 'The inevitable consequences  #404 rampant corruption, an absence of globally competitive Chinese companies,  #404 waste of resources, rampant environmental  #404 and soaring inequality. Above all, the monopoly over power of an ideologically bankrupt communist party is  #404 with the pluralism of opinion, security of property and vibrant competition on which a dynamic economy depends. As a result, Chinese development remains parasitic on know-how and institutions developed elsewhere.\n', 'include|chronic|degradation|inconsistent$a|b|c|d$e|f|g|h$x|s|w|t', 'include$a$e$x', '1');
 
 -- ----------------------------
 -- Table structure for readreorderparagraph
