@@ -18,7 +18,7 @@
           &nbsp;
          <mat-form-field>
         <mat-select placeholder="Choose answer"  name="option">
-          <mat-option *ngFor="let option of selectedFillInTheBlank?._options" [value]="option">
+          <mat-option *ngFor="let option of word?.options" [value]="option">
             {{option}}
           </mat-option>
         </mat-select>

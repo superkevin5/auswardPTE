@@ -98,14 +98,15 @@ export class ReadFillInBlankComponent implements OnInit,AfterContentInit {
     this.selectedFillInTheBlank = question;
     let descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
     this.selectedFillInTheBlank._descriptionInArrayMode = [];
-    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().replace(/\$/g, '').split('|');
-    this.selectedFillInTheBlank._options =_.cloneDeep(this.commonService.shuffleArray(this.selectedFillInTheBlank._answer));
+    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().split('$');
+    this.selectedFillInTheBlank._options = this.selectedFillInTheBlank.options.trim().split('$');
     let answer = _.cloneDeep(this.selectedFillInTheBlank._answer);
+    let options = _.cloneDeep(this.selectedFillInTheBlank._options);
     for (let word of descriptionInArrayMode) {
-
       if (word.trim().toLowerCase() == '#404') {
         let thisAnswer = answer.shift();
-        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, answer: thisAnswer});
+        let thisOptions = options.shift().split('|');
+        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, options:thisOptions , answer: thisAnswer});
       } else {
         this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word});
       }
