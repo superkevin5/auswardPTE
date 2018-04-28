@@ -33,8 +33,8 @@ exports.getReadReorderParagraphById = function (req, res) {
             var response = {};
             response.questionTitle = data;
 
-            req.models.readreorderparagraphquestions.find({questionfk: req.params.id}, function (err, result) {
-
+            var questionFk = req.params.id;
+            req.models.readreorderparagraphquestions.find({questionfk: questionFk}, function (err, result) {
                 if (err) {
                     res.status(pteConstants.InternalServerError);
                 }

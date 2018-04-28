@@ -73,7 +73,7 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
 
     if (pageNumber <= this.allHighLightIncorrectWordsIds.length) {
       this.isLoading = true;
-      this.httpService.getListenFillInTheBlanksById(this.allHighLightIncorrectWordsIds[pageNumber - 1]).subscribe(
+      this.httpService.getHighLightIncorrectWordById(this.allHighLightIncorrectWordsIds[pageNumber - 1]).subscribe(
         data => {
           this.processQuestions(data.body);
           this.currentIndex = pageNumber - 1;
@@ -90,7 +90,7 @@ export class HighLightIncorrectWordsComponent implements OnInit,AfterContentInit
     this.toggleAnswer(false);
     if (this.currentIndex < this.allHighLightIncorrectWordsIds.length - 1) {
       this.isLoading = true;
-      this.httpService.getListenFillInTheBlanksById(this.allHighLightIncorrectWordsIds[this.currentIndex + 1]).subscribe(
+      this.httpService.getHighLightIncorrectWordById(this.allHighLightIncorrectWordsIds[this.currentIndex + 1]).subscribe(
         data => {
           this.processQuestions(data.body);
           this.currentIndex++;
