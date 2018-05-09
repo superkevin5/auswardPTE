@@ -4,6 +4,7 @@ import * as fromActions from './actions/user.action';
 import {User} from './model/user';
 import {UserState} from './app.states';
 import {Store} from '@ngrx/store';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-home',

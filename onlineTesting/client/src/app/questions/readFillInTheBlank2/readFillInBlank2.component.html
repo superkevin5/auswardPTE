@@ -1,0 +1,76 @@
+
+<section class="readFillInTheBlank-container" [@routerTransition]="">
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
+  <h4 class="title">Reading items - Fill in the blanks drag and drop</h4>
+
+  <div class="question-continer" fxLayout="column" fxLayoutAlign="center center">
+
+    <h4 class="question-title">
+      <span>Question {{currentIndex+1}} :
+       In the text below some words are missing. Select words from the box below.
+        </span>
+    </h4>
+
+    <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
+      <mat-card><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index" >
+
+        <span *ngIf="word?.text=='#404';else w"  [ngClass]="{'selectBox': word?.text=='#404'}">
+          &nbsp;
+         <mat-form-field>
+        <mat-select placeholder="Choose answer"  name="option">
+          <mat-option *ngFor="let option of word?.options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
+          <mat-hint [hidden]="!isAnswer" align="start" class="readFillInTheBlanksAnswer">{{word?.answer}}</mat-hint>
+
+        </mat-form-field>
+           &nbsp;
+        </span>
+        <ng-template #w>{{word?.text}}</ng-template>
+      </span></mat-card>
+      <div>
+      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+      </div>
+    </div>
+
+    <div class="question-footer">
+
+      <mat-button-toggle-group>
+        <button (click)="previous();" mat-button="" title="Previous" [disabled]="isLoading">
+      <span class="mat-button-wrapper">
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_before
+        </mat-icon></span>
+          Pre
+        </button>
+
+        <button (click)="next();" mat-button="" title="Next" [disabled]="isLoading">
+      <span class="mat-button-wrapper">
+          Next
+        <mat-icon
+          class="mat-icon" aria-hidden="true">
+        navigate_next
+        </mat-icon></span>
+        </button>
+      </mat-button-toggle-group>
+
+      <div fxHide.xs fxHide.sm>
+        <mat-form-field>
+          <input matInput [formControl]="pageFormControl"
+                 placeholder="Jump to a question" [(ngModel)]="gotoNumber" pattern="^[0-9]+$" required>
+          <mat-error *ngIf="pageFormControl.errors?.pattern">
+            <strong>Should be a number</strong>
+          </mat-error>
+          <mat-error *ngIf="pageFormControl.errors?.required">
+            <strong>Number required</strong>
+          </mat-error>
+        </mat-form-field>
+        <button mat-button (click)="goto(gotoNumber);" [disabled]="isLoading">Go</button>
+        <span>Question {{currentIndex+1}} of  {{allReadFillInTheBlank2Ids.length}}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {ReadAloudComponent} from './readAloud/readAloud.component';
 import {ReadFillInBlankComponent} from './readFillInTheBlank/readFillInBlank.component';
+import {ReadFillInBlankComponent2} from './readFillInTheBlank2/readFillInBlank2.component';
 import {ListenFillInBlankComponent} from './listenFillInTheBlank/listenFillInBlank.component';
 import {ReadReorderParagraphComponent} from './readReorderParagraph/readReorderParagraph.component';
 import {WriteEssayComponent} from './writeEssay/writeEssay.component';
@@ -37,10 +38,19 @@ const routes: Routes = [
   },
   {
     path: 'read-fill-in-the-blank', component: ReadFillInBlankComponent, data: {
+    title: "Reading and writing Fill In The Blanks",
+    metatags: {
+      description: "Reading and writing Fill In The Blanks",
+      keywords: "Read-fill-in-the-blank"
+    }
+  }
+  },
+  {
+    path: 'read-fill-in-the-blank-2', component: ReadFillInBlankComponent2, data: {
     title: "Read fill in the blank",
     metatags: {
       description: "Read fill in the blank",
-      keywords: "Read-fill-in-the-blank"
+      keywords: "Read-fill-in-the-blank2"
     }
   }
   },

@@ -30,6 +30,15 @@ export class PteHttpService {
     let apiURL = `${this.apiRoot}/getReadingFillById/${id}`;
     return this.http.get(apiURL, {observe: 'response'});
   }
+  getAllReadFillInTheBlanks2Ids(): Observable<any> {
+    let apiURL = `${this.apiRoot}/getAllReadingFillBlank2Ids`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
+
+  getReadFillInTheBlanks2ById(id: number): Observable<any> {
+    let apiURL = `${this.apiRoot}/getReadingFill2ById/${id}`;
+    return this.http.get(apiURL, {observe: 'response'});
+  }
 
   getAllListenFillInTheBlanksIds(): Observable<any> {
     let apiURL = `${this.apiRoot}/getAllListenFillBlankIds`;
