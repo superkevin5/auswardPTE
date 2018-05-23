@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
 import { routerTransition } from '../../animation/animation';
-
+import {DropEvent} from 'ng-drag-drop';
 @Component({
   selector: 'read-fill-in-the-blank-2',
   templateUrl: 'readFillInBlank2.component.html',
@@ -99,26 +99,55 @@ export class ReadFillInBlankComponent2 implements OnInit,AfterContentInit {
     let descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
     console.log(question);
     this.selectedFillInTheBlank._descriptionInArrayMode = [];
-    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().replace('$','').split('|');
-    this.selectedFillInTheBlank._options = this.selectedFillInTheBlank.options.trim().replace('$','').split('|');
+    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().replace(/\$/g , '').split('|');
+    this.selectedFillInTheBlank._options = this.selectedFillInTheBlank.options.trim().replace(/\$/g,'').split('|');
     let answer = _.cloneDeep(this.selectedFillInTheBlank._answer);
     let options = _.cloneDeep(this.selectedFillInTheBlank._options);
     for (let word of descriptionInArrayMode) {
       if (word.trim().toLowerCase() == '#404') {
         let thisAnswer = answer.shift();
-        let thisOptions = options.shift().split('|');
-        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, options:thisOptions , answer: thisAnswer});
+        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, answer: thisAnswer});
       } else {
         this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word});
       }
     }
+    console.log(this.selectedFillInTheBlank);
     window["ga"]('send', {
       hitType: 'event',
       eventCategory: 'read-fill-in-the-blank2',
       eventAction: `Question:${ question.id} visited`
     });
   }
+  onList1Drop(e: DropEvent,index){
 
+    let option = e.dragData;
+    console.log(e);
+    console.log(index);
+    // this.selectedFillInTheBlank?._options
+    var index = this.selectedFillInTheBlank._options.indexOf(option);
+
+    if (~index) {
+      this.selectedFillInTheBlank._options[index] = ' ';
+      console.log(this.selectedFillInTheBlank._options);
+    }
+  }
+
+  onOptionsDrop(e: DropEvent,option:any) {
+    var dragData = e.dragData;
+    var originalData = option;
+
+    var dragDataIndex = this.selectedFillInTheBlank._options.indexOf(dragData);
+
+    let originalDataIndex = this.selectedFillInTheBlank._options.indexOf(originalData);
+
+
+    if (dragDataIndex != -1 && originalData !="") {
+      var tmp = this.selectedFillInTheBlank._options[ originalDataIndex];
+      this.selectedFillInTheBlank._options[ originalDataIndex ] = this.selectedFillInTheBlank._options[ dragDataIndex ];
+      this.selectedFillInTheBlank._options[ dragDataIndex ] = tmp;
+    }
+    console.log(this.selectedFillInTheBlank._options);
+  }
   ngAfterContentInit(): void {
     this.isLoading = true;
     this.httpService.getAllReadFillInTheBlanks2Ids().flatMap((data)=> {

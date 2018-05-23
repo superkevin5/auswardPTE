@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-04-30 23:06:47
+Date: 2018-05-24 08:30:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -501,6 +501,23 @@ CREATE TABLE `readfillblank` (
 -- Records of readfillblank
 -- ----------------------------
 INSERT INTO `readfillblank` VALUES ('1', 'The inevitable consequences  #404 rampant corruption, an absence of globally competitive Chinese companies,  #404 waste of resources, rampant environmental  #404 and soaring inequality. Above all, the monopoly over power of an ideologically bankrupt communist party is  #404 with the pluralism of opinion, security of property and vibrant competition on which a dynamic economy depends. As a result, Chinese development remains parasitic on know-how and institutions developed elsewhere.\n', 'include|chronic|degradation|inconsistent$a|b|c|d$e|f|g|h$x|s|w|t', 'include$a$e$x', '1');
+
+-- ----------------------------
+-- Table structure for readfillblank2
+-- ----------------------------
+DROP TABLE IF EXISTS `readfillblank2`;
+CREATE TABLE `readfillblank2` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `description` varchar(2000) COLLATE utf8_bin DEFAULT NULL,
+  `options` varchar(500) COLLATE utf8_bin DEFAULT NULL,
+  `answer` varchar(500) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of readfillblank2
+-- ----------------------------
+INSERT INTO `readfillblank2` VALUES ('1', 'Since the dawn of human civilization, human beings have consistently been  #404 their dream faculty. In the Aryan society too, the dreams #404 the human beings. The coming of Christianity itself was a great event in the history of mankind. The crucifixion of Jesus was seen in the dreams of the chosen and #404 who had fathomless faith in Jesus, they had been informed in the dream that there would be a resurrection of Jesus and his sacrifice for the sins of humanity would not go #404 .', '$misguided|mystified|blessed|wasted|interpreting|remembering$', '$interpreting|mystified|blessed|wasted$');
 
 -- ----------------------------
 -- Table structure for readreorderparagraph

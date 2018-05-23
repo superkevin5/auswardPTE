@@ -10,33 +10,35 @@
        In the text below some words are missing. Select words from the box below.
         </span>
     </h4>
-
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
-      <mat-card><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index" >
-
-        <span *ngIf="word?.text=='#404';else w"  [ngClass]="{'selectBox': word?.text=='#404'}">
+      <mat-card>
+        <span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index">
+        <span *ngIf="word?.text=='#404'">
           &nbsp;
-         <mat-form-field>
-        <mat-select placeholder="Choose answer"  name="option">
-          <mat-option *ngFor="let option of word?.options" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-select>
-          <mat-hint [hidden]="!isAnswer" align="start" class="readFillInTheBlanksAnswer">{{word?.answer}}</mat-hint>
-
-        </mat-form-field>
-           &nbsp;
+          <span class="option" draggable [dragClass]="'drag-over'" [dragData]="question" droppable
+                [dragOverClass]="'drag-target-border'"
+                [dragHintClass]="'drag-hint'" (onDrop)="onList1Drop($event,index)"></span>
+          <span [hidden]="!isAnswer" align="start" class="readFillInTheBlanksAnswer">{{word?.answer}}</span>
         </span>
-        <ng-template #w>{{word?.text}}</ng-template>
-      </span></mat-card>
+        <span *ngIf="word?.text!='#404'">
+          {{word?.text}}
+          </span>
+      </span>
+      </mat-card>
+      <div class="dragOptions">
+        <div draggable class="readFillDraggable"  [dragClass]="'drag-over'" [dragData]="option"
+            *ngFor="let option of selectedFillInTheBlank?._options; let index = index" droppable (onDrop)="onOptionsDrop($event,option)"
+              [dragOverClass]="'drag-target-border'"
+              [dragHintClass]="'drag-hint'">
+          {{option}}
+        </div>
+      </div>
       <div>
       <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
       <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
       </div>
     </div>
-
     <div class="question-footer">
-
       <mat-button-toggle-group>
         <button (click)="previous();" mat-button="" title="Previous" [disabled]="isLoading">
       <span class="mat-button-wrapper">
@@ -46,7 +48,6 @@
         </mat-icon></span>
           Pre
         </button>
-
         <button (click)="next();" mat-button="" title="Next" [disabled]="isLoading">
       <span class="mat-button-wrapper">
           Next

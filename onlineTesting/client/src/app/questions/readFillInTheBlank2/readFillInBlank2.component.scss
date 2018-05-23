@@ -1,5 +1,8 @@
 .readFillInTheBlank-container {
-
+  .option {
+    border:solid 1px;
+    padding:0px 50px;
+  }
   .readFillInTheBlanksAnswer {
     color: green;
     font-size:1.5em;
@@ -33,5 +36,23 @@
       align-items: flex-end;
 
     }
+  }
+.dragOptions{
+  margin-top:10px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+  .readFillDraggable {
+    background-color: white;
+    margin-left:20px;
+    border:solid 1px;
+    border-color:#00bcd4;
+    box-sizing: border-box;
+    width:120px;
+    padding:0px 5px;
+    text-align:center;
+    line-height: 100%;
+    min-height:18px;
   }
 }
