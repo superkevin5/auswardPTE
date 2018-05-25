@@ -18,6 +18,7 @@ var orm = require("orm");
 var routes = require('./routes/index');
 var readAloud = require('./model/readAloud');
 var readFillBlank = require('./model/readFillBlank');
+var readFillBlank2 = require('./model/readFillBlank2');
 var readReorderParagraph = require('./model/readReorderParagraph');
 var readReorderParagraphQuestions = require('./model/readReorderParagraphQuestions');
 var listenFillBlank = require('./model/listenFillBlank');
@@ -142,6 +143,8 @@ app.use(orm.express(dbStr, {
         db.settings.set('connection.reconnect', true);
         models.readaloud = readAloud(db);
         models.readfillblank = readFillBlank(db);
+        models.readfillblank2 = readFillBlank2(db);
+
 
         models.readreorderparagraph = readReorderParagraph(db);
         models.readreorderparagraphquestions = readReorderParagraphQuestions(db);

@@ -11,6 +11,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home.component';
 import { SeoService } from './questions/common/seo.service';
+import { StoreModule} from '@ngrx/store';
+import { reducers, metaReducers } from './reducers/reducer';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { SeoService } from './questions/common/seo.service';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
     CommonModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})

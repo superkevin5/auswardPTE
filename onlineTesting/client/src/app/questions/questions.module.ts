@@ -21,6 +21,7 @@ import { SummariseSpokenTextComponent } from './summariseSpokenText/summariseSpo
 import { HowlerPlayerComponent } from './shared/howler.player.component';
 import { PlayerComponent } from './shared/player.component';
 import { ReadFillInBlankComponent } from './readFillInTheBlank/readFillInBlank.component';
+import { ReadFillInBlankComponent2 } from './readFillInTheBlank2/readFillInBlank2.component';
 import { ListenFillInBlankComponent } from './listenFillInTheBlank/listenFillInBlank.component';
 import { WriteEssayComponent } from './writeEssay/writeEssay.component';
 import { WriteFromDictationComponent } from './writeFromDictation/WriteFromDictation.component';
@@ -53,6 +54,7 @@ import { Dialog } from './shared/dialog.component';
     SpeakAloudRecorderComponent,
     PlayerComponent,
     ReadFillInBlankComponent,
+    ReadFillInBlankComponent2,
     ListenFillInBlankComponent,
     HighLightIncorrectWordsComponent,
     ReadReorderParagraphComponent,

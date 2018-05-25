@@ -1,7 +1,7 @@
 export const pteConstants = {
   // http://54.79.126.69/
-  apiRoot:'http://www.apluspte.com/pteausward',
-  // apiRoot:'http://localhost:9001/pteausward',
+  // apiRoot:'http://www.apluspte.com/pteausward',
+  apiRoot:'http://localhost:9001/pteausward',
   // audioPathMap:{
   //   readAloudMale:'http://localhost:9001/public/readAloud/male/',
   //   readAloudFemale:'http://localhost:9001/public/readAloud/female/',
@@ -102,8 +102,13 @@ export const pteConstants = {
       },
       {
         key: 'readingFillInTheBlanks',
-        text: 'Reading Fill In The Blanks',
+        text: 'Reading and Writing Fill In The Blanks',
         path: 'questions/read-fill-in-the-blank'
+      },
+      {
+        key: 'readingFillInTheBlanks2',
+        text: 'Reading Fill In The Blanks',
+        path: 'questions/read-fill-in-the-blank-2'
       }
     ],
     Writing: [
