@@ -1,4 +1,3 @@
-
 <section class="readFillInTheBlank-container" [@routerTransition]="">
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
   <h4 class="title">Reading items - Fill in the blanks drag and drop</h4>
@@ -12,30 +11,37 @@
     </h4>
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
       <mat-card>
-        <span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index">
-        <span *ngIf="word?.text=='#404'">
-          &nbsp;
-          <span class="option" draggable [dragClass]="'drag-over'" [dragData]="question" droppable
-                [dragOverClass]="'drag-target-border'"
-                [dragHintClass]="'drag-hint'" (onDrop)="onList1Drop($event,index)"></span>
-          <span [hidden]="!isAnswer" align="start" class="readFillInTheBlanksAnswer">{{word?.answer}}</span>
+        <div *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index">
+          <div *ngIf="word?.text=='#404'">
+            &nbsp;
+            <span class="option" draggable [dragClass]="'drag-over'" [dragData]="word.selectedOption" droppable
+                  (onDragEnd)="onList1DragEnd()"
+                  [dragOverClass]="'drag-target-border'"
+                  [dragHintClass]="'drag-hint'" (onDrag)="onList1Drag($event,index)"
+                  (onDrop)="onList1Drop($event,index)">{{word?.selectedOption}}</span>
+            &nbsp;
+            <span [hidden]="!isAnswer" align="start" class="readFillInTheBlanks2Answer">{{word?.answer}}</span>
+            &nbsp;
+          </div>
+
+          <span *ngIf="word?.text!='#404'">
+          &nbsp;{{word?.text}}
         </span>
-        <span *ngIf="word?.text!='#404'">
-          {{word?.text}}
-          </span>
-      </span>
+        </div>
       </mat-card>
       <div class="dragOptions">
-        <div draggable class="readFillDraggable"  [dragClass]="'drag-over'" [dragData]="option"
-            *ngFor="let option of selectedFillInTheBlank?._options; let index = index" droppable (onDrop)="onOptionsDrop($event,option)"
-              [dragOverClass]="'drag-target-border'"
-              [dragHintClass]="'drag-hint'">
+        <div draggable class="readFillDraggable" [dragClass]="'drag-over'" [dragData]="option"
+             (onDrag)="onOptionDrag($event)" (onDragEnd)="onOptionDragEnd()"
+             *ngFor="let option of selectedFillInTheBlank?._options; let index = index" droppable
+             (onDrop)="onOptionsDrop($event,option,index)"
+             [dragOverClass]="'drag-target-border'"
+             [dragHintClass]="'drag-hint'">
           {{option}}
         </div>
       </div>
       <div>
-      <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
-      <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
+        <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
+        <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
       </div>
     </div>
     <div class="question-footer">

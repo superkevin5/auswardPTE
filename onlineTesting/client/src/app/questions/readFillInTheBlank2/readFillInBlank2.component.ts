@@ -5,8 +5,8 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
-import { routerTransition } from '../../animation/animation';
-import {DropEvent} from 'ng-drag-drop';
+import {routerTransition} from '../../animation/animation';
+import {DropEvent, DragEvent} from 'ng-drag-drop';
 @Component({
   selector: 'read-fill-in-the-blank-2',
   templateUrl: 'readFillInBlank2.component.html',
@@ -23,10 +23,11 @@ export class ReadFillInBlankComponent2 implements OnInit,AfterContentInit {
   isLoading: boolean = false;
   isAnswer: boolean = false;
   pageFormControl = new FormControl();
-  gotoNumber:any='';
+  gotoNumber: any = '';
+  isList1Drag: boolean = false;
+  isOptionDrag: boolean = false;
 
-
-  constructor(private httpService: PteHttpService,private commonService:CommonService) {
+  constructor(private httpService: PteHttpService, private commonService: CommonService) {
 
 
   }
@@ -89,65 +90,90 @@ export class ReadFillInBlankComponent2 implements OnInit,AfterContentInit {
   }
 
   shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   }
-}
+
   processQuestions(question): void {
     this.selectedFillInTheBlank = question;
     let descriptionInArrayMode = this.selectedFillInTheBlank.description.split(/[\s]+/);
-    console.log(question);
     this.selectedFillInTheBlank._descriptionInArrayMode = [];
-    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().replace(/\$/g , '').split('|');
-    this.selectedFillInTheBlank._options = this.selectedFillInTheBlank.options.trim().replace(/\$/g,'').split('|');
+    this.selectedFillInTheBlank._answer = this.selectedFillInTheBlank.answer.trim().replace(/\$/g, '').split('|');
+    this.selectedFillInTheBlank._options = this.selectedFillInTheBlank.options.trim().replace(/\$/g, '').split('|');
     let answer = _.cloneDeep(this.selectedFillInTheBlank._answer);
     let options = _.cloneDeep(this.selectedFillInTheBlank._options);
     for (let word of descriptionInArrayMode) {
       if (word.trim().toLowerCase() == '#404') {
         let thisAnswer = answer.shift();
-        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, answer: thisAnswer});
+        this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word, answer: thisAnswer, selectedOption: ""});
       } else {
         this.selectedFillInTheBlank._descriptionInArrayMode.push({text: word});
       }
     }
-    console.log(this.selectedFillInTheBlank);
     window["ga"]('send', {
       hitType: 'event',
       eventCategory: 'read-fill-in-the-blank2',
       eventAction: `Question:${ question.id} visited`
     });
   }
-  onList1Drop(e: DropEvent,index){
 
-    let option = e.dragData;
-    console.log(e);
-    console.log(index);
-    // this.selectedFillInTheBlank?._options
-    var index = this.selectedFillInTheBlank._options.indexOf(option);
-
-    if (~index) {
-      this.selectedFillInTheBlank._options[index] = ' ';
-      console.log(this.selectedFillInTheBlank._options);
+  onList1Drag(e: DragEvent, index) {
+    this.isList1Drag = true;
+    this.isOptionDrag = false;
+  }
+  onList1DragEnd(){
+    this.isList1Drag = false;
+  }
+  onList1Drop(e: DropEvent, index) {
+    let dragData = e.dragData;
+    var dropData = this.selectedFillInTheBlank._descriptionInArrayMode[index].selectedOption;
+    if (this.isList1Drag) {
+      for (let i = 0, length = this.selectedFillInTheBlank._descriptionInArrayMode.length; i < length; i++) {
+        if (this.selectedFillInTheBlank._descriptionInArrayMode[i].selectedOption === dragData) {
+          this.selectedFillInTheBlank._descriptionInArrayMode[i].selectedOption = dropData;
+          break;
+        }
+      }
+      this.selectedFillInTheBlank._descriptionInArrayMode[index].selectedOption = dragData;
+      this.isList1Drag = false;
+    } else if(this.isOptionDrag) {
+      var index2 = this.selectedFillInTheBlank._options.indexOf(dragData);
+      if (~index2) {
+        this.selectedFillInTheBlank._options[index2] = dropData;
+        this.selectedFillInTheBlank._descriptionInArrayMode[index].selectedOption = dragData;
+      }
     }
   }
+  onOptionDrag() {
+    this.isList1Drag = false;
+    this.isOptionDrag = true;
+  }
 
-  onOptionsDrop(e: DropEvent,option:any) {
+  onOptionDragEnd() {
+    this.isOptionDrag = false;
+  }
+
+  onOptionsDrop(e: DropEvent, option, index) {
     var dragData = e.dragData;
-    var originalData = option;
+    var dropData = this.selectedFillInTheBlank._options[index];
 
-    var dragDataIndex = this.selectedFillInTheBlank._options.indexOf(dragData);
-
-    let originalDataIndex = this.selectedFillInTheBlank._options.indexOf(originalData);
-
-
-    if (dragDataIndex != -1 && originalData !="") {
-      var tmp = this.selectedFillInTheBlank._options[ originalDataIndex];
-      this.selectedFillInTheBlank._options[ originalDataIndex ] = this.selectedFillInTheBlank._options[ dragDataIndex ];
-      this.selectedFillInTheBlank._options[ dragDataIndex ] = tmp;
+    if (this.isList1Drag) {
+      for (let i = 0, length = this.selectedFillInTheBlank._descriptionInArrayMode.length; i < length; i++) {
+        if (this.selectedFillInTheBlank._descriptionInArrayMode[i].selectedOption === dragData) {
+          this.selectedFillInTheBlank._descriptionInArrayMode[i].selectedOption = dropData;
+          break;
+        }
+      }
+      this.selectedFillInTheBlank._options[index] = dragData;
+    } else if (this.isOptionDrag) {
+      var dragDataIndex = this.selectedFillInTheBlank._options.indexOf(dragData);
+      this.selectedFillInTheBlank._options[dragDataIndex] = this.selectedFillInTheBlank._options[index];
+      this.selectedFillInTheBlank._options[index] = dragData
     }
-    console.log(this.selectedFillInTheBlank._options);
   }
+
   ngAfterContentInit(): void {
     this.isLoading = true;
     this.httpService.getAllReadFillInTheBlanks2Ids().flatMap((data)=> {
