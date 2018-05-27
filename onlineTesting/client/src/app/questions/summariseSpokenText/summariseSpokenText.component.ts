@@ -90,6 +90,9 @@ export class SummariseSpokenTextComponent implements OnInit, OnDestroy {
     window.open(this.summariseSpokenText.descriptionPath);
   }
 
+  openNote() {
+    window.open(this.summariseSpokenText.notePath);
+  }
   next() {
     this.toggleAnswer(false);
     if (this.currentIndex < this.allsummariseSpokenTextIds.length - 1) {
@@ -127,6 +130,7 @@ export class SummariseSpokenTextComponent implements OnInit, OnDestroy {
   processQuestions(question): void {
     this.summariseSpokenText = question;
     this.summariseSpokenText.descriptionPath = `${pteConstants.descriptionPath.summariseSpokenText}${this.summariseSpokenText.descriptionPath}`;
+    this.summariseSpokenText.notePath = `${pteConstants.notePath.summariseSpokenText}${this.summariseSpokenText.notePath}`;
     window["ga"]('send', {
       hitType: 'event',
       eventCategory: 'summarise-spoken-text',

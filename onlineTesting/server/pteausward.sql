@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-05-24 08:30:52
+Date: 2018-05-27 12:02:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -805,36 +805,37 @@ CREATE TABLE `retelllecture` (
   `audioPath` varchar(40) DEFAULT NULL,
   `imagePath` varchar(40) DEFAULT NULL,
   `descriptionPath` varchar(40) DEFAULT NULL,
+  `notePath` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of retelllecture
 -- ----------------------------
-INSERT INTO `retelllecture` VALUES ('1', '1.mp3', '', '1.txt');
-INSERT INTO `retelllecture` VALUES ('2', '2.mp3', '', '2.txt');
-INSERT INTO `retelllecture` VALUES ('3', '3.mp3', '', '3.txt');
-INSERT INTO `retelllecture` VALUES ('4', '4.mp3', '', '4.txt');
-INSERT INTO `retelllecture` VALUES ('5', '5.mp3', '', '5.txt');
-INSERT INTO `retelllecture` VALUES ('6', '6.mp3', '', '6.txt');
-INSERT INTO `retelllecture` VALUES ('7', '7.mp3', '', '7.txt');
-INSERT INTO `retelllecture` VALUES ('8', '8.mp3', '', '8.txt');
-INSERT INTO `retelllecture` VALUES ('9', '9.mp3', '', '9.txt');
-INSERT INTO `retelllecture` VALUES ('10', '10.mp3', '', '10.txt');
-INSERT INTO `retelllecture` VALUES ('11', '11.mp3', '', '11.txt');
-INSERT INTO `retelllecture` VALUES ('12', '12.mp3', '', '12.txt');
-INSERT INTO `retelllecture` VALUES ('13', '13.mp3', '', '13.txt');
-INSERT INTO `retelllecture` VALUES ('14', '14.mp3', '', '14.txt');
-INSERT INTO `retelllecture` VALUES ('15', '15.mp3', '', '15.txt');
-INSERT INTO `retelllecture` VALUES ('16', '16.mp3', '', '16.txt');
-INSERT INTO `retelllecture` VALUES ('17', '17.mp3', '', '17.txt');
-INSERT INTO `retelllecture` VALUES ('18', '18.mp3', '', '18.txt');
-INSERT INTO `retelllecture` VALUES ('19', '19.mp3', '', '19.txt');
-INSERT INTO `retelllecture` VALUES ('20', '20.mp3', '', '20.txt');
-INSERT INTO `retelllecture` VALUES ('21', '21.mp3', '', '21.txt');
-INSERT INTO `retelllecture` VALUES ('22', '22.mp3', '', '22.txt');
-INSERT INTO `retelllecture` VALUES ('23', '23.mp3', '', '23.txt');
-INSERT INTO `retelllecture` VALUES ('24', '24.mp3', '', '24.txt');
+INSERT INTO `retelllecture` VALUES ('1', '1.mp3', '', '1.txt', null);
+INSERT INTO `retelllecture` VALUES ('2', '2.mp3', '', '2.txt', null);
+INSERT INTO `retelllecture` VALUES ('3', '3.mp3', '', '3.txt', null);
+INSERT INTO `retelllecture` VALUES ('4', '4.mp3', '', '4.txt', null);
+INSERT INTO `retelllecture` VALUES ('5', '5.mp3', '', '5.txt', null);
+INSERT INTO `retelllecture` VALUES ('6', '6.mp3', '', '6.txt', null);
+INSERT INTO `retelllecture` VALUES ('7', '7.mp3', '', '7.txt', null);
+INSERT INTO `retelllecture` VALUES ('8', '8.mp3', '', '8.txt', null);
+INSERT INTO `retelllecture` VALUES ('9', '9.mp3', '', '9.txt', null);
+INSERT INTO `retelllecture` VALUES ('10', '10.mp3', '', '10.txt', null);
+INSERT INTO `retelllecture` VALUES ('11', '11.mp3', '', '11.txt', null);
+INSERT INTO `retelllecture` VALUES ('12', '12.mp3', '', '12.txt', null);
+INSERT INTO `retelllecture` VALUES ('13', '13.mp3', '', '13.txt', null);
+INSERT INTO `retelllecture` VALUES ('14', '14.mp3', '', '14.txt', null);
+INSERT INTO `retelllecture` VALUES ('15', '15.mp3', '', '15.txt', null);
+INSERT INTO `retelllecture` VALUES ('16', '16.mp3', '', '16.txt', null);
+INSERT INTO `retelllecture` VALUES ('17', '17.mp3', '', '17.txt', null);
+INSERT INTO `retelllecture` VALUES ('18', '18.mp3', '', '18.txt', null);
+INSERT INTO `retelllecture` VALUES ('19', '19.mp3', '', '19.txt', null);
+INSERT INTO `retelllecture` VALUES ('20', '20.mp3', '', '20.txt', null);
+INSERT INTO `retelllecture` VALUES ('21', '21.mp3', '', '21.txt', null);
+INSERT INTO `retelllecture` VALUES ('22', '22.mp3', '', '22.txt', null);
+INSERT INTO `retelllecture` VALUES ('23', '23.mp3', '', '23.txt', null);
+INSERT INTO `retelllecture` VALUES ('24', '24.mp3', '', '24.txt', null);
 
 -- ----------------------------
 -- Table structure for sessions
@@ -859,39 +860,40 @@ CREATE TABLE `summarisespokentext` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `audioPath` varchar(20) DEFAULT NULL,
   `descriptionPath` varchar(20) DEFAULT NULL,
+  `notePath` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of summarisespokentext
 -- ----------------------------
-INSERT INTO `summarisespokentext` VALUES ('1', '1.mp3', '1.txt');
-INSERT INTO `summarisespokentext` VALUES ('2', '2.mp3', '2.txt');
-INSERT INTO `summarisespokentext` VALUES ('3', '3.mp3', '3.txt');
-INSERT INTO `summarisespokentext` VALUES ('4', '4.mp3', '4.txt');
-INSERT INTO `summarisespokentext` VALUES ('5', '5.mp3', '5.txt');
-INSERT INTO `summarisespokentext` VALUES ('6', '6.mp3', '6.txt');
-INSERT INTO `summarisespokentext` VALUES ('7', '7.mp3', '7.txt');
-INSERT INTO `summarisespokentext` VALUES ('8', '8.mp3', '8.txt');
-INSERT INTO `summarisespokentext` VALUES ('9', '9.mp3', '9.txt');
-INSERT INTO `summarisespokentext` VALUES ('10', '10.mp3', '10.txt');
-INSERT INTO `summarisespokentext` VALUES ('11', '11.mp3', '11.txt');
-INSERT INTO `summarisespokentext` VALUES ('12', '12.mp3', '12.txt');
-INSERT INTO `summarisespokentext` VALUES ('13', '13.mp3', '13.txt');
-INSERT INTO `summarisespokentext` VALUES ('14', '14.mp3', '14.txt');
-INSERT INTO `summarisespokentext` VALUES ('15', '15.mp3', '15.txt');
-INSERT INTO `summarisespokentext` VALUES ('16', '16.mp3', '16.txt');
-INSERT INTO `summarisespokentext` VALUES ('17', '17.mp3', '17.txt');
-INSERT INTO `summarisespokentext` VALUES ('18', '18.mp3', '18.txt');
-INSERT INTO `summarisespokentext` VALUES ('19', '19.mp3', '19.txt');
-INSERT INTO `summarisespokentext` VALUES ('20', '20.mp3', '20.txt');
-INSERT INTO `summarisespokentext` VALUES ('21', '21.mp3', '21.txt');
-INSERT INTO `summarisespokentext` VALUES ('22', '22.mp3', '22.txt');
-INSERT INTO `summarisespokentext` VALUES ('23', '23.mp3', '23.txt');
-INSERT INTO `summarisespokentext` VALUES ('24', '24.mp3', '24.txt');
-INSERT INTO `summarisespokentext` VALUES ('25', '25.mp3', '25.txt');
-INSERT INTO `summarisespokentext` VALUES ('26', '26.mp3', '26.txt');
-INSERT INTO `summarisespokentext` VALUES ('27', '27.mp3', '27.txt');
+INSERT INTO `summarisespokentext` VALUES ('1', '1.mp3', '1.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('2', '2.mp3', '2.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('3', '3.mp3', '3.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('4', '4.mp3', '4.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('5', '5.mp3', '5.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('6', '6.mp3', '6.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('7', '7.mp3', '7.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('8', '8.mp3', '8.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('9', '9.mp3', '9.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('10', '10.mp3', '10.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('11', '11.mp3', '11.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('12', '12.mp3', '12.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('13', '13.mp3', '13.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('14', '14.mp3', '14.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('15', '15.mp3', '15.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('16', '16.mp3', '16.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('17', '17.mp3', '17.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('18', '18.mp3', '18.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('19', '19.mp3', '19.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('20', '20.mp3', '20.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('21', '21.mp3', '21.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('22', '22.mp3', '22.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('23', '23.mp3', '23.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('24', '24.mp3', '24.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('25', '25.mp3', '25.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('26', '26.mp3', '26.txt', null);
+INSERT INTO `summarisespokentext` VALUES ('27', '27.mp3', '27.txt', null);
 
 -- ----------------------------
 -- Table structure for summarisewrittentext

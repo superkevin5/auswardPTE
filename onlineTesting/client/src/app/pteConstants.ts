@@ -40,6 +40,10 @@ export const pteConstants = {
     describeImage:'http://dn3atpd5k79cq.cloudfront.net/describeImage/description/',
     summariseSpokenText:'http://dn3atpd5k79cq.cloudfront.net/summariseSpokenText/description/',
   },
+  notePath:{
+    retellLecture:'http://dn3atpd5k79cq.cloudfront.net/retellLecture/note/',
+    summariseSpokenText:'http://dn3atpd5k79cq.cloudfront.net/summariseSpokenText/note/',
+  },
   imagePath: {
     retellLecture:'http://dn3atpd5k79cq.cloudfront.net/retellLecture/image/',
     describeImage:'http://dn3atpd5k79cq.cloudfront.net/describeImage/image/',

@@ -142,6 +142,9 @@ export class RetellLectureComponent implements OnInit, OnDestroy {
     window.open( this.retellLecture.descriptionPath);
   }
 
+  openNote() {
+    window.open( this.retellLecture.notePath);
+  }
   retry($event) {
 
     console.log($event);
@@ -207,6 +210,7 @@ export class RetellLectureComponent implements OnInit, OnDestroy {
     this.retellLecture = question;
     this.retellLecture.descriptionPath = `${pteConstants.descriptionPath.retellLecture}${this.retellLecture.descriptionPath}`;
     this.retellLecture.imagePath = this.retellLecture.imagePath ? `${pteConstants.imagePath.retellLecture}${this.retellLecture.imagePath}` : '';
+    this.retellLecture.notePath = `${pteConstants.notePath.retellLecture}${this.retellLecture.notePath}`;
     window["ga"]('send', {
       hitType: 'event',
       eventCategory: 'retell-lecture',
