@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/mergeMap';
 import * as _ from "lodash";
 import {routerTransition} from '../../animation/animation';
-import {DropEvent, DragEvent} from 'ng-drag-drop';
+import {DropEvent} from 'ng-drag-drop';
 @Component({
   selector: 'read-fill-in-the-blank-2',
   templateUrl: 'readFillInBlank2.component.html',
@@ -119,7 +119,7 @@ export class ReadFillInBlankComponent2 implements OnInit,AfterContentInit {
     });
   }
 
-  onList1Drag(e: DragEvent, index) {
+  onList1Drag() {
     this.isList1Drag = true;
     this.isOptionDrag = false;
   }

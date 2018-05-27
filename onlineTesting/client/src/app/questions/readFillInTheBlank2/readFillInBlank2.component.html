@@ -17,7 +17,7 @@
             <span class="option" draggable [dragClass]="'drag-over'" [dragData]="word.selectedOption" droppable
                   (onDragEnd)="onList1DragEnd()"
                   [dragOverClass]="'drag-target-border'"
-                  [dragHintClass]="'drag-hint'" (onDrag)="onList1Drag($event,index)"
+                  [dragHintClass]="'drag-hint'" (onDrag)="onList1Drag()"
                   (onDrop)="onList1Drop($event,index)">{{word?.selectedOption}}</span>
             &nbsp;
             <span [hidden]="!isAnswer" align="start" class="readFillInTheBlanks2Answer">{{word?.answer}}</span>
