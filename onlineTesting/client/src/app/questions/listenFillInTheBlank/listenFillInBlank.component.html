@@ -1,4 +1,4 @@
-  <section class="listenFillInTheBlank-container" [@routerTransition]="">
+<section class="listenFillInTheBlank-container" [@routerTransition]="">
   <mat-progress-bar mode="indeterminate" *ngIf="isLoading" color="accent"></mat-progress-bar>
 
   <h4 class="title">Listening items - Fill in the blanks</h4>
@@ -12,19 +12,22 @@
     </h4>
 
     <div class="question-body" fxLayout="column" fxLayoutAlign="space-between center">
-      <mat-card><mat-card-content><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index">
+      <mat-card>
+        <mat-card-content><span *ngFor="let word of selectedFillInTheBlank?._descriptionInArrayMode; let index = index">
 
         <span *ngIf="word?.text=='#404';else w" [ngClass]="{'selectBox': word?.text=='#404'}">
           &nbsp;
-         <mat-form-field >
+         <mat-form-field>
           <input matInput placeholder="Enter missing word">
          <mat-hint [hidden]="!isAnswer" align="start" class="listenFillInTheBlanksAnswer">{{word?.answer}}</mat-hint>
         </mat-form-field>
         </span>
         <ng-template #w>{{word?.text}}</ng-template>
-      </span></mat-card-content></mat-card>
+      </span></mat-card-content>
+      </mat-card>
 
-        <pte-player [questionType]="'listenFillBlank'" [question]="selectedFillInTheBlank" *ngIf="!isLoading && selectedFillInTheBlank.audioPath"></pte-player>
+      <pte-player [questionType]="'listenFillBlank'" [question]="selectedFillInTheBlank"
+                  *ngIf="!isLoading && selectedFillInTheBlank.audioPath"></pte-player>
       <div class="answerAction">
         <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
         <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
@@ -69,4 +72,13 @@
       </div>
     </div>
   </div>
+  <footer class="mat-footer pte-center" fxHide.xs fxHide.sm>
+    <p>
+      <small>Copyright © 2018 A PLUS international education Pty Ltd. All Rights Reserved.</small>
+    </p>
+    <p>
+      <small>Power by Ausward Technology Pty Ltd</small>
+    </p>
+  </footer>
+
 </section>

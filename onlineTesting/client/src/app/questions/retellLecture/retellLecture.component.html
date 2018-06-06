@@ -11,27 +11,32 @@
       </span>
     </h4>
 
-    <div class="question-body" fxLayout.md="row" fxLayout.lg="row" fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="question-body" fxLayout.md="row" fxLayout.lg="row" fxLayout="column"
+         fxLayoutAlign="space-between center">
 
-      <img src="{{retellLecture?.imagePath}}"  *ngIf="retellLecture.imagePath">
+      <img src="{{retellLecture?.imagePath}}" *ngIf="retellLecture.imagePath">
       <div>
-      <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'retellLecture'" [question]="retellLecture" *ngIf="!isLoading"></pte-player>
+        <pte-player (onPlayEnd)="startRecord($event)" [questionType]="'retellLecture'" [question]="retellLecture"
+                    *ngIf="!isLoading"></pte-player>
 
 
-      <div class="pte-recorder" color="primary">
-        <h2 class="pte-center"> Recorded Answer</h2>
+        <div class="pte-recorder" color="primary">
+          <h2 class="pte-center"> Recorded Answer</h2>
 
-        <p color="primary" class="pte-center">{{currentStatus.text}}
-        </p>
-      </div>
-      <mat-card *ngIf="isAnswer">{{retellLecture?.description}}</mat-card>
-      <div class="pte-center pte-recorder-actions">
-        <button  mat-raised-button  color="primary" *ngIf="recordedDone && !isRecordedRecording()" (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
-        <button mat-raised-button color="primary" (click)="finishRecord()" *ngIf="isRecordedRecording()">Finish Record</button>
-        <button  mat-raised-button color="primary"  (click)="retry($event)">Retry</button>
-        <button mat-raised-button color="primary" (click)="downloadScript()">Open Script</button>
-        <button mat-raised-button color="primary" (click)="openNote()">Open Notes</button>
-      </div>
+          <p color="primary" class="pte-center">{{currentStatus.text}}
+          </p>
+        </div>
+        <mat-card *ngIf="isAnswer">{{retellLecture?.description}}</mat-card>
+        <div class="pte-center pte-recorder-actions">
+          <button mat-raised-button color="primary" *ngIf="recordedDone && !isRecordedRecording()"
+                  (click)="playRecord()">&nbsp;My &nbsp;record&nbsp;</button>
+          <button mat-raised-button color="primary" (click)="finishRecord()" *ngIf="isRecordedRecording()">Finish
+            Record
+          </button>
+          <button mat-raised-button color="primary" (click)="retry($event)">Retry</button>
+          <button mat-raised-button color="primary" (click)="downloadScript()">Open Script</button>
+          <button mat-raised-button color="primary" (click)="openNote()">Open Notes</button>
+        </div>
       </div>
     </div>
 
@@ -73,4 +78,12 @@
       </div>
     </div>
   </div>
+  <footer class="mat-footer pte-center" fxHide.xs fxHide.sm>
+    <p>
+      <small>Copyright © 2018 A PLUS international education Pty Ltd. All Rights Reserved.</small>
+    </p>
+    <p>
+      <small>Power by Ausward Technology Pty Ltd</small>
+    </p>
+  </footer>
 </section>

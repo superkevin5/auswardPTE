@@ -25,12 +25,14 @@
           </ul>
         </div>
 
-        <div fxFlex="48%"  fxHide.xs class="answer-panel" droppable [dropScope]="'swap-target-2'" [dragOverClass]="'drag-target-border'"
+        <div fxFlex="48%" fxHide.xs class="answer-panel" droppable [dropScope]="'swap-target-2'"
+             [dragOverClass]="'drag-target-border'"
              [dragHintClass]="'drag-hint'" (onDrop)="onList2Drop($event)">
           Your answer:
           <ul>
             <li class="effect8" draggable
-                *ngFor="let question of selectedReadReorderParagraph?._userAnswer; let index = index" [dragScope]="'swap-target-1'" [dragClass]="'drag-over'" [dragData]="question" >
+                *ngFor="let question of selectedReadReorderParagraph?._userAnswer; let index = index"
+                [dragScope]="'swap-target-1'" [dragClass]="'drag-over'" [dragData]="question">
               {{question.id}}. {{question.description}}
             </li>
           </ul>
@@ -88,4 +90,12 @@
       </div>
     </div>
   </div>
+  <footer class="mat-footer pte-center" fxHide.xs fxHide.sm>
+    <p>
+      <small>Copyright © 2018 A PLUS international education Pty Ltd. All Rights Reserved.</small>
+    </p>
+    <p>
+      <small>Power by Ausward Technology Pty Ltd</small>
+    </p>
+  </footer>
 </section>

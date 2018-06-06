@@ -27,13 +27,12 @@
           <!--<ng-template #w>{{word?.text}}</ng-template>-->
 
 
-          <span (click)="toggleWord(index)" [hidden]="word?.text=='#404'" [ngClass]="{'selected': isSelected(index),'selectedCorrect':isSelectedCorrect(index),'selectedNotCorrect':isSelectedNotCorrect(index)}">{{word?.text}}</span>
-          <span [hidden]="!isAnswer"  *ngIf="word?.text=='#404'" class="answer">{{word?.answer}}</span>
+          <span (click)="toggleWord(index)" [hidden]="word?.text=='#404'"
+                [ngClass]="{'selected': isSelected(index),'selectedCorrect':isSelectedCorrect(index),'selectedNotCorrect':isSelectedNotCorrect(index)}">{{word?.text}}</span>
+          <span [hidden]="!isAnswer" *ngIf="word?.text=='#404'" class="answer">{{word?.answer}}</span>
 
       </span></mat-card-content>
       </mat-card>
-
-
 
 
       <pte-player [questionType]="'highLightIncorrectWords'" [question]="selectedIncorrectedWord"
@@ -82,4 +81,12 @@
       </div>
     </div>
   </div>
+  <footer class="mat-footer pte-center" fxHide.xs fxHide.sm>
+    <p>
+      <small>Copyright © 2018 A PLUS international education Pty Ltd. All Rights Reserved.</small>
+    </p>
+    <p>
+      <small>Power by Ausward Technology Pty Ltd</small>
+    </p>
+  </footer>
 </section>

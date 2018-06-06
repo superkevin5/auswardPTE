@@ -11,10 +11,12 @@
         </span>
     </h4>
 
-    <div class="question-body" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-between center">
-      <img src="{{describeImages[currentIndex]?.imagePath}}"  *ngIf="describeImages[currentIndex]?.imagePath">
+    <div class="question-body" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"
+         fxLayoutAlign="space-between center">
+      <img src="{{describeImages[currentIndex]?.imagePath}}" *ngIf="describeImages[currentIndex]?.imagePath">
       <pte-describe-image-recorder [preparationCount]="25"
-                    [action]="describeImages[currentIndex]?._action" [script]="describeImages[currentIndex]?.descriptionPath"></pte-describe-image-recorder>
+                                   [action]="describeImages[currentIndex]?._action"
+                                   [script]="describeImages[currentIndex]?.descriptionPath"></pte-describe-image-recorder>
     </div>
 
     <div class="question-footer">
@@ -55,4 +57,12 @@
       </div>
     </div>
   </div>
+  <footer class="mat-footer pte-center" fxHide.xs fxHide.sm>
+    <p>
+      <small>Copyright © 2018 A PLUS international education Pty Ltd. All Rights Reserved.</small>
+    </p>
+    <p>
+      <small>Power by Ausward Technology Pty Ltd</small>
+    </p>
+  </footer>
 </section>

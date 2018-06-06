@@ -18,17 +18,18 @@
                   *ngIf="!isLoading&&shortQuestions[currentIndex]?.description"></pte-player>
 
 
-
       <mat-card *ngIf="isAnswer">{{shortQuestions[currentIndex]?.answer}}</mat-card>
 
       <div class="pte-center pte-recorder-actions">
-        <button mat-raised-button color="primary" (click)="tooltip.show()"><i class="material-icons">question_answer</i>Audio transcript
+        <button mat-raised-button color="primary" (click)="tooltip.show()"><i class="material-icons">question_answer</i>Audio
+          transcript
         </button>
         <button mat-raised-button color="primary" *ngIf="!isAnswer" (click)="toggleAnswer(true)">Show Answer</button>
         <button mat-raised-button color="primary" *ngIf="isAnswer" (click)="toggleAnswer(false)">Close Answer</button>
       </div>
       <div class="pte-center">
-        <div [matTooltipPosition]="'below'" matTooltip="{{shortQuestions[currentIndex]?.description}}" #tooltip="matTooltip"></div>
+        <div [matTooltipPosition]="'below'" matTooltip="{{shortQuestions[currentIndex]?.description}}"
+             #tooltip="matTooltip"></div>
       </div>
 
     </div>
@@ -71,4 +72,12 @@
       </div>
     </div>
   </div>
+  <footer class="mat-footer pte-center" fxHide.xs fxHide.sm>
+    <p>
+      <small>Copyright © 2018 A PLUS international education Pty Ltd. All Rights Reserved.</small>
+    </p>
+    <p>
+      <small>Power by Ausward Technology Pty Ltd</small>
+    </p>
+  </footer>
 </section>
